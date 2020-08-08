@@ -17,8 +17,13 @@ module.exports = {
         booksElement.innerHTML = '';
         books.forEach(book => {
             booksElement.innerHTML += `
-            <div class="book">
-                ${book.name}
+            <div class="book"> 
+                <p class="name">${book.name}</p>
+
+                <div class="info">
+                    <p>Format: ${book.ext}</p>
+                    <p>Strings: ${book.strings}</p>
+                </div>
             </div>`;
         });
     },
