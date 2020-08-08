@@ -1,3 +1,4 @@
+@import "./../fonts/fonts.css";
 @import "./../icons/tabler-icons.min.css";
 
 *, *::before, *::after
@@ -9,8 +10,12 @@
 
 body
 {
+	font-family: "Roboto Condensed", sans-serif;
+	font-size: 15px;
+
 	color: #303133;
 }
+
 #titleBar
 {
 	display: flex;
