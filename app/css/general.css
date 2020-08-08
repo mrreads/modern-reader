@@ -1,0 +1,52 @@
+@import "./../icons/tabler-icons.min.css";
+
+*, *::before, *::after
+{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+#titleBar
+{
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+#titleBar > p
+{
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+	justify-content: flex-start;
+
+	padding: 5px 15px;
+
+	-webkit-app-region: drag;
+}
+
+#titleBar > div
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	min-width: 50px;
+	min-height: 35px;
+
+	cursor: pointer;
+	transition: 0.3s all;
+
+	opacity: 0.4;
+}
+
+#titleBar > div:hover
+{
+	opacity: 1;
+}
+
+#titleBar svg
+{
+	width: 18px;
+	height: 18px;
+}

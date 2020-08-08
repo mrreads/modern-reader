@@ -1,0 +1,29 @@
+{
+  "name": "modern-reader",
+  "version": "1.0.0",
+  "description": "An open-source reading app built with electron.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrreads/modern-reader.git"
+  },
+  "keywords": [
+    "electron",
+    "reader"
+  ],
+  "author": "Alexander <mrreads@yandex.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrreads/modern-reader/issues"
+  },
+  "homepage": "https://github.com/mrreads/modern-reader#readme",
+  "devDependencies": {
+    "electron": "^9.2.0"
+  },
+  "dependencies": {}
+}
