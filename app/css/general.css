@@ -8,12 +8,87 @@
 	padding: 0;
 }
 
+html
+{
+	height: 100%;
+}
+
 body
 {
 	font-family: "Roboto Condensed", sans-serif;
 	font-size: 15px;
 
+	display: grid;
+
+	min-height: 100%;
+
 	color: #303133;
+
+	gap: 0;
+	grid-template: "s t"
+	"s c";
+	grid-template-columns: auto 1fr;
+	grid-template-rows: auto 1fr;
+}
+
+#sideBar
+{
+	display: flex;
+	align-self: stretch;
+	flex-flow: column nowrap;
+
+	width: 75px;
+	max-width: 80px;
+	padding-top: 25px;
+	padding-bottom: 5px;
+
+	background-color: #303133;
+
+	grid-area: s;
+	justify-self: flex-start;
+}
+
+#sideBar a
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 60px;
+	margin: 5px 0;
+
+	transition: 0.3s all;
+}
+
+#sideBar a:hover
+{
+	background-color: #505153;
+}
+
+#sideBar a svg
+{
+	width: 35px;
+	height: 35px;
+}
+
+#sideBar .setting
+{
+	margin-top: auto;
+}
+
+#titleBar
+{
+	align-self: flex-start;
+
+	max-height: 35px;
+
+	grid-area: t;
+	justify-self: stretch;
+}
+
+#content
+{
+	grid-area: c;
 }
 
 #titleBar
