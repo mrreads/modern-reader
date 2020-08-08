@@ -7,6 +7,10 @@
 	padding: 0;
 }
 
+body
+{
+	color: #303133;
+}
 #titleBar
 {
 	display: flex;
@@ -43,10 +47,33 @@
 #titleBar > div:hover
 {
 	opacity: 1;
+	background-color: #EEEEEE;
 }
 
 #titleBar svg
 {
 	width: 18px;
 	height: 18px;
+}
+
+#titleBar > #titleMinimize > svg
+{
+	width: 20px;
+	height: 20px;
+}
+
+#titleBar > #titleClose > svg
+{
+	width: 20px;
+	height: 20px;
+}
+
+#titleBar > #titleClose:hover
+{
+	background-color: #FD0007;
+}
+
+#titleBar > #titleClose:hover > svg
+{
+	stroke: #FFFFFF;
 }
