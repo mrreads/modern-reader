@@ -13,17 +13,16 @@ addBookButton.addEventListener('click', () =>
 
             filters: [ { 
                 name: 'Books format', 
-                extensions: ['txt'] 
+                extensions: ['txt', 'fb2'] 
             }, ], 
             
             properties: ['openFile'] 
         }).then(file => 
         { 
-            console.log(file.canceled); 
             if (!file.canceled) 
             { 
-              global.filepath = file.filePaths[0].toString(); 
-              console.log(global.filepath); 
+                global.filepath = file.filePaths[0].toString();
+                saveJson(global.filepath);
             }   
         }).catch(err => { console.log(err) }); 
     } 
@@ -42,12 +41,31 @@ addBookButton.addEventListener('click', () =>
             properties: ['openFile', 'openDirectory'] 
         }).then(file => 
         { 
-            console.log(file.canceled); 
             if (!file.canceled) 
             { 
-              global.filepath = file.filePaths[0].toString(); 
-              console.log(global.filepath); 
+                global.filepath = file.filePaths[0].toString();
+                saveJson(global.filepath);
             }   
         }).catch(err => { console.log(err) }); 
     } 
 });
+
+function saveJson(bookPath)
+{
+    ext = path.extname(bookPath);
+
+    currentJson = JSON.parse(fs.readFileSync(dataBooksPath, 'utf8'));
+
+    if (ext == '.txt')
+    {
+        data = {
+            "name": path.basename(bookPath, ext),
+            "ext": ext,
+            "path": bookPath,
+            "strings": fs.readFileSync(bookPath).toString().split('\n').length
+        }
+        
+        currentJson.push(data);
+        fs.writeFileSync(dataBooksPath, JSON.stringify(currentJson));   
+    }
+}

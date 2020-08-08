@@ -1,9 +1,14 @@
 const path = require('path'); 
 const fs = require('fs'); 
 
-let dataSetting = require('./data/setting.json');
-let dataBooks = require('./data/books.json');
-let dataNotes = require('./data/notes.json');
+const dataSettingPath = __dirname + '/data/setting.json';
+let dataSetting = require(dataSettingPath);
+
+const dataBooksPath = __dirname + '/data/books.json';
+let dataBooks = require(dataBooksPath);
+
+const dataNotesPath = __dirname + '/data/notes.json';
+let dataNotes = require(dataNotesPath);
 
 require('./js/electron');
 
