@@ -1,5 +1,6 @@
 @import "./../fonts/fonts.css";
 @import "./../icons/tabler-icons.min.css";
+@import "./content.css";
 
 *, *::before, *::after
 {
