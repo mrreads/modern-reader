@@ -62,7 +62,7 @@ body
 	height: 60px;
 	margin: 5px 0;
 
-	transition: 0.3s all;
+	transition: 0.3s background-color;
 }
 
 #sideBar a:hover

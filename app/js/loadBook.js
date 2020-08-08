@@ -1,54 +1,57 @@
-const addBookButton = document.querySelector("#addBook");
+if (document.querySelector("#addBook"))
+{
+    const addBookButton = document.querySelector("#addBook");
+    global.filepath = undefined; 
 
-global.filepath = undefined; 
 
-addBookButton.addEventListener('click', () => 
-{ 
-    if (process.platform !== 'darwin') 
-    {  
-          dialog.showOpenDialog({ 
-            title: 'Select the File to be open:', 
-            defaultPath: path.join(__dirname, '../assets/'), 
-            buttonLabel: 'Open', 
-
-            filters: [ { 
-                name: 'Books format', 
-                extensions: ['txt', 'fb2'] 
-            }, ], 
-            
-            properties: ['openFile'] 
-        }).then(file => 
-        { 
-            if (!file.canceled) 
-            { 
-                global.filepath = file.filePaths[0].toString();
-                saveJson(global.filepath);
-            }   
-        }).catch(err => { console.log(err) }); 
-    } 
-    else 
+    addBookButton.addEventListener('click', () => 
     { 
-        dialog.showOpenDialog({ 
-            title: 'Select the File to be open:', 
-            defaultPath: path.join(__dirname, '../assets/'), 
-            buttonLabel: 'Open', 
-            
-            filters: [ { 
-                name: 'Text Files', 
-                extensions: ['txt', 'docx'] 
-            }, ], 
-            
-            properties: ['openFile', 'openDirectory'] 
-        }).then(file => 
-        { 
-            if (!file.canceled) 
+        if (process.platform !== 'darwin') 
+        {  
+            dialog.showOpenDialog({ 
+                title: 'Select the File to be open:', 
+                defaultPath: path.join(__dirname, '../assets/'), 
+                buttonLabel: 'Open', 
+
+                filters: [ { 
+                    name: 'Books format', 
+                    extensions: ['txt', 'fb2'] 
+                }, ], 
+                
+                properties: ['openFile'] 
+            }).then(file => 
             { 
-                global.filepath = file.filePaths[0].toString();
-                saveJson(global.filepath);
-            }   
-        }).catch(err => { console.log(err) }); 
-    } 
-});
+                if (!file.canceled) 
+                { 
+                    global.filepath = file.filePaths[0].toString();
+                    saveJson(global.filepath);
+                }   
+            }).catch(err => { console.log(err) }); 
+        } 
+        else 
+        { 
+            dialog.showOpenDialog({ 
+                title: 'Select the File to be open:', 
+                defaultPath: path.join(__dirname, '../assets/'), 
+                buttonLabel: 'Open', 
+                
+                filters: [ { 
+                    name: 'Text Files', 
+                    extensions: ['txt', 'docx'] 
+                }, ], 
+                
+                properties: ['openFile', 'openDirectory'] 
+            }).then(file => 
+            { 
+                if (!file.canceled) 
+                { 
+                    global.filepath = file.filePaths[0].toString();
+                    saveJson(global.filepath);
+                }   
+            }).catch(err => { console.log(err) }); 
+        } 
+    });
+}
 
 function saveJson(bookPath)
 {
