@@ -68,4 +68,6 @@ function saveJson(bookPath)
         currentJson.push(data);
         fs.writeFileSync(dataBooksPath, JSON.stringify(currentJson));   
     }
+
+    library.updateLibrary();
 }

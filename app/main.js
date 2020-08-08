@@ -15,7 +15,6 @@ const dataNotesPath = __dirname + '/data/notes.json';
 let dataNotes = require(dataNotesPath);
 
 const library = require('./js/library');
-
-
+library.updateLibrary();
 
 require('./js/loadBook');
