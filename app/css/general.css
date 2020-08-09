@@ -46,6 +46,7 @@ body
 	flex-flow: column nowrap;
 
 	width: 75px;
+	min-width: 75px;
 	max-width: 80px;
 	padding-top: 25px;
 	padding-bottom: 5px;
@@ -171,7 +172,7 @@ body
 
 *::-webkit-scrollbar
 {
-	width: 16px;
+	width: 13px;
 
 	background-color: #FFFFFF;
 }
