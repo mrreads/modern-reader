@@ -75,6 +75,11 @@ body
 	opacity: 0.8;
 }
 
+.inputNumberWrapper p span
+{
+	margin-left: 5px;
+}
+
 .inputNumber
 {
 	position: relative;

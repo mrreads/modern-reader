@@ -33,15 +33,18 @@ document.querySelector('.line-height input').addEventListener('input', () => {
 function updateViewer()
 {
     viewSetting = require('./data/setting.json');
-    
+
     document.querySelector('.padding input').value = viewSetting.padding;
     contentElem.style.padding = `${viewSetting.padding}px`;
+    document.querySelector('.padding p span').textContent = document.querySelector('.padding input').value;
 
     document.querySelector('.font-size input').value = viewSetting.fontSize;
     contentElem.style.fontSize = `${viewSetting.fontSize}px`;
+    document.querySelector('.font-size p span').textContent = document.querySelector('.font-size input').value;
 
     document.querySelector('.line-height input').value = viewSetting.lineHeight;
     contentElem.style.lineHeight = `${viewSetting.lineHeight}`;
+    document.querySelector('.line-height p span').textContent = document.querySelector('.line-height input').value;
 }
 
 updateViewer();
