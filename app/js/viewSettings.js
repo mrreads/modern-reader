@@ -1,12 +1,15 @@
-let inputs = document.querySelectorAll('.inputNumber');
-inputs.forEach(inpt => {
-    inpt.querySelector('.inc').addEventListener('click', () => {
-        if (+inpt.querySelector('input').value < +inpt.querySelector('input').max)
-            inpt.querySelector('input').value++;
-    });
+const contentElem = document.querySelector('#viewer .content');
 
-    inpt.querySelector('.dec').addEventListener('click', () => {
-        if (+inpt.querySelector('input').value > +inpt.querySelector('input').min)
-            inpt.querySelector('input').value--
-    });
+document.querySelector('.padding input').addEventListener('input', () => {
+    currentSettings = require('./data/setting.json');
+    currentSettings.padding = `${document.querySelector('.padding input').value}`;
+    fs.writeFileSync(dataSettingPath, JSON.stringify(currentSettings));
+    updateViewer();
 });
+
+function updateViewer()
+{
+    viewSetting = require('./data/setting.json');
+    
+    contentElem.style.padding = `${viewSetting.padding}px`;
+}
