@@ -1,3 +1,7 @@
+document.querySelector('#titleBar > #titleBack').addEventListener('click', () => {
+    window.location = './index.html';
+});
+
 const settingButton = document.querySelector('#viewSetting');
 const contentElem = document.querySelector('#viewer .content');
 
