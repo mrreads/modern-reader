@@ -95,7 +95,7 @@
         <div id="content" data-type="book">
             <div class="title"> 
                 <p> Library </p>
-                <a href="#" class="add" id="addBook">
+                <a href="#" class="add" id="addPopup">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="44" height="44" viewBox="0 0 24 24"   stroke="#2c3e50"        fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z"/>
                         <line x1="12" y1="5" x2="12" y2="19" />
@@ -109,5 +109,31 @@
     </div>
 
 </body>
+
+<div id="popupWrapper" class="hide">
+    <div id="popupUpload">
+
+        <div class="close">                
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" viewBox="0 0 24 24"
+            stroke-width="1.6" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </div>
+    
+        <div id="uploadFileBook">
+            <p> Select book to load </p>
+        </div>
+        
+        <div class="inputName">
+            <p> Title: </p>
+            <input type="text">
+        </div>
+
+        <div id="loadBook"> Add book </div>
+    </div>
+</div>
+
 
 </html>

@@ -1,10 +1,20 @@
-if (document.querySelector("#addBook"))
+if (document.querySelector("#popupWrapper"))
 {
-    const addBookButton = document.querySelector("#addBook");
+    const popupWrapper = document.querySelector("#popupWrapper");
+    const addPopup = document.querySelector("#addPopup");
     global.filepath = undefined; 
+    
+    const inputName = document.querySelector('.inputName input');
 
+    addPopup.addEventListener('click', () => {
+        popupWrapper.classList.remove('hide');
+    });
 
-    addBookButton.addEventListener('click', () => 
+    popupWrapper.querySelector(".close").addEventListener('click', () => {
+        popupWrapper.classList.add('hide');
+    });
+
+    document.querySelector('#uploadFileBook').addEventListener('click', () => 
     { 
         if (process.platform !== 'darwin') 
         {  
@@ -24,7 +34,8 @@ if (document.querySelector("#addBook"))
                 if (!file.canceled) 
                 { 
                     global.filepath = file.filePaths[0].toString();
-                    saveJson(global.filepath);
+                    document.querySelector('#uploadFileBook').textContent = path.basename(global.filepath);
+                    inputName.value = path.basename(global.filepath, path.extname(global.filepath));
                 }   
             }).catch(err => { console.log(err) }); 
         } 
@@ -46,14 +57,20 @@ if (document.querySelector("#addBook"))
                 if (!file.canceled) 
                 { 
                     global.filepath = file.filePaths[0].toString();
-                    saveJson(global.filepath);
+                    document.querySelector('#uploadFileBook').textContent = path.basename(global.filepath);
+                    inputName.value = path.basename(global.filepath, path.extname(global.filepath));
                 }   
             }).catch(err => { console.log(err) }); 
         } 
     });
+
+    document.querySelector('#loadBook').addEventListener('click', () => {
+        saveJson(inputName.value, global.filepath);
+        popupWrapper.querySelector(".close").click();
+    });
 }
 
-function saveJson(bookPath)
+function saveJson(bookName, bookPath)
 {
     ext = path.extname(bookPath);
 
@@ -62,7 +79,7 @@ function saveJson(bookPath)
     if (ext == '.txt')
     {
         data = {
-            "name": path.basename(bookPath, ext),
+            "name": bookName,
             "ext": ext,
             "path": bookPath,
             "strings": fs.readFileSync(bookPath).toString().split('\n').length
