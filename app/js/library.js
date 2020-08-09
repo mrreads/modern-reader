@@ -19,18 +19,26 @@ module.exports = {
             booksElement.innerHTML = '';
             books.forEach(book => 
             {
+
+                tempBook = document.createElement('div');
+                tempBook.classList.add('book');
+
                 if (book.ext == '.txt')
                 {
-                    booksElement.innerHTML += `
-                    <div class="book"> 
+                    tempBook.innerHTML += `
                         <p class="name">${book.name}</p>
     
                         <div class="info">
                             <p>Format: ${book.ext}</p>
                             <p>Strings: ${book.strings}</p>
-                        </div>
-                    </div>`;
+                        </div>`;
                 }
+
+                tempBook.addEventListener('click', () => {
+                    localStorage.setItem('path', book.path);
+                    window.location = './viewer.html';
+                });
+                booksElement.appendChild(tempBook);
             });
         }
     },

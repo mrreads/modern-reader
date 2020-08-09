@@ -19,13 +19,16 @@ library.updateLibrary();
 
 require('./js/loadBook');
 
-window.addEventListener('resize', () => {
-    if (document.querySelector('#content').scrollHeight > document.querySelector('#content').clientHeight)
-    {
-        document.querySelector('#content').style.marginRight = '0px';
-    }
-    else
-    {
-        document.querySelector('#content').style.marginRight = '13px';
-    }
-});
+if (document.querySelector('#content'))
+{
+    window.addEventListener('resize', () => {
+        if (document.querySelector('#content').scrollHeight > document.querySelector('#content').clientHeight)
+        {
+            document.querySelector('#content').style.marginRight = '0px';
+        }
+        else
+        {
+            document.querySelector('#content').style.marginRight = '13px';
+        }
+    });
+}
