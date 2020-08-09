@@ -32,3 +32,17 @@ if (document.querySelector('#content'))
         }
     });
 }
+
+// if (document.querySelector('#viewer .content'))
+// {
+//     window.addEventListener('resize', () => {
+//         if (document.querySelector('#viewer .content').scrollHeight > document.querySelector('#viewer .content').clientHeight)
+//         {
+//             document.querySelector('#viewer .content').style.marginRight = '0px';
+//         }
+//         else
+//         {
+//             document.querySelector('#viewer .content').style.marginRight = '13px';
+//         }
+//     });
+// }

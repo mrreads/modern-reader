@@ -1,4 +1,137 @@
 body
 {
-    flex-flow: column nowrap;
+	flex-flow: column nowrap;
+}
+
+#viewer
+{
+	position: relative;
+
+	height: 100%;
+}
+
+#viewer .content
+{
+	overflow-x: scroll;
+
+	height: 100%;
+
+	white-space: break-spaces;
+}
+
+#viewer .settings
+{
+	padding: 15px 25px;
+
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	background-color: #FFFFFF;
+}
+
+.inputNumberWrapper
+{
+	display: inline-flex;
+	flex-flow: column nowrap;
+}
+
+.inputNumberWrapper p
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding-bottom: 5px;
+    margin: 0 5px;
+	text-transform: uppercase;
+}
+
+.inputNumber
+{
+	position: relative;
+
+	display: inline-flex;
+	flex-flow: row nowrap;
+
+    width: 100%;
+	height: 30px;
+	max-height: 30px;
+
+	border: 1px solid rgb(44, 62, 80);
+	outline: 0;
+}
+
+.inputNumber input
+{
+    outline: 0;
+	width: 100%;
+	height: 100%;
+	padding-right: 20px;
+
+	text-align: center;
+
+	border: 0;
+}
+
+.inputNumber input::-webkit-inner-spin-button, .inputNumber input::-webkit-outer-spin-button
+{
+	margin: 0;
+
+	-webkit-appearance: none;
+}
+
+.inputNumber .control
+{
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	right: 0;
+
+	display: flex;
+	flex-flow: column nowrap;
+
+	width: 20px;
+	height: 100%;
+
+	border-left: 1px solid rgb(44, 62, 80);
+}
+
+.inputNumber .control .inc
+{
+	height: 15px;
+
+	border-bottom: 1px solid rgb(44, 62, 80);
+}
+
+.inputNumber .control .inc svg
+{
+    margin-bottom: 1px;
+}
+
+.inputNumber .control .dec
+{
+	height: 13px;
+}
+
+.inputNumber .control .inc, .inputNumber .control .dec
+{
+	height: 14px;
+
+	cursor: pointer;
+
+	background-color: #FCFDFF;
+}
+
+.inputNumber .control .inc:hover, .inputNumber .control .dec:hover
+{
+	background-color: #BDBFC4;
+}
+
+.inputNumber .control svg
+{
+	width: 100%;
+	height: 100%;
+}
+
+::-webkit-scrollbar
+{
+	display: none !important;
 }
