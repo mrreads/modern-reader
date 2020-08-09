@@ -37,8 +37,8 @@ module.exports = {
                 }
 
                 tempBook.addEventListener('click', () => {
-                    localStorage.setItem('path', book.path);
-                    localStorage.setItem('ext', book.ext);
+                    dataBook = JSON.stringify(book);
+                    localStorage.setItem('dataBook', dataBook);
                     window.location = './viewer.html';
                 });
                 booksElement.appendChild(tempBook);

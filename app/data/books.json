@@ -1,1 +1,10 @@
-[{"name":"New Text Document","ext":".txt","path":"D:\\Other\\#sysPATH\\Downloads\\New Text Document.txt","strings":3},{"name":"Sianie_-_King","ext":".txt","path":"D:\\Other\\#sysPATH\\Downloads\\Sianie_-_King.txt","strings":15537},{"name":"New Text Document","ext":".txt","path":"D:\\Other\\#sysPATH\\Downloads\\New Text Document.txt","strings":3},{"name":"New Text Document","ext":".txt","path":"D:\\Other\\#sysPATH\\Downloads\\New Text Document.txt","strings":3},{"name":"New Text Document","ext":".txt","path":"D:\\Other\\#sysPATH\\Downloads\\New Text Document.txt","strings":3},{"name":"Sianie_-_King","ext":".txt","path":"D:\\Other\\#sysPATH\\Downloads\\Sianie_-_King.txt","strings":15537},{"name":"ы","ext":".txt","path":"D:\\Other\\ы.txt","strings":152}]
+[
+    { "name": "ы", "ext": ".txt", "path": "D:\\Other\\ы.txt", "strings": 152 },
+    {
+        "name": "Sianie_-_King",
+        "ext": ".txt",
+        "path": "D:\\Other\\#sysPATH\\Downloads\\Sianie_-_King.txt",
+        "strings": 15537
+    },
+    { "name": "ы", "ext": ".txt", "path": "D:\\Other\\ы.txt", "strings": 152 }
+]

@@ -89,6 +89,7 @@ body
 	right: 0;
 
 	display: flex;
+	overflow: hidden;
 	align-self: flex-start;
 	flex-flow: row nowrap;
 
@@ -110,6 +111,8 @@ body
 
 	padding: 5px 15px;
 
+	white-space: nowrap;
+
 	-webkit-app-region: drag;
 }
 
@@ -123,7 +126,8 @@ body
 	min-height: 35px;
 
 	cursor: pointer;
-	transition: 0.3s background-color;
+	transition: 0.3s background-color,
+	0.3s opacity;
 
 	opacity: 0.4;
 }
@@ -138,6 +142,8 @@ body
 {
 	width: 18px;
 	height: 18px;
+
+	stroke-width: 1;
 }
 
 #titleBar > #titleMinimize > svg
@@ -160,6 +166,23 @@ body
 #titleBar > #titleClose:hover > svg
 {
 	stroke: #FFFFFF;
+}
+
+#titleBar #titleStatus
+{
+	line-height: 25px;
+
+	display: block;
+	overflow: hidden;
+	justify-content: center;
+
+	margin: 0 20px;
+
+	text-align: center;
+	text-align: center;
+
+	opacity: 0.4;
+	color: rgb(44, 62, 80);
 }
 
 #content

@@ -1,2 +1,3 @@
-bookPath = localStorage.getItem('path');
-bookExt = localStorage.getItem("ext");
+dataBook = JSON.parse(localStorage.getItem('dataBook'));
+
+document.querySelector("#titleStatus").textContent = dataBook.name;
