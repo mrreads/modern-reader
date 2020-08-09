@@ -143,7 +143,7 @@ body
 	width: 18px;
 	height: 18px;
 
-	stroke-width: 1;
+	stroke-width: 1.5;
 }
 
 #titleBar > #titleMinimize > svg
@@ -170,6 +170,8 @@ body
 
 #titleBar #titleStatus
 {
+	font-size: 13px;
+	font-weight: bold;
 	line-height: 25px;
 
 	display: block;
@@ -178,7 +180,6 @@ body
 
 	margin: 0 20px;
 
-	text-align: center;
 	text-align: center;
 
 	opacity: 0.4;
