@@ -5,18 +5,19 @@
 
 #content .title
 {
-	min-height: 25px;
 	display: flex;
 	align-items: center;
 	flex-flow: row nowrap;
 	justify-content: space-between;
+
+	min-height: 25px;
 }
 #content hr
 {
 	height: 1px;
 	margin: 15px 0;
 
-	border-color: rgba(0,0,0,0.1);
+	border: 1px solid rgba(0,0,0,0.1);
 }
 
 #content .add
@@ -82,8 +83,8 @@
 	flex-flow: column nowrap;
 	justify-content: flex-end;
 
-	max-width: 150px;
 	width: 100%;
+	max-width: 150px;
 	margin-top: 25px;
 
 	text-align: right;

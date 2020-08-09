@@ -1,13 +1,12 @@
 body
 {
-	flex-flow: column nowrap;
+	flex-flow: column nowrap;+
 }
 
 #viewer
 {
-	position: relative;
-
 	height: 100%;
+	padding-bottom: 20px;
 }
 
 #viewer .content
@@ -21,10 +20,39 @@ body
 
 #viewer .settings
 {
+	position: absolute;
+	top: 35px;
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	flex-flow: row nowrap;
+	justify-content: center;
+
+	width: 100%;
+	max-height: 75px;
 	padding: 15px 25px;
+
+	transition: 0.3s all;
 
 	border-bottom: 1px solid rgba(0,0,0,0.1);
 	background-color: #FFFFFF;
+}
+
+#viewer .settings.hide
+{
+	top: -100px;
+
+	max-height: 0;
+}
+
+#viewer .settings .hr
+{
+	min-width: 1px;
+	height: 50px;
+	margin: -5px 15px;
+
+	background-color: rgba(0,0,0,0.1);
 }
 
 .inputNumberWrapper
@@ -49,8 +77,6 @@ body
 
 .inputNumber
 {
-	
-    opacity: 0.7;
 	position: relative;
 
 	display: inline-flex;
@@ -60,6 +86,7 @@ body
 	height: 30px;
 	max-height: 30px;
 
+	opacity: 0.7;
 	border: 1px solid rgb(44, 62, 80);
 	outline: 0;
 }
@@ -85,7 +112,6 @@ body
 
 .inputNumber .control
 {
-	position: absolute;
 	z-index: 5;
 	top: 0;
 	right: 0;
@@ -138,5 +164,5 @@ body
 
 ::-webkit-scrollbar
 {
-	display: none !important;
+	/* display: none !important; */
 }
