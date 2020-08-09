@@ -123,7 +123,7 @@ body
 	min-height: 35px;
 
 	cursor: pointer;
-	transition: 0.3s all;
+	transition: 0.3s background-color;
 
 	opacity: 0.4;
 }
