@@ -23,19 +23,22 @@ module.exports = {
                 tempBook = document.createElement('div');
                 tempBook.classList.add('book');
 
+                if (!fs.existsSync(book.path)) { tempBook.classList.add('error') }
+
                 if (book.ext == '.txt')
                 {
                     tempBook.innerHTML += `
-                        <p class="name">${book.name}</p>
+                        <p class="name"> <strong>${book.name}</strong> </p>
     
                         <div class="info">
-                            <p>Format: ${book.ext}</p>
-                            <p>Strings: ${book.strings}</p>
+                            <p class="format">Format: <i>${book.ext}</i> </p>
+                            <p>Strings: <i>${book.strings}</i> </p>
                         </div>`;
                 }
 
                 tempBook.addEventListener('click', () => {
                     localStorage.setItem('path', book.path);
+                    localStorage.setItem('ext', book.ext);
                     window.location = './viewer.html';
                 });
                 booksElement.appendChild(tempBook);

@@ -1,3 +1,2 @@
-console.log('asd');
-
-console.log(localStorage.getItem('path'));
+bookPath = localStorage.getItem('path');
+bookExt = localStorage.getItem("ext");
