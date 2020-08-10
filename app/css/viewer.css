@@ -1,7 +1,9 @@
-body
+:root
 {
-	flex-flow: column nowrap;
-}
+	--theme-main-color: rgb(255, 255, 255);
+	--theme-second-color: rgb(44, 62, 80);
+	--theme-theree-color: rgb(24, 34, 44);
+}	
 
 #viewer
 {
@@ -11,8 +13,9 @@ body
 
 #viewer .content
 {
-	overflow-x: scroll;
-
+	overflow: hidden;
+	overflow-y: scroll;
+	
 	height: 100%;
 
 	white-space: break-spaces;
@@ -20,7 +23,7 @@ body
 
 #viewer .settings
 {
-	position: absolute;
+	position: fixed;
 	top: 35px;
 	left: 0;
 
@@ -51,8 +54,7 @@ body
 	min-width: 1px;
 	height: 50px;
 	margin: -5px 15px;
-
-	background-color: rgba(0,0,0,0.1);
+	opacity: 0.2;
 }
 
 .inputNumberWrapper
@@ -170,4 +172,51 @@ body
 ::-webkit-scrollbar
 {
 	/* display: none !important; */
+}
+
+
+body
+{
+	flex-flow: column nowrap;
+
+	color: var(--theme-second-color);
+	background-color: var(--theme-main-color);
+}
+
+#titleBar, #viewer .settings
+{
+	color: var(--theme-second-color);
+	background-color: var(--theme-main-color);
+}
+
+#titleBar svg
+{
+	stroke: var(--theme-second-color);
+}
+
+#viewer .settings .hr
+{
+	background-color: var(--theme-second-color);
+}
+
+#titleBar #titleStatus
+{
+	color: var(--theme-second-color);
+}
+#titleBar > div:hover
+{
+	background-color: var(--theme-theree-color);
+}
+*::-webkit-scrollbar
+{
+	background-color: var(--theme-main-color);
+}
+*::-webkit-scrollbar-track
+{
+	background-color: var(--theme-main-color);
+}
+*::-webkit-scrollbar-thumb
+{
+	border: 5px solid var(--theme-main-color);
+	background-color: #BABAC0;
 }

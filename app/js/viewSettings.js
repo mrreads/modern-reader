@@ -47,4 +47,22 @@ function updateViewer()
     document.querySelector('.line-height p span').textContent = document.querySelector('.line-height input').value;
 }
 
+function themeUpdate()
+{
+    theme = require('./data/setting.json').theme;
+    if (theme == "light")
+    {
+        document.documentElement.style.setProperty('--theme-main-color', '#FFFFFF');
+        document.documentElement.style.setProperty('--theme-second-color', 'rgb(44, 62, 80)');
+        document.documentElement.style.setProperty('--theme-three-color', '#EEEEEE');
+    }
+    if (theme == "dark")
+    {
+        document.documentElement.style.setProperty('--theme-main-color', '#322f3d');
+        document.documentElement.style.setProperty('--theme-second-color', 'rgb(255, 255, 255)');
+        document.documentElement.style.setProperty('--theme-three-color', 'rgb(24, 34, 44)');
+    }
+}
+
 updateViewer();
+themeUpdate();
