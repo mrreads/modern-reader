@@ -1,10 +1,22 @@
 import React from 'react';
+import Book from './Book/Book';
 
 class Books extends React.Component
 {
-    render()
+    render(props)
     {
-        return (<h1> Books </h1>);
+        return (
+        <div id="content">
+            <div className="title"> 
+                <p> Books </p>
+            </div>
+            <hr/>
+            
+            <div className="books">
+                { this.props.data.map((book, i) => <Book data={book} key={i} /> ) }
+            </div>
+
+        </div>);
     }
 }
 

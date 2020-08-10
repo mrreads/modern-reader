@@ -12,18 +12,19 @@ import Settings from './resources/Components/Settings/Settings';
 
 function App() 
 {
-return (
+	const books = require('./resources/data/books.json');
+
+	return (
 	<BrowserRouter>
 		<SideBar />
 		<TitleBar />
 		
-		<div id="content">
-			<Switch>
-				<Route exact path="/" component={Books} />
-				<Route exact path="/notes" component={Notes} />
-				<Route exact path="/settings" component={Settings} />
-			</Switch>
-		</div>
+		<Switch>
+			<Route exact path="/"> <Books data={books}/> </Route>
+			<Route exact path="/notes" component={Notes} />
+			<Route exact path="/settings" component={Settings} />
+		</Switch>
+		
 	</BrowserRouter>);
 }
 

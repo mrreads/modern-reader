@@ -75,6 +75,11 @@
 	padding-right: 35px;
 }
 
+#content .books .book .name.error
+{
+	color: rgb(240, 20, 20);
+}
+
 #content .books .book .info
 {
 	font-size: 12px;

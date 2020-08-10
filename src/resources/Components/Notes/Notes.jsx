@@ -4,7 +4,13 @@ class Notes extends React.Component
 {
     render()
     {
-        return (<h1> Notes </h1>);
+        return (
+        <div id="content">
+            <div className="title"> 
+                <p> Notes </p>
+            </div>
+            <hr/>
+        </div>);
     }
 }
 
