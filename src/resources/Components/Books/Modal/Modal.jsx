@@ -1,8 +1,80 @@
 import React from 'react';
 
+const path = window.require('path'); 
+const electron = window.require('electron'); 
+const dialog = electron.remote.dialog; 
+
 class Modal extends React.Component
 {
+    constructor()
+    {
+        super();
+        this.state = {
+            isSelected: false,
+            bookFile: 'Select file to load',
+            bookName: 'Book title',
+            bookPath: ''
+        }
+    }
+
     onClose = (e) => { this.props.onClose && this.props.onClose(e); };
+
+    changeName = (e) =>
+    {
+        this.setState({bookName: e.target.value});
+    }
+
+    openFile()
+    {
+        if (process.platform !== 'darwin') 
+        {  
+            dialog.showOpenDialog({ 
+                title: 'Select the File to be open:', 
+                defaultPath: path.join(__dirname, '../assets/'), 
+                buttonLabel: 'Open', 
+
+                filters: [ { 
+                    name: 'Books format', 
+                    extensions: ['txt', 'fb2'] 
+                }, ], 
+                
+                properties: ['openFile'] 
+            }).then(file => 
+            { 
+                if (!file.canceled) 
+                { 
+                    global.filepath = file.filePaths[0].toString();
+                    this.setState({isSelected: true});
+                    this.setState({bookFile: path.basename(global.filepath)});
+                    this.setState({bookName: path.basename(global.filepath, path.extname(global.filepath))});
+                }   
+            }).catch(err => { console.log(err) }); 
+        } 
+        else 
+        { 
+            dialog.showOpenDialog({ 
+                title: 'Select the File to be open:', 
+                defaultPath: path.join(__dirname, '../assets/'), 
+                buttonLabel: 'Open', 
+                
+                filters: [ { 
+                    name: 'Text Files', 
+                    extensions: ['txt', 'docx'] 
+                }, ], 
+                
+                properties: ['openFile', 'openDirectory'] 
+            }).then(file => 
+            { 
+                if (!file.canceled) 
+                { 
+                    global.filepath = file.filePaths[0].toString();
+                    this.setState({isSelected: true});
+                    this.setState({bookFile: path.basename(global.filepath)});
+                    this.setState({bookName: path.basename(global.filepath, path.extname(global.filepath))});
+                }   
+            }).catch(err => { console.log(err) }); 
+        }
+    }
 
     render(props)
     {
@@ -22,16 +94,16 @@ class Modal extends React.Component
                     </svg>
                 </div>
             
-                <div id="uploadFileBook">
-                    <p> Select book to load </p>
+                <div id="uploadFileBook" onClick={() => this.openFile()}>
+                    <p> {this.state.bookFile} </p>
                 </div>
                 
                 <div className="inputName">
                     <p> Title: </p>
-                    <input type="text" />
+                    <input type="text" value={this.state.bookName} onChange={this.changeName} />
                 </div>
         
-                <div id="loadBook"> Add book </div>
+                <div id="loadBook" className={!this.state.isSelected ? "disabled" : ""}> Add book </div>
             </div>
         </div>)
     }

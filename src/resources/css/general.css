@@ -360,6 +360,12 @@ body
 	background-color: rgb(44, 62, 80);
 }
 
+#loadBook.disabled
+{
+	cursor: default;
+	opacity: 0.3;
+}
+
 #loadBook:hover
 {
 	background-color: rgb(63, 82, 100);
