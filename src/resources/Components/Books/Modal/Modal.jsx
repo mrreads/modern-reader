@@ -1,5 +1,8 @@
 import React from 'react';
 
+const userPath = require('./../../../../data').userPath;
+
+const fs = window.require('fs'); 
 const path = window.require('path'); 
 const electron = window.require('electron'); 
 const dialog = electron.remote.dialog; 
@@ -78,9 +81,26 @@ class Modal extends React.Component
         }
     }
     
-    uplodDFile = () =>
+    uploadFile = () =>
     {
-        
+        let ext = path.extname(this.state.bookPath);
+
+        let currentJson = JSON.parse(fs.readFileSync(userPath.books, 'utf8'));
+
+        if (ext === '.txt')
+        {
+            let data = {
+                "name": this.state.bookName,
+                "ext": ext,
+                "path": this.state.bookPath,
+                "strings": fs.readFileSync(this.state.bookPath).toString().split('\n').length
+            }
+            
+            currentJson.push(data);
+            fs.writeFileSync(userPath.books, JSON.stringify(currentJson));
+            this.props.toUpdate && this.props.toUpdate(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
+            this.props.onClose && this.props.onClose();
+        }
     }
 
     render(props)
@@ -110,7 +130,7 @@ class Modal extends React.Component
                     <input type="text" value={this.state.bookName} onChange={this.changeName} />
                 </div>
         
-                <div id="loadBook" className={!this.state.isSelected ? "disabled" : ""} onClick={this.uplodDFile}> Add book </div>
+                <div id="loadBook" className={!this.state.isSelected ? "disabled" : ""} onClick={this.uploadFile} > Add book </div>
             </div>
         </div>)
     }

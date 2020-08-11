@@ -1,4 +1,5 @@
 import React from 'react';
+
 const fs = window.require('fs');
 
 class Book extends React.Component

@@ -1,6 +1,6 @@
 import React from 'react';
 import Book from './Book/Book';
-import Modal from './Modal/Modal';
+import Modal from './Modal/Modal';;
 
 class Books extends React.Component
 {
@@ -36,7 +36,7 @@ class Books extends React.Component
                 { this.props.data.map((book, i) => <Book data={book} key={i} /> ) }
             </div>
 
-            <Modal show={this.state.show} onClose={() => this.showModal()} />
+            <Modal show={this.state.show} onClose={() => this.showModal()} toUpdate={this.props.toUpdate} />
         </div>);
     }
 }
