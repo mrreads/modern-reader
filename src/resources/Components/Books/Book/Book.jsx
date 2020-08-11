@@ -8,7 +8,10 @@ class Book extends React.Component
     render()
     {
         return (
-        <Link to="/viewer" className='book'>
+        <Link to={{
+            pathname: "/viewer",
+            data: { book: this.props.data }
+          }} className='book'>
             <p className={(fs.existsSync(this.props.data.path)) ? "name" : "name error" }> <strong> {this.props.data.name} </strong> </p>
 
             <div className="info">

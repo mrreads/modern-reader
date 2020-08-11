@@ -23,10 +23,10 @@ function App ()
 	<BrowserRouter>
 		<TitleBar />
 		
-		<Route exact path="/viewer" component={Viewer} />
+		<Route path="/viewer" component={Viewer} />
 		
 		<Route path="/shelf" component={SideBar} />
-		
+
 		<Switch>
 			<Route exact path="/shelf/books"> <Books data={books} toUpdate={upateBooks} /> </Route>
 			<Route exact path="/shelf/notes" component={Notes} />

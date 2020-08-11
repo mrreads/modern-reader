@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { useState} from 'react';
+import { withRouter  } from 'react-router-dom';
 
 const fs = window.require('fs');
 
-class Viewer extends React.Component
+function Viewer(props)
 {
-    constructor()
+    let book;
+    let textBook;
+    try
     {
-        super();
+        book = props.location.data.book;
     }
-
-    render()
+    catch
     {
-        return (
-        <div id="content">
+        window.location = '/shelf/books'
+    }
+    
+    
+    if (book.ext === '.txt')
+    {
+        textBook = fs.readFileSync(book.path, 'utf8');
+    }
+    const [content, updateContent] = useState(textBook)
+
+
+     return (
+        <div id="content" className="view">
             <div id="viewer">
-                
-                <div className="content"></div>
+                <h1> { props.location.data.path } </h1>
+                <div className="content"> { content }</div>
 
             </div>
         </div>);
-    }
 }
 
-export default Viewer;
+export default withRouter(Viewer);

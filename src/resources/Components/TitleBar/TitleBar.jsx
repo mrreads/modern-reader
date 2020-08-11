@@ -56,8 +56,8 @@ class TitleBar extends React.Component
                 </svg>
             </NavLink>)} />
 
-            <p id="titleStatus"></p>
-            
+            <p id="titleStatus"> </p>
+
             <div id="titleMinimize">
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-down-left"
                     viewBox="0 0 24 24" fill="none">
