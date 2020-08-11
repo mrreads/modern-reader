@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import './resources/css/general.css';
 
@@ -21,6 +21,8 @@ function App ()
 
 	return (
 	<BrowserRouter>
+		<Redirect from='/' to='/shelf/books' />
+		
 		<TitleBar />
 		
 		<Route path="/viewer" component={Viewer} />
