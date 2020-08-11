@@ -1,29 +1,66 @@
 {
   "name": "modern-reader",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "An open-source reading app built with electron.",
-  "private": true,
-  "main": "index.js",
-  "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mrreads/modern-reader.git"
-  },
-  "keywords": [
-    "electron",
-    "reader"
-  ],
   "author": "Alexander <mrreads@yandex.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mrreads/modern-reader/issues"
+  "private": true,
+  "homepage": "./shelf/books",
+  "main": "./public/electron.js",
+  "dependencies": {
+    "cross-env": "^6.0.3",
+    "electron-is-dev": "^1.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1"
   },
-  "homepage": "https://github.com/mrreads/modern-reader#readme",
+  "scripts": {
+    "start-react": "react-scripts start",
+    "build-react": "react-scripts build",
+    "test-react": "react-scripts test --env=jsdom",
+    "eject-react": "react-scripts eject",
+    "build-electron": "electron-builder",
+    "build": "npm run build-react && npm run build-electron",
+    "start": "concurrently \"cross-env BROWSER=none npm run start-react\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
-    "electron": "^9.2.0"
+    "concurrently": "^5.2.0",
+    "electron": "^9.2.0",
+    "electron-builder": "^22.8.0",
+    "wait-on": "^3.3.0"
   },
-  "dependencies": {}
+  "build": {
+    "productName": "Modern Reader",
+    "appId": "com.modern-reader",
+    "directories": {
+        "buildResources": "build"
+    },
+    "files": [
+      "build/**/*"
+    ],
+    "win": {
+        "target": "portable",
+        "icon": "public/icon.png"
+    },
+    "nsis": {
+      "installerIcon": "public/icon.png",
+      "installerHeaderIcon": "public/icon.png",
+      "deleteAppDataOnUninstall": true
+    }
+  }
 }
