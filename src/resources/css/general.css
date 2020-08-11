@@ -1,6 +1,7 @@
 @import "./../fonts/fonts.css";
 @import "./../icons/tabler-icons.min.css";
 @import "./content.css";
+@import "./viewer.css";
 
 *, *::before, *::after
 {
@@ -131,7 +132,7 @@ body
 	-webkit-app-region: drag;
 }
 
-#titleBar > div
+#titleBar > div, #titleBar > a
 {
 	display: flex;
 	align-items: center;
@@ -147,7 +148,7 @@ body
 	opacity: 0.4;
 }
 
-#titleBar > div:hover
+#titleBar > div:hover, #titleBar > a:hover
 {
 	opacity: 1;
 	background-color: #EEEEEE;

@@ -6,6 +6,8 @@ import './resources/css/general.css';
 import TitleBar from './resources/Components/TitleBar/TitleBar';
 import SideBar from './resources/Components/SideBar/SideBar';
 
+import Viewer from './resources/Components/Viewer/Viewer';
+
 import Books from './resources/Components/Books/Books';
 import Notes from './resources/Components/Notes/Notes';
 import Settings from './resources/Components/Settings/Settings';
@@ -19,13 +21,16 @@ function App ()
 
 	return (
 	<BrowserRouter>
-		<SideBar />
 		<TitleBar />
 		
+		<Route exact path="/viewer" component={Viewer} />
+		
+		<Route path="/shelf" component={SideBar} />
+		
 		<Switch>
-			<Route exact path="/"> <Books data={books} toUpdate={upateBooks} /> </Route>
-			<Route exact path="/notes" component={Notes} />
-			<Route exact path="/settings" component={Settings} />
+			<Route exact path="/shelf/books"> <Books data={books} toUpdate={upateBooks} /> </Route>
+			<Route exact path="/shelf/notes" component={Notes} />
+			<Route exact path="/shelf/settings" component={Settings} />
 		</Switch>
 		
 	</BrowserRouter>);

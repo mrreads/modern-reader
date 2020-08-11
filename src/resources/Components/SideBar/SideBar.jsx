@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { NavLink  } from "react-router-dom";
 
 class SideBar extends React.Component
@@ -7,8 +6,9 @@ class SideBar extends React.Component
     render()
     {
         return (
+            
             <div id="sideBar">
-                <NavLink  to="/" className="books">
+                <NavLink  to="/shelf/books" className="books">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-book" width="44" height="44"
                         viewBox="0 0 24 24"   stroke="#FFFFFF" fill="none">
                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -20,7 +20,7 @@ class SideBar extends React.Component
                     </svg>
                 </NavLink>
         
-                <NavLink  to="/notes" className="notes">
+                <NavLink  to="/shelf/notes" className="notes">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-notes" width="44" height="44"
                         viewBox="0 0 24 24"   stroke="#FFFFFF" fill="none">
                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -31,7 +31,7 @@ class SideBar extends React.Component
                     </svg>
                 </NavLink>
         
-                <NavLink  to="/settings" className="setting">
+                <NavLink  to="/shelf/settings" className="setting">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-adjustments" width="44"
                         height="44" viewBox="0 0 24 24"   stroke="#FFFFFF" fill="none">
                         <path stroke="none" d="M0 0h24v24H0z" />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, NavLink } from "react-router-dom";
 
 class TitleBar extends React.Component
 {
@@ -44,8 +45,19 @@ class TitleBar extends React.Component
     {
         return(
         <div id="titleBar">
-            <p id="titleStatus"></p>
+            
+            <Route exac path="/viewer" render={() => (
+            <NavLink  to="/shelf/books"  id="titleBack">
+                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
+                    <path stroke="none" d="M0 0h24v24H0z"/>
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <line x1="5" y1="12" x2="11" y2="18" />
+                    <line x1="5" y1="12" x2="11" y2="6" />
+                </svg>
+            </NavLink>)} />
 
+            <p id="titleStatus"></p>
+            
             <div id="titleMinimize">
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-down-left"
                     viewBox="0 0 24 24" fill="none">
