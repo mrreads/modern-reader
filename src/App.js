@@ -18,14 +18,15 @@ const userPath = require('./data').userPath;
 function App () 
 {	
 	const [books, upateBooks] = useState(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
+	const [viewSetup, changeView] = useState(false);
 
 	return (
 	<BrowserRouter>
 		<Redirect from='/' to='/shelf/books' />
 		
-		<TitleBar />
+		<TitleBar changeView={changeView} data={viewSetup} />
 		
-		<Route path="/viewer" component={Viewer} />
+		<Route path="/viewer" > <Viewer toggle={viewSetup} /> </Route>
 		
 		<Route path="/shelf" component={SideBar} />
 

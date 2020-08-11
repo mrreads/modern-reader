@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { Route, NavLink, useParams } from "react-router-dom";
 
 class TitleBar extends React.Component
 {
@@ -41,20 +41,35 @@ class TitleBar extends React.Component
         }
     }
 
+    toggleSetupView = () =>
+    {
+        this.props.changeView(!this.props.data);
+    }
+
     render()
     {
         return(
         <div id="titleBar">
             
             <Route exac path="/viewer" render={() => (
-            <NavLink  to="/shelf/books"  id="titleBack">
+            <>
+            <NavLink  to="/shelf/books"  id="titleBack" onClick={()=>{ this.props.changeView(false) }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
                     <path stroke="none" d="M0 0h24v24H0z"/>
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <line x1="5" y1="12" x2="11" y2="18" />
                     <line x1="5" y1="12" x2="11" y2="6" />
                 </svg>
-            </NavLink>)} />
+            </NavLink>
+            
+            <div id="viewSetting" onClick={ this.toggleSetupView }>
+                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
+                    <path stroke="none" d="M0 0h24v24H0z"/>
+                    <circle cx="5" cy="12" r="1" />
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="19" cy="12" r="1" />
+                </svg>
+            </div> </>)} />
 
             <p id="titleStatus"> </p>
 
