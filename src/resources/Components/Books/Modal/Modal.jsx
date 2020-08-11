@@ -47,6 +47,7 @@ class Modal extends React.Component
                     this.setState({isSelected: true});
                     this.setState({bookFile: path.basename(global.filepath)});
                     this.setState({bookName: path.basename(global.filepath, path.extname(global.filepath))});
+                    this.setState({bookPath: global.filepath});
                 }   
             }).catch(err => { console.log(err) }); 
         } 
@@ -71,9 +72,15 @@ class Modal extends React.Component
                     this.setState({isSelected: true});
                     this.setState({bookFile: path.basename(global.filepath)});
                     this.setState({bookName: path.basename(global.filepath, path.extname(global.filepath))});
+                    this.setState({bookPath: global.filepath});
                 }   
             }).catch(err => { console.log(err) }); 
         }
+    }
+    
+    uplodDFile = () =>
+    {
+        
     }
 
     render(props)
@@ -103,7 +110,7 @@ class Modal extends React.Component
                     <input type="text" value={this.state.bookName} onChange={this.changeName} />
                 </div>
         
-                <div id="loadBook" className={!this.state.isSelected ? "disabled" : ""}> Add book </div>
+                <div id="loadBook" className={!this.state.isSelected ? "disabled" : ""} onClick={this.uplodDFile}> Add book </div>
             </div>
         </div>)
     }
