@@ -44,15 +44,23 @@
     "electron-builder": "^22.8.0",
     "wait-on": "^3.3.0"
   },
-  "electronBuilder": {
-    "build": {
-      "productName": "Modern Reader",
-      "appId": "mrreads.modern-reader",
-      "win": {
-        "target": [
-          "portable"
-        ]
-      }
+  "build": {
+    "productName": "Modern Reader",
+    "appId": "com.modern-reader",
+    "directories": {
+        "buildResources": "build"
+    },
+    "files": [
+      "build/**/*"
+    ],
+    "win": {
+        "target": "portable",
+        "icon": "public/icon.png"
+    },
+    "nsis": {
+      "installerIcon": "public/icon.png",
+      "installerHeaderIcon": "public/icon.png",
+      "deleteAppDataOnUninstall": true
     }
   }
 }
