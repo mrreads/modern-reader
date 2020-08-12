@@ -55,21 +55,21 @@ function Viewer(props)
 
                     
                     <div className="inputNumberWrapper font-size">
-                        <p> Font-Size: <span></span></p>
+                        <p> Font-Size: <span>{props.getStyles.fontSize}</span></p>
                         <input type="range" min="11" max="46" value={props.getStyles.fontSize} onChange={checkValue} data-type="fontSize" />
                     </div>
 
                     <div className="hr"></div>
 
                     <div className="inputNumberWrapper padding">
-                        <p> Padding: <span></span></p>
+                        <p> Padding: <span>{props.getStyles.padding}</span></p>
                         <input type="range" min="0" max="50" value={props.getStyles.padding} onChange={checkValue} data-type="padding" />
                     </div>
 
                     <div className="hr"></div>
 
                     <div className="inputNumberWrapper line-height">
-                        <p> Line-height: <span></span></p>
+                        <p> Line-height: <span>{props.getStyles.lineHeight}</span></p>
                         <input type="range" min="0.5" max="2" step="0.1" value={props.getStyles.lineHeight} onChange={checkValue} data-type="lineHeight" />
                     </div>
 
