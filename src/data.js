@@ -24,7 +24,7 @@ if (!fs.existsSync(appData + '/Data/notes.json'))
 
 if (!fs.existsSync(appData + '/Data/settings.json'))
 {
-    let tempSettings = { theme: 'light' }
+    let tempSettings = {"theme":"light","padding":"12","fontSize":"21","lineHeight":"1"}
     fs.writeFile(appData + '/Data/settings.json', JSON.stringify(tempSettings), (err) => {});
 }
 
