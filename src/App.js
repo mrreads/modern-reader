@@ -19,14 +19,24 @@ function App ()
 {	
 	const [books, upateBooks] = useState(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
 	const [viewSetup, changeView] = useState(false);
+	
+	const [settings, updateSetting] = useState(JSON.parse(fs.readFileSync(userPath.settings, 'utf8')));
+	const [padding, updatePadding] = useState(settings.padding);
+    const [fontSize, updateFontSize] = useState(settings.fontSize);
+	const [lineHeight, updateLineHeight] = useState(settings.lineHeight);
+	let getStyles = { padding: padding, fontSize: fontSize, lineHeight: lineHeight }
+	let setStyles = { updatePadding: updatePadding, updateFontSize: updateFontSize, updateLineHeight: updateLineHeight };
 
 	return (
 	<BrowserRouter>
 		<Redirect from='/' to='/shelf/books' />
 		
-		<TitleBar changeView={changeView} data={viewSetup} />
+		<TitleBar changeView={changeView} data={viewSetup} getStyles={getStyles} settings={settings} />
 		
-		<Route path="/viewer" > <Viewer toggle={viewSetup} /> </Route>
+		<Route path="/viewer" > <Viewer toggle={viewSetup} 
+										getStyles={getStyles}
+										setStyles={setStyles}
+										/> </Route>
 		
 		<Route path="/shelf" component={SideBar} />
 

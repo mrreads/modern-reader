@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Route, NavLink, useParams } from "react-router-dom";
 
+const fs = window.require('fs'); 
+const userPath = require('./../../../data').userPath;
+
 class TitleBar extends React.Component
 {
     componentDidMount()
@@ -44,6 +47,20 @@ class TitleBar extends React.Component
     toggleSetupView = () =>
     {
         this.props.changeView(!this.props.data);
+
+        if (this.props.data === true)
+        {
+            this.updateSettingsFile();
+        }
+    }
+
+    updateSettingsFile = () =>
+    {
+        this.props.settings.padding = this.props.getStyles.padding;
+        this.props.settings.fontSize = this.props.getStyles.fontSize;
+        this.props.settings.lineHeight = this.props.getStyles.lineHeight;
+        
+        fs.writeFileSync(userPath.settings, JSON.stringify(this.props.settings));
     }
 
     render()
@@ -53,7 +70,7 @@ class TitleBar extends React.Component
             
             <Route exac path="/viewer" render={() => (
             <>
-            <NavLink  to="/shelf/books"  id="titleBack" onClick={()=>{ this.props.changeView(false) }}>
+            <NavLink  to="/shelf/books"  id="titleBack" onClick={()=>{ this.updateSettingsFile(); this.props.changeView(false) }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
                     <path stroke="none" d="M0 0h24v24H0z"/>
                     <line x1="5" y1="12" x2="19" y2="12" />
