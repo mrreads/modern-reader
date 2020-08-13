@@ -10,7 +10,7 @@ class SideBar extends React.Component
             <div id="sideBar">
                 <NavLink  to="/shelf/books" className="books">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-book" width="44" height="44"
-                        viewBox="0 0 24 24"   stroke="#FFFFFF" fill="none">
+                        viewBox="0 0 24 24" fill="none">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
                         <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
@@ -22,7 +22,7 @@ class SideBar extends React.Component
         
                 <NavLink  to="/shelf/notes" className="notes">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-notes" width="44" height="44"
-                        viewBox="0 0 24 24"   stroke="#FFFFFF" fill="none">
+                        viewBox="0 0 24 24" fill="none">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <rect x="5" y="3" width="14" height="18" rx="2" />
                         <line x1="9" y1="7" x2="15" y2="7" />
@@ -33,7 +33,7 @@ class SideBar extends React.Component
         
                 <NavLink  to="/shelf/settings" className="setting">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-adjustments" width="44"
-                        height="44" viewBox="0 0 24 24"   stroke="#FFFFFF" fill="none">
+                        height="44" viewBox="0 0 24 24" fill="none">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <circle cx="6" cy="10" r="2" />
                         <line x1="6" y1="4" x2="6" y2="8" />

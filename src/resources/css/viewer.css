@@ -1,10 +1,3 @@
-:root
-{
-	--theme-main-color: rgb(255, 255, 255);
-	--theme-second-color: rgb(44, 62, 80);
-	--theme-theree-color: rgb(24, 34, 44);
-}	
-
 #viewer.
 {
 	height: 100%;
@@ -57,13 +50,53 @@
 	opacity: 0.2;
 }
 
+.themes
+{
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.themes .type
+{
+	opacity: 0.6;
+	background-color: red;
+	height: 25px;
+	width: 25px;
+	margin: 0 5px;
+	border-radius: 100%;
+	cursor: pointer;
+	transition: 0.4s all;
+	transform: scale(1);
+}
+
+.themes .type:hover
+{
+	transform: scale(1.05);
+	opacity: 1;
+}
+
+.themes .type[data-theme=light]
+{
+	background-color: #979797;
+}
+
+.themes .type[data-theme=brown]
+{
+	background-color: #efe6bd;
+}
+
+.themes .type[data-theme=dark]
+{
+	background-color: #131313;
+}
+
 .inputNumberWrapper
 {
 	display: inline-flex;
 	flex-flow: column nowrap;
 }
 
-.inputNumberWrapper p
+.inputNumberWrapper p, .theme p
 {
 	display: flex;
 	align-items: center;
@@ -174,49 +207,7 @@
 	/* display: none !important; */
 }
 
-
 body
 {
 	flex-flow: column nowrap;
-
-	color: var(--theme-second-color);
-	background-color: var(--theme-main-color);
-}
-
-#titleBar, #viewer .settings
-{
-	color: var(--theme-second-color);
-	background-color: var(--theme-main-color);
-}
-
-#titleBar svg
-{
-	stroke: var(--theme-second-color);
-}
-
-#viewer .settings .hr
-{
-	background-color: var(--theme-second-color);
-}
-
-#titleBar #titleStatus
-{
-	color: var(--theme-second-color);
-}
-#titleBar > div:hover
-{
-	background-color: var(--theme-theree-color);
-}
-*::-webkit-scrollbar
-{
-	background-color: var(--theme-main-color);
-}
-*::-webkit-scrollbar-track
-{
-	background-color: var(--theme-main-color);
-}
-*::-webkit-scrollbar-thumb
-{
-	border: 5px solid var(--theme-main-color);
-	background-color: #BABAC0;
 }

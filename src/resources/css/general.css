@@ -148,7 +148,7 @@ body
 	opacity: 0.4;
 }
 
-#titleBar > div:hover, #titleBar > a:hover
+#titleBar div:hover, #titleBar a:hover
 {
 	opacity: 1;
 	background-color: #EEEEEE;
@@ -177,12 +177,12 @@ body
 
 #titleBar > #titleClose:hover
 {
-	background-color: #FD0007;
+	background-color: #FD0007 !important;
 }
 
 #titleBar > #titleClose:hover > svg
 {
-	stroke: #FFFFFF;
+	stroke: #FFFFFF !important;
 }
 
 #titleBar #titleStatus

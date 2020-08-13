@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { withRouter  } from 'react-router-dom';
-
+ 
 const fs = window.require('fs');
 const userPath = require('./../../../data').userPath;
 
@@ -39,6 +39,12 @@ function Viewer(props)
            props.setStyles.updateLineHeight(e.target.value);
         }
     }
+    
+    const changeTheme = (e) =>
+    {
+        props.setStyles.updateTheme(e.target.dataset.theme);
+    }
+
 
      return (
         <div id="content" className="view">
@@ -46,9 +52,15 @@ function Viewer(props)
             <div id="viewer">
 
                 <div className={(props.toggle) ? "settings" : "settings hide" }>
+                
                     <div className="theme">
-                        <div className="light"></div>
-                        <div className="dark"></div>
+                        <p> Theme: <span>{props.getStyles.theme}</span></p>
+                        
+                        <div className="themes">
+                            <div className="type" data-theme="light" onClick={changeTheme} ></div>
+                            <div className="type" data-theme="brown" onClick={changeTheme} ></div>
+                            <div className="type" data-theme="dark" onClick={changeTheme} ></div>
+                        </div>
                     </div>
 
                     <div className="hr"></div>
