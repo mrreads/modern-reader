@@ -88,3 +88,9 @@ body #root .title
 {
 	color: var(--theme-second-color);
 }
+
+.themes .type
+{
+	border: 1px solid var(--theme-four-color);
+	border-bottom: 2px solid var(--theme-four-color);
+}

@@ -8,7 +8,7 @@
 {
 	overflow: hidden;
 	overflow-y: scroll;
-	
+
 	height: 100%;
 
 	white-space: break-spaces;
@@ -26,13 +26,25 @@
 	justify-content: center;
 
 	width: 100%;
-	max-height: 75px;
 	padding: 15px 25px;
 
 	transition: 0.3s all;
 
 	border-bottom: 1px solid rgba(0,0,0,0.1);
 	background-color: #FFFFFF;
+}
+
+#viewer .settings > div
+{
+	align-items: center;
+	justify-content: flex-start;
+
+	height: 60px;
+}
+
+#viewer .settings > div > input, #viewer .settings > div > div
+{
+	flex-grow: 1;
 }
 
 #viewer .settings.hide
@@ -47,31 +59,42 @@
 	min-width: 1px;
 	height: 50px;
 	margin: -5px 15px;
+
 	opacity: 0.2;
+}
+
+.theme
+{
+	display: flex;
+	flex-flow: column nowrap;
 }
 
 .themes
 {
+	margin-top: 5px;
 	display: flex;
 	flex-flow: row nowrap;
 }
 
 .themes .type
 {
-	opacity: 0.6;
-	background-color: red;
-	height: 25px;
 	width: 25px;
+	height: 25px;
 	margin: 0 5px;
-	border-radius: 100%;
+
 	cursor: pointer;
 	transition: 0.4s all;
 	transform: scale(1);
+
+	opacity: 0.6;
+	border-radius: 100%;
+	background-color: red;
 }
 
 .themes .type:hover
 {
 	transform: scale(1.05);
+
 	opacity: 1;
 }
 
@@ -82,7 +105,7 @@
 
 .themes .type[data-theme=brown]
 {
-	background-color: #efe6bd;
+	background-color: #EFE6BD;
 }
 
 .themes .type[data-theme=dark]
