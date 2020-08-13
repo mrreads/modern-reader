@@ -3,23 +3,19 @@ import { Link } from "react-router-dom";
 
 const fs = window.require('fs');
 
-class Book extends React.Component
+function Book(props)
 {
-    render()
-    {
-        return (
-        <Link to={{
-            pathname: "/viewer",
-            data: { book: this.props.data }
-          }} className='book'>
-            <p className={(fs.existsSync(this.props.data.path)) ? "name" : "name error" }> <strong> {this.props.data.name} </strong> </p>
+    let extClass = props.data.ext.replace(/\./g, ''); 
 
-            <div className="info">
-                <p className="format">Format: <i> {this.props.data.ext} </i> </p>
-                <p>Strings: <i> {this.props.data.strings} </i> </p>
-            </div>
-        </Link>);
-    }
+    return (
+    <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={`book ${extClass}`}>
+        <p className={(fs.existsSync( props.data.path)) ? "name" : "name error" }> <strong> {props.data.name} </strong> </p>
+
+        <div className="info">
+            <p className="format">Format: <i> { props.data.ext} </i> </p>
+            <p>Strings: <i> { props.data.strings} </i> </p>
+        </div>
+    </Link>);
 }
 
 export default Book;

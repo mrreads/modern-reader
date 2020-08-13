@@ -9,10 +9,12 @@
   "dependencies": {
     "cross-env": "^6.0.3",
     "electron-is-dev": "^1.2.0",
+    "fb2html": "^1.0.9",
+    "html-react-parser": "^0.13.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start-react": "react-scripts start",
@@ -48,14 +50,14 @@
     "productName": "Modern Reader",
     "appId": "com.modern-reader",
     "directories": {
-        "buildResources": "build"
+      "buildResources": "build"
     },
     "files": [
       "build/**/*"
     ],
     "win": {
-        "target": "portable",
-        "icon": "public/icon.png"
+      "target": "portable",
+      "icon": "public/icon.png"
     },
     "nsis": {
       "installerIcon": "public/icon.png",

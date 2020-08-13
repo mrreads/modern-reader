@@ -18,7 +18,7 @@ class Books extends React.Component
     render(props)
     {
         return (
-        <div id="content">
+        <div id="content" className="books">
             <div className="title"> 
                 <p> Library </p>
                 <div href="#" className="add" id="addPopup" onClick={this.showModal}>

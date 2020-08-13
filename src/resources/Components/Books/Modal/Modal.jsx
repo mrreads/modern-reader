@@ -70,7 +70,7 @@ class Modal extends React.Component
             }).then(file => 
             { 
                 if (!file.canceled) 
-                { 
+                {
                     global.filepath = file.filePaths[0].toString();
                     this.setState({isSelected: true});
                     this.setState({bookFile: path.basename(global.filepath)});
@@ -87,7 +87,8 @@ class Modal extends React.Component
 
         let currentJson = JSON.parse(fs.readFileSync(userPath.books, 'utf8'));
 
-        if (ext === '.txt')
+        if (ext === '.txt' || 
+            ext === '.fb2')
         {
             let data = {
                 "name": this.state.bookName,

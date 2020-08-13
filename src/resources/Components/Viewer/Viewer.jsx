@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import { withRouter  } from 'react-router-dom';
- 
+import Parser from 'html-react-parser';
+
 const fs = window.require('fs');
 const userPath = require('./../../../data').userPath;
 
@@ -21,7 +22,15 @@ function Viewer(props)
     if (book.ext === '.txt')
     {
         textBook = fs.readFileSync(book.path, 'utf8');
+    } 
+    else if (book.ext === '.fb2')
+    {
+        let fb2data = fs.readFileSync(book.path, 'utf8');
+        const FB2HTML = require('fb2html');
+        const fb2book = new FB2HTML(fb2data);
+        textBook = fb2book.getBody();
     }
+
     const [content, updateContent] = useState(textBook);
 
     const checkValue = (e) =>
@@ -93,8 +102,7 @@ function Viewer(props)
                     style={{
                         padding: props.getStyles.padding + 'px',
                         fontSize: props.getStyles.fontSize + 'px',
-                        lineHeight: props.getStyles.lineHeight
-                        }}> { content } </div>
+                        lineHeight: props.getStyles.lineHeight }}> { Parser(content) } </div>
 
             </div>
 
