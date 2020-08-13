@@ -1,21 +1,16 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import RenderTxt from './formats/RenderTxt';
+import RenderFb2 from './formats/RenderFb2';
 
 const fs = window.require('fs');
 
 function Book(props)
 {
-    let extClass = props.data.ext.replace(/\./g, ''); 
-
-    return (
-    <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={`book ${extClass}`}>
-        <p className={(fs.existsSync( props.data.path)) ? "name" : "name error" }> <strong> {props.data.name} </strong> </p>
-
-        <div className="info">
-            <p className="format">Format: <i> { props.data.ext} </i> </p>
-            <p>Strings: <i> { props.data.strings} </i> </p>
-        </div>
-    </Link>);
+    let render;
+    if (props.data.ext === '.txt') { render = <RenderTxt data={props.data} /> }
+    if (props.data.ext === '.fb2') { render = <RenderFb2 data={props.data} /> }
+    
+    return (render);
 }
 
 export default Book;
