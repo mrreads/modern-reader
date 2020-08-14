@@ -66,7 +66,7 @@
 	border-radius: 5px;
 }
 
-#content .books .book:hover
+#content .books .book:not(.error):hover
 {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
@@ -78,7 +78,12 @@
 	padding-right: 35px;
 }
 
-#content .books .book .name.error
+#content .books .book.error
+{
+	cursor: default;
+}
+
+#content .books .book.error .name
 {
 	color: rgb(240, 20, 20);
 }
@@ -119,6 +124,8 @@
 
 #content .books .book.fb2 .title, #content .books .book.fb2 .author
 {
+	padding-right: 55px;
+	font-size: 12px;
 	margin-top: 15px;
 }
 

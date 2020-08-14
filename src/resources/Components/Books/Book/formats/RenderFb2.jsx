@@ -5,6 +5,16 @@ const fs = window.require('fs');
 
 function RenderFb2(props)
 {
+    const fileIsExist = (fs.existsSync( props.data.path));
+    
+    const onClick = (e) =>
+    {
+        if (!fileIsExist)
+        {
+            e.preventDefault()
+        }
+    }
+
     let fb2data;
 
     let extClass = props.data.ext.replace(/\./g, '');
@@ -19,12 +29,12 @@ function RenderFb2(props)
         author: fb2book.getAuthors(),
     }
     return (
-    <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={`book ${extClass}`}>
+    <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={(fileIsExist) ? `book ${extClass}` : `book ${extClass} error` } onClick={onClick} >
         <img src={bookData.image} />
         
         <div className="wrapper">
             <div className="mainInfo">
-                <p className={(fs.existsSync( props.data.path)) ? "name" : "name error" }> <strong> {props.data.name} </strong> </p>
+                <p className={(fileIsExist) ? "name" : "name error" }> <strong> {props.data.name} </strong> </p>
                 <p className="title"> {bookData.title} </p>
                 <p className="author"> {bookData.author} </p>
            </div>
