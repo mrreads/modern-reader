@@ -5,11 +5,19 @@ const fs = window.require('fs');
 
 function RenderTxt(props)
 {
+    const onClick = (e) =>
+    {
+        if (!fs.existsSync(props.data.path))
+        {
+            e.preventDefault()
+        }
+    }
+
     console.log(props)
     let extClass = props.data.ext.replace(/\./g, ''); 
 
     return (
-    <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={`book ${extClass}`}>
+    <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={`book ${extClass}`} onClick={onClick} >
         <p className={(fs.existsSync( props.data.path)) ? "name" : "name error" }> <strong> {props.data.name} </strong> </p>
 
         <div className="info">
