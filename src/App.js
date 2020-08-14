@@ -66,7 +66,7 @@ function App ()
 										setStyles={setStyles}
 										/> </Route>
 		
-		<Route path="/shelf" component={SideBar} />
+		<Route path="/shelf"> <SideBar updateTheme={updateTheme} /> </Route>
 
 		<Switch>
 			<Route exact path="/shelf/books"> <Books data={books} toUpdate={upateBooks} /> </Route>

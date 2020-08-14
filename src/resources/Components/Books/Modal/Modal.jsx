@@ -83,24 +83,27 @@ class Modal extends React.Component
     
     uploadFile = () =>
     {
-        let ext = path.extname(this.state.bookPath);
-
-        let currentJson = JSON.parse(fs.readFileSync(userPath.books, 'utf8'));
-
-        if (ext === '.txt' || 
-            ext === '.fb2')
+        if (this.state.isSelected)
         {
-            let data = {
-                "name": this.state.bookName,
-                "ext": ext,
-                "path": this.state.bookPath,
-                "strings": fs.readFileSync(this.state.bookPath).toString().split('\n').length
+            let ext = path.extname(this.state.bookPath);
+
+            let currentJson = JSON.parse(fs.readFileSync(userPath.books, 'utf8'));
+    
+            if (ext === '.txt' || 
+                ext === '.fb2')
+            {
+                let data = {
+                    "name": this.state.bookName,
+                    "ext": ext,
+                    "path": this.state.bookPath,
+                    "strings": fs.readFileSync(this.state.bookPath).toString().split('\n').length
+                }
+                
+                currentJson.push(data);
+                fs.writeFileSync(userPath.books, JSON.stringify(currentJson));
+                this.props.toUpdate && this.props.toUpdate(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
+                this.props.onClose && this.props.onClose();
             }
-            
-            currentJson.push(data);
-            fs.writeFileSync(userPath.books, JSON.stringify(currentJson));
-            this.props.toUpdate && this.props.toUpdate(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
-            this.props.onClose && this.props.onClose();
         }
     }
 

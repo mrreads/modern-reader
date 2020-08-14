@@ -3,8 +3,11 @@ import { NavLink  } from "react-router-dom";
 
 class SideBar extends React.Component
 {
+
     render()
     {
+        this.props.updateTheme('light');
+
         return (
             
             <div id="sideBar">
