@@ -3,7 +3,6 @@ import { withRouter  } from 'react-router-dom';
 import Parser from 'html-react-parser';
 
 const fs = window.require('fs');
-const userPath = require('./../../../data').userPath;
 
 function Viewer(props)
 {
@@ -31,7 +30,7 @@ function Viewer(props)
         textBook = fb2book.getBody();
     }
 
-    const [content, updateContent] = useState(textBook);
+    const [content] = useState(textBook);
 
     const checkValue = (e) =>
     {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, NavLink, useParams } from "react-router-dom";
+import React from 'react';
+import { Route, NavLink } from "react-router-dom";
 
 const fs = window.require('fs'); 
 const userPath = require('./../../../data').userPath;

@@ -25,7 +25,7 @@ function App ()
 
 	const [viewSetup, changeView] = useState(false);
 	
-	const [settings, updateSetting] = useState(JSON.parse(fs.readFileSync(userPath.settings, 'utf8')));
+	const [settings] = useState(JSON.parse(fs.readFileSync(userPath.settings, 'utf8')));
 	const [padding, updatePadding] = useState(settings.padding);
     const [fontSize, updateFontSize] = useState(settings.fontSize);
 	const [lineHeight, updateLineHeight] = useState(settings.lineHeight);
@@ -66,7 +66,7 @@ function App ()
 										setStyles={setStyles}
 										/> </Route>
 		
-		<Route path="/shelf"> <SideBar updateTheme={updateTheme} /> </Route>
+		<Route path="/shelf"> <SideBar /> </Route>
 
 		<Switch>
 			<Route exact path="/shelf/books"> <Books data={books} toUpdate={upateBooks} /> </Route>

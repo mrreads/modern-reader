@@ -30,7 +30,7 @@ function RenderFb2(props)
     }
     return (
     <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={(fileIsExist) ? `book ${extClass}` : `book ${extClass} error` } onClick={onClick} >
-        <img src={bookData.image} />
+        <img src={bookData.image} alt="Book cover" />
         
         <div className="wrapper">
             <div className="mainInfo">
