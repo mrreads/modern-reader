@@ -13,8 +13,9 @@ function createWindow()
         minHeight: 600,
         frame: false,
         webPreferences: {
-        nodeIntegration: true
-        }
+            nodeIntegration: true,
+            preload: path.join(__dirname, './../src/preload.js')
+        },
     });
 
     const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
