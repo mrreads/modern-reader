@@ -105,3 +105,32 @@
 	white-space: nowrap;
 	word-wrap: none;
 }
+
+#content .books .book.fb2
+{
+	flex-flow: row nowrap;
+}
+
+#content .books .book.fb2 img
+{
+	height: 150px;
+	margin-right: 25px;
+}
+
+#content .books .book.fb2 .title, #content .books .book.fb2 .author
+{
+	margin-top: 15px;
+}
+
+#content .books .book.fb2 .author
+{
+	font-style: italic;
+}
+
+#content .books .book.fb2 .wrapper
+{
+	display: flex;
+	flex-flow: row nowrap;
+
+	min-height: 150px;
+}
