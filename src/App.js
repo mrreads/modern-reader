@@ -25,15 +25,9 @@ function App ()
 	<BrowserRouter>
 		<Redirect from='/' to='/shelf/books' />
 		
-		<TitleBar changeView={ settingHook.setSettingWindowStatus }
-				  data={ settingHook.getSettingWindowStatus }
-				  getStyles={ settingHook.getStyles }
-				  settings={ settingHook.getSetting } />
+		<TitleBar  settings={ settingHook } />
 		
-		<Route path="/viewer" > <Viewer toggle={ settingHook.getSettingWindowStatus }
-										getStyles={ settingHook.getStyles }
-										setStyles={ settingHook.setStyles }
-										/> </Route>
+		<Route path="/viewer" > <Viewer settings={ settingHook } /> </Route>
 		
 		<Route path="/shelf"> <SideBar /> </Route>
 

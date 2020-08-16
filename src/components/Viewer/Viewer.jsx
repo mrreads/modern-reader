@@ -34,22 +34,18 @@ function Viewer(props)
     const checkValue = (e) =>
     {
         if (e.target.dataset.type === 'fontSize')
-        {
-           props.setStyles.fontStyle(e.target.value);
-        }
+           props.settings.setFontSize(e.target.value);
+
         if (e.target.dataset.type === 'padding')
-        {
-            props.setStyles.padding(e.target.value);
-        }
+            props.settings.setPadding(e.target.value);
+
         if (e.target.dataset.type === 'lineHeight')
-        {
-           props.setStyles.lineHeight(e.target.value);
-        }
+           props.settings.setLineHeight(e.target.value);
     }
     
     const changeTheme = (e) =>
     {
-        props.setStyles.theme(e.target.dataset.theme);
+        props.settings.setTheme(e.target.dataset.theme);
     }
 
 
@@ -58,38 +54,38 @@ function Viewer(props)
             
             <div id="viewer">
 
-                <div className={(props.toggle) ? "settings" : "settings hide" }>
+                <div className={(props.settings.getSettingWindowStatus) ? "settings" : "settings hide" }>
                 
                     <div className="theme">
-                        <p> Theme: <span>{props.getStyles.theme}</span></p>
+                        <p> Theme: <span>{ props.settings.getTheme }</span></p>
                         
                         <div className="themes">
-                            <div className="type" data-theme="light" onClick={changeTheme} ></div>
-                            <div className="type" data-theme="brown" onClick={changeTheme} ></div>
-                            <div className="type" data-theme="dark" onClick={changeTheme} ></div>
+                            <div className="type" data-theme="light" onClick={changeTheme} />
+                            <div className="type" data-theme="brown" onClick={changeTheme} />
+                            <div className="type" data-theme="dark" onClick={changeTheme} />
                         </div>
                     </div>
 
-                    <div className="hr"></div>
+                    <div className="hr"/>
 
                     
                     <div className="inputNumberWrapper font-size">
-                        <p> Font-Size: <span>{props.getStyles.fontSize}</span></p>
-                        <input type="range" min="11" max="46" value={props.getStyles.fontSize} onChange={checkValue} data-type="fontSize" />
+                        <p> Font-Size: <span>{ props.settings.getFontSize }</span></p>
+                        <input type="range" min="11" max="46" value={ props.settings.getFontSize } onChange={checkValue} data-type="fontSize" />
                     </div>
 
-                    <div className="hr"></div>
+                    <div className="hr"/>
 
                     <div className="inputNumberWrapper padding">
-                        <p> Padding: <span>{props.getStyles.padding}</span></p>
-                        <input type="range" min="0" max="50" value={props.getStyles.padding} onChange={checkValue} data-type="padding" />
+                        <p> Padding: <span>{ props.settings.getPadding }</span></p>
+                        <input type="range" min="0" max="50" value={ props.settings.getPadding } onChange={checkValue} data-type="padding" />
                     </div>
 
-                    <div className="hr"></div>
+                    <div className="hr"/>
 
                     <div className="inputNumberWrapper line-height">
-                        <p> Line-height: <span>{props.getStyles.lineHeight}</span></p>
-                        <input type="range" min="0.5" max="2" step="0.1" value={props.getStyles.lineHeight} onChange={checkValue} data-type="lineHeight" />
+                        <p> Line-height: <span>{ props.settings.getLineHeight }</span></p>
+                        <input type="range" min="0.5" max="2" step="0.1" value={ props.settings.getLineHeight } onChange={checkValue} data-type="lineHeight" />
                     </div>
 
                 </div>
@@ -98,9 +94,9 @@ function Viewer(props)
 
                 <div className="content" 
                     style={{
-                        padding: props.getStyles.padding + 'px',
-                        fontSize: props.getStyles.fontSize + 'px',
-                        lineHeight: props.getStyles.lineHeight }}> { Parser(content) } </div>
+                        padding: props.settings.getPadding + 'px',
+                        fontSize: props.settings.getFontSize + 'px',
+                        lineHeight: props.settings.getLineHeight }}> { Parser(content) } </div>
 
             </div>
 

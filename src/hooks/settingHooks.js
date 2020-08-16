@@ -15,9 +15,6 @@ export default function()
 
     const [getTheme, setTheme] = useState(getSetting.theme);
 
-    let getStyles = { padding: getPadding, fontSize: getFontSize, lineHeight: getLineHeight, theme: getTheme };
-    let setStyles = { padding: setPadding, fontSize: setFontSize, lineHeight: setLineHeight, theme: setTheme };
-
     if (getTheme === 'light')
     {
         document.documentElement.style.setProperty("--theme-main-color", "rgb(255, 255, 255)");
@@ -58,8 +55,5 @@ export default function()
 
         getTheme: getTheme,
         setTheme: setTheme,
-
-        getStyles: getStyles,
-        setStyles: setStyles
     });
 }

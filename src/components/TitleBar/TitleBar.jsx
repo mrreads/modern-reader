@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink, Route} from 'react-router-dom';
 
-const fs = window.require('fs'); 
-const userPath = require('../../storage').userPath;
+const fs = window.require('fs');
+const userPath = require('./../../storage').userPath;
 
 class TitleBar extends React.Component
 {
@@ -43,11 +43,11 @@ class TitleBar extends React.Component
         }
     }
 
-    toggleSetupView = () =>
+    toggleSettingWindow = () =>
     {
-        this.props.changeView(!this.props.data);
+        this.props.settings.setSettingWindowStatus(!this.props.settings.getSettingWindowStatus);
 
-        if (this.props.data === true)
+        if (this.props.settings.getSettingWindowStatus === true)
         {
             this.updateSettingsFile();
         }
@@ -55,11 +55,16 @@ class TitleBar extends React.Component
 
     updateSettingsFile = () =>
     {
-        this.props.settings.padding = this.props.getStyles.padding;
-        this.props.settings.fontSize = this.props.getStyles.fontSize;
-        this.props.settings.lineHeight = this.props.getStyles.lineHeight;
-        
-        fs.writeFileSync(userPath.settings, JSON.stringify(this.props.settings));
+        let settings = {...this.props.settings.getSetting};
+
+
+
+        settings.padding = this.props.settings.getPadding;
+        settings.fontSize = this.props.settings.getFontSize;
+        settings.lineHeight = this.props.settings.getLineHeight;
+        settings.theme = this.props.settings.getTheme;
+
+        fs.writeFileSync(userPath.settings, JSON.stringify(settings));
     }
 
     render()
@@ -69,7 +74,7 @@ class TitleBar extends React.Component
             
             <Route exac path="/viewer" render={() => (
             <>
-            <NavLink  to="/shelf/books"  id="titleBack" onClick={()=>{ this.updateSettingsFile(); this.props.changeView(false) }}>
+            <NavLink  to="/shelf/books"  id="titleBack" onClick={()=>{ this.updateSettingsFile(); this.props.settings.setSettingWindowStatus(false) }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
                     <path stroke="none" d="M0 0h24v24H0z"/>
                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -78,7 +83,7 @@ class TitleBar extends React.Component
                 </svg>
             </NavLink>
             
-            <div id="viewSetting" onClick={ this.toggleSetupView }>
+            <div id="viewSetting" onClick={ this.toggleSettingWindow }>
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
                     <path stroke="none" d="M0 0h24v24H0z"/>
                     <circle cx="5" cy="12" r="1" />
