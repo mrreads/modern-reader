@@ -1,17 +1,12 @@
 import React from 'react';
 
-class Settings extends React.Component
+export default function()
 {
-    render()
-    {
-        return (
-        <div id="content">
-            <div className="title"> 
-                <p> Settings </p>
-            </div>
-            <hr/>
-        </div>);
-    }
+    return (
+    <div id="content" className="settings">
+        <div className="title">
+            <p> Settings </p>
+        </div>
+        <hr/>
+    </div>);
 }
-
-export default Settings;

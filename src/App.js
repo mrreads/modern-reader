@@ -20,7 +20,7 @@ const userPath = require('./data').userPath;
 
 function App () 
 {	
-	const [books, upateBooks] = useState(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
+	const [books, updateBooks] = useState(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
 
 
 	const [viewSetup, changeView] = useState(false);
@@ -69,7 +69,7 @@ function App ()
 		<Route path="/shelf"> <SideBar /> </Route>
 
 		<Switch>
-			<Route exact path="/shelf/books"> <Books data={books} toUpdate={upateBooks} /> </Route>
+			<Route exact path="/shelf/books"> <Books data={books} toUpdate={updateBooks} /> </Route>
 			<Route exact path="/shelf/notes" component={Notes} />
 			<Route exact path="/shelf/settings" component={Settings} />
 		</Switch>

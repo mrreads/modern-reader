@@ -1,17 +1,12 @@
 import React from 'react';
 
-class Notes extends React.Component
+export default function()
 {
-    render()
-    {
-        return (
-        <div id="content" className="notes">
-            <div className="title"> 
-                <p> Notes </p>
-            </div>
-            <hr/>
-        </div>);
-    }
+    return (
+    <div id="content" className="notes">
+        <div className="title">
+            <p> Notes </p>
+        </div>
+        <hr/>
+    </div>);
 }
-
-export default Notes;
