@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import './resources/css/general.css';
@@ -23,6 +23,7 @@ function App ()
 
 	return (
 	<BrowserRouter>
+
 		<Redirect from='/' to='/shelf/books' />
 		
 		<TitleBar  settings={ settingHook } />
@@ -32,10 +33,9 @@ function App ()
 		<Route path="/shelf"> <SideBar /> </Route>
 
 		<Switch>
-			<Route exact path="/shelf/books"> <Books data={ booksHook.getBooks } t
-													 oUpdate={ booksHook.setBooks } /> </Route>
-			<Route exact path="/shelf/notes" component={Notes} />
-			<Route exact path="/shelf/settings" component={Settings} />
+			<Route exact path="/shelf/books"> <Books books={ booksHook } /> </Route>
+			<Route exact path="/shelf/notes" component={ Notes } />
+			<Route exact path="/shelf/settings" component={ Settings } />
 		</Switch>
 		
 	</BrowserRouter>);

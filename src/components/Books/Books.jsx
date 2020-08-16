@@ -4,9 +4,9 @@ import Modal from './Modal/Modal';;
 
 class Books extends React.Component
 {
-    constructor()
+    constructor(props)
     {
-        super();
+        super(props);
         this.state = { show: false }
     }
 
@@ -33,10 +33,10 @@ class Books extends React.Component
             <hr/>
             
             <div className="books">
-                { this.props.data.map((book, i) => <Book data={book} key={i} /> ) }
+                { this.props.books.getBooks.map((book, i) => <Book data={book} key={i} /> ) }
             </div>
 
-            <Modal show={this.state.show} onClose={() => this.showModal()} toUpdate={this.props.toUpdate} />
+            <Modal show={this.state.show} onClose={() => this.showModal()} toUpdate={ this.props.books.setBooks } />
         </div>);
     }
 }
