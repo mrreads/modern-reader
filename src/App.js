@@ -16,7 +16,7 @@ import Settings from './resources/Components/Settings/Settings';
 
 
 const fs = window.require('fs');
-const userPath = require('./data').userPath;
+const userPath = require('./storage').userPath;
 
 function App () 
 {	

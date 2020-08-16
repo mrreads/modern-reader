@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, NavLink } from "react-router-dom";
 
 const fs = window.require('fs'); 
-const userPath = require('./../../../data').userPath;
+const userPath = require('../../../storage').userPath;
 
 class TitleBar extends React.Component
 {

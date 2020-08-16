@@ -1,6 +1,6 @@
 import React from 'react';
 
-const userPath = require('./../../../../data').userPath;
+const userPath = require('../../../../storage').userPath;
 
 const fs = window.require('fs'); 
 const path = window.require('path'); 
