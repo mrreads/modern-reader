@@ -1,0 +1,29 @@
+{
+    "books":
+    {
+        "library": "Books Library",
+        "format": "Format",
+        "strings": "Strings"
+    },
+    "modal":
+    {
+        "title": "Title",
+        "select": "Select file to load",
+        "add": "Add book"
+    },
+    "notes":
+    {
+        "notes": "Notes"
+    },
+    "settings":
+    {
+        "settings": "Settings"
+    },
+    "viewer":
+    {
+        "padding": "Padding",
+        "lineHeight": "Line-Height",
+        "fontSize": "Font-Size",
+        "theme": "Theme"
+    }
+}

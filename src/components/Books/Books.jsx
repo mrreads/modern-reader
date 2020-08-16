@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import Book from './Book/Book';
 import Modal from './Modal/Modal';
 
+import { useTranslation } from 'react-i18next';
+
 export default function(props)
 {
+    const { t } = useTranslation('books');
+
     const [getModalStatus, setModalStatus] = useState(false);
 
     const showModal = () =>
@@ -14,7 +18,7 @@ export default function(props)
     return (
     <div id="content" className="books">
         <div className="title">
-            <p> Library </p>
+            <p> { t('library') } </p>
 
             <div className="add" id="addPopup" onClick={ showModal }>
 

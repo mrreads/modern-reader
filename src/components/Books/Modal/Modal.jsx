@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 const userPath = require('../../../storage').userPath;
 
 const fs = window.require('fs'); 
@@ -7,11 +9,16 @@ const path = window.require('path');
 const electron = window.require('electron'); 
 const dialog = electron.remote.dialog; 
 
+
+
+
 export default function(props)
 {
+    const { t } = useTranslation('modal');
+    
     const [getModalInfo, setModalInfo] = useState({
         isSelected: false,
-        bookFile: 'Select file to load',
+        bookFile: t('select'),
         bookName: 'Book title',
         bookPath: ''
     });
@@ -103,11 +110,11 @@ export default function(props)
             </div>
 
             <div className="inputName">
-                <p> Title: </p>
+                <p> { t('title') }: </p>
                 <input type="text" value={ getModalInfo.bookName } onChange={ changeName } />
             </div>
 
-            <div id="loadBook" className={!getModalInfo.isSelected ? "disabled" : ""} onClick={ uploadFile } > Add book </div>
+            <div id="loadBook" className={!getModalInfo.isSelected ? "disabled" : ""} onClick={ uploadFile } > { t('add') } </div>
         </div>
     </div>);
 }

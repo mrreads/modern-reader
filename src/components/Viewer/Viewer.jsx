@@ -2,10 +2,14 @@ import React, { useState} from 'react';
 import { withRouter  } from 'react-router-dom';
 import Parser from 'html-react-parser';
 
+import { useTranslation } from 'react-i18next';
+
 const fs = window.require('fs');
 
 function Viewer(props)
 {
+    const { t } = useTranslation('viewer');
+
     let book, textBook;
     try
     {
@@ -57,7 +61,7 @@ function Viewer(props)
                 <div className={(props.settings.getSettingWindowStatus) ? "settings" : "settings hide" }>
                 
                     <div className="theme">
-                        <p> Theme: <span>{ props.settings.getTheme }</span></p>
+                        <p> { t('theme') }: <span> { props.settings.getTheme } </span> </p>
                         
                         <div className="themes">
                             <div className="type" data-theme="light" onClick={changeTheme} />
@@ -70,21 +74,21 @@ function Viewer(props)
 
                     
                     <div className="inputNumberWrapper font-size">
-                        <p> Font-Size: <span>{ props.settings.getFontSize }</span></p>
+                        <p> { t('fontSize') }: <span> { props.settings.getFontSize } </span> </p>
                         <input type="range" min="11" max="46" value={ props.settings.getFontSize } onChange={checkValue} data-type="fontSize" />
                     </div>
 
                     <div className="hr"/>
 
                     <div className="inputNumberWrapper padding">
-                        <p> Padding: <span>{ props.settings.getPadding }</span></p>
+                        <p> { t('padding') }: <span> { props.settings.getPadding } </span> </p>
                         <input type="range" min="0" max="50" value={ props.settings.getPadding } onChange={checkValue} data-type="padding" />
                     </div>
 
                     <div className="hr"/>
 
                     <div className="inputNumberWrapper line-height">
-                        <p> Line-height: <span>{ props.settings.getLineHeight }</span></p>
+                        <p> { t('lineHeight') }: <span> { props.settings.getLineHeight } </span> </p>
                         <input type="range" min="0.5" max="2" step="0.1" value={ props.settings.getLineHeight } onChange={checkValue} data-type="lineHeight" />
                     </div>
 

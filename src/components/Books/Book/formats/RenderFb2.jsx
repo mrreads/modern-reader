@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import { useTranslation } from 'react-i18next';
+
 const fs = window.require('fs');
 
-function RenderFb2(props)
+export default function(props)
 {
+    const { t } = useTranslation('books');
+
     const fileIsExist = (fs.existsSync(props.data.path));
     
     const onClick = (e) =>
@@ -41,12 +45,10 @@ function RenderFb2(props)
            </div>
 
             <div className="info">
-                <p className="format">Format: <i> { props.data.ext} </i> </p>
-                <p>Strings: <i> { props.data.strings} </i> </p>
+                <p className="format"> { t('format') }: <i> { props.data.ext} </i> </p>
+                <p> { t('strings') }: <i> { props.data.strings} </i> </p>
             </div>
         </div>
 
     </Link>);
 }
-
-export default RenderFb2;
