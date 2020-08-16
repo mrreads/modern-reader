@@ -4,15 +4,14 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import './resources/css/general.css';
 import './resources/css/theme.css';
 
-import TitleBar from './resources/Components/TitleBar/TitleBar';
-import SideBar from './resources/Components/SideBar/SideBar';
+import TitleBar from './components/TitleBar/TitleBar';
+import SideBar from './components/SideBar/SideBar';
 
-import Viewer from './resources/Components/Viewer/Viewer';
+import Viewer from './components/Viewer/Viewer';
 
-import Books from './resources/Components/Books/Books';
-import Notes from './resources/Components/Notes/Notes';
-import Settings from './resources/Components/Settings/Settings';
-
+import Books from './components/Books/Books';
+import Notes from './components/Notes/Notes';
+import Settings from './components/Settings/Settings';
 
 
 const fs = window.require('fs');

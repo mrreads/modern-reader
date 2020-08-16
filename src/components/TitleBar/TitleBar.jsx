@@ -1,15 +1,14 @@
 import React from 'react';
-import { Route, NavLink } from "react-router-dom";
+import {NavLink, Route} from 'react-router-dom';
 
 const fs = window.require('fs'); 
-const userPath = require('../../../storage').userPath;
+const userPath = require('../../storage').userPath;
 
 class TitleBar extends React.Component
 {
     componentDidMount()
     {
-        const remote = window.require('electron').remote;
-        const win = remote.getCurrentWindow();
+        const win = window.require('electron').remote.getCurrentWindow();
         document.onreadystatechange = (event) => 
         {
             if (document.readyState === "complete") 
