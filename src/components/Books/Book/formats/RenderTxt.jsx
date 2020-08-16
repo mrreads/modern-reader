@@ -10,15 +10,16 @@ function RenderTxt(props)
     const onClick = (e) =>
     {
         if (!fileIsExist)
-        {
-            e.preventDefault()
-        }
+            e.preventDefault();
     }
 
     let extClass = props.data.ext.replace(/\./g, ''); 
 
     return (
-    <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={(fileIsExist) ? `book ${extClass}` : `book ${extClass} error` } onClick={onClick} >
+    <Link to={{ pathname: "/viewer", data: { book: props.data } }}
+          className={(fileIsExist) ? `book ${extClass}` : `book ${extClass} error` }
+          onClick={onClick} >
+
         <p className="name"> <strong> {props.data.name} </strong> </p>
 
         <div className="info">

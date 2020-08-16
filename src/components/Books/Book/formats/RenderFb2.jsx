@@ -5,14 +5,12 @@ const fs = window.require('fs');
 
 function RenderFb2(props)
 {
-    const fileIsExist = (fs.existsSync( props.data.path));
+    const fileIsExist = (fs.existsSync(props.data.path));
     
     const onClick = (e) =>
     {
         if (!fileIsExist)
-        {
-            e.preventDefault()
-        }
+            e.preventDefault();
     }
 
     let fb2data;
@@ -29,7 +27,10 @@ function RenderFb2(props)
         author: fb2book.getAuthors(),
     }
     return (
-    <Link to={{ pathname: "/viewer", data: { book: props.data } }} className={(fileIsExist) ? `book ${extClass}` : `book ${extClass} error` } onClick={onClick} >
+    <Link to={{ pathname: "/viewer", data: { book: props.data } }}
+          className={(fileIsExist) ? `book ${extClass}` : `book ${extClass} error` }
+          onClick={ onClick } >
+
         <img src={bookData.image} alt="Book cover" />
         
         <div className="wrapper">

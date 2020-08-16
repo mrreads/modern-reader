@@ -116,6 +116,11 @@
 	flex-flow: row nowrap;
 }
 
+#content .books .book.fb2 .mainInfo
+{
+	flex-grow: 1;
+}
+
 #content .books .book.fb2 img
 {
 	height: 150px;

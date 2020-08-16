@@ -4,11 +4,11 @@ import RenderFb2 from './formats/RenderFb2';
 
 function Book(props)
 {
-    let render;
-    if (props.data.ext === '.txt') { render = <RenderTxt data={props.data} /> }
-    if (props.data.ext === '.fb2') { render = <RenderFb2 data={props.data} /> }
+    let book;
+    book =  (props.data.ext === '.txt') ? <RenderTxt data={props.data} /> :
+            (props.data.ext === '.fb2') ? <RenderFb2 data={props.data} /> : null
     
-    return (render);
+    return (book);
 }
 
 export default Book;
