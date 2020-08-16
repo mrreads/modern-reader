@@ -13,62 +13,33 @@ import Books from './components/Books/Books';
 import Notes from './components/Notes/Notes';
 import Settings from './components/Settings/Settings';
 
-
-const fs = window.require('fs');
-const userPath = require('./storage').userPath;
+import useBookHooks from './hooks/bookHooks';
+import useSettingHooks from './hooks/settingHooks';
 
 function App () 
-{	
-	const [books, updateBooks] = useState(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
-
-
-	const [viewSetup, changeView] = useState(false);
-	
-	const [settings] = useState(JSON.parse(fs.readFileSync(userPath.settings, 'utf8')));
-	const [padding, updatePadding] = useState(settings.padding);
-    const [fontSize, updateFontSize] = useState(settings.fontSize);
-	const [lineHeight, updateLineHeight] = useState(settings.lineHeight);
-	const [theme, updateTheme] = useState(settings.theme);
-	let getStyles = { padding: padding, fontSize: fontSize, lineHeight: lineHeight, theme: theme }
-	let setStyles = { updatePadding: updatePadding, updateFontSize: updateFontSize, updateLineHeight: updateLineHeight, updateTheme: updateTheme };
-	
-	if (theme === 'light')
-	{
-		document.documentElement.style.setProperty("--theme-main-color", "rgb(255, 255, 255)");
-		document.documentElement.style.setProperty("--theme-second-color", "rgb(33, 38, 43)");
-		document.documentElement.style.setProperty("--theme-three-color", "rgb(44, 62, 80)");
-		document.documentElement.style.setProperty("--theme-four-color", "#e4e6e7");
-	}
-	if (theme === 'brown')
-	{
-		document.documentElement.style.setProperty("--theme-main-color", "#e1cd9c");
-		document.documentElement.style.setProperty("--theme-second-color", "rgb(33, 38, 43)");
-		document.documentElement.style.setProperty("--theme-three-color", "#625a47");
-		document.documentElement.style.setProperty("--theme-four-color", "#c4b58f");
-	}
-	if (theme === 'dark')
-	{
-		document.documentElement.style.setProperty("--theme-main-color", "rgb(33, 38, 43)");
-		document.documentElement.style.setProperty("--theme-second-color", "rgb(255, 255, 255)");
-		document.documentElement.style.setProperty("--theme-three-color", "#979aa0");
-		document.documentElement.style.setProperty("--theme-four-color", "#545659");
-	}
+{
+	const booksHook = useBookHooks();
+	const settingHook = useSettingHooks();
 
 	return (
 	<BrowserRouter>
 		<Redirect from='/' to='/shelf/books' />
 		
-		<TitleBar changeView={changeView} data={viewSetup} getStyles={getStyles} settings={settings} />
+		<TitleBar changeView={ settingHook.setSettingWindowStatus }
+				  data={ settingHook.getSettingWindowStatus }
+				  getStyles={ settingHook.getStyles }
+				  settings={ settingHook.getSetting } />
 		
-		<Route path="/viewer" > <Viewer toggle={viewSetup} 
-										getStyles={getStyles}
-										setStyles={setStyles}
+		<Route path="/viewer" > <Viewer toggle={ settingHook.getSettingWindowStatus }
+										getStyles={ settingHook.getStyles }
+										setStyles={ settingHook.setStyles }
 										/> </Route>
 		
 		<Route path="/shelf"> <SideBar /> </Route>
 
 		<Switch>
-			<Route exact path="/shelf/books"> <Books data={books} toUpdate={updateBooks} /> </Route>
+			<Route exact path="/shelf/books"> <Books data={ booksHook.getBooks } t
+													 oUpdate={ booksHook.setBooks } /> </Route>
 			<Route exact path="/shelf/notes" component={Notes} />
 			<Route exact path="/shelf/settings" component={Settings} />
 		</Switch>

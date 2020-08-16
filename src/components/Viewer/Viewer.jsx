@@ -6,8 +6,7 @@ const fs = window.require('fs');
 
 function Viewer(props)
 {
-    let book;
-    let textBook;
+    let book, textBook;
     try
     {
         book = props.location.data.book;
@@ -36,21 +35,21 @@ function Viewer(props)
     {
         if (e.target.dataset.type === 'fontSize')
         {
-           props.setStyles.updateFontSize(e.target.value);
+           props.setStyles.fontStyle(e.target.value);
         }
         if (e.target.dataset.type === 'padding')
         {
-            props.setStyles.updatePadding(e.target.value);
+            props.setStyles.padding(e.target.value);
         }
         if (e.target.dataset.type === 'lineHeight')
         {
-           props.setStyles.updateLineHeight(e.target.value);
+           props.setStyles.lineHeight(e.target.value);
         }
     }
     
     const changeTheme = (e) =>
     {
-        props.setStyles.updateTheme(e.target.dataset.theme);
+        props.setStyles.theme(e.target.dataset.theme);
     }
 
 
