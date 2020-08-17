@@ -1,0 +1,20 @@
+.settings .setting
+{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: center;
+    padding-left: 25px;
+    padding-top: 15px;
+}
+
+.setting > p
+{
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.setting > div
+{
+    min-width: 350px;
+}

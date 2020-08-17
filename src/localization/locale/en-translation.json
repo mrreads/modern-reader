@@ -1,4 +1,5 @@
 {
+    "locale": "English",
     "books":
     {
         "library": "Books Library",
@@ -17,7 +18,8 @@
     },
     "settings":
     {
-        "settings": "Settings"
+        "settings": "Settings",
+        "language": "Language"
     },
     "viewer":
     {

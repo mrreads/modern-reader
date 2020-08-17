@@ -1,4 +1,5 @@
 import React from 'react';
+import LanguageSelect from './LanguageSelect/LanguageSelect';
 
 import { useTranslation } from 'react-i18next';
 
@@ -12,5 +13,10 @@ export default function()
             <p> { t('settings') } </p>
         </div>
         <hr/>
+
+        <div className="setting">
+            <p> { t('language') }:  </p>
+            <LanguageSelect />
+        </div>
     </div>);
 }

@@ -1,4 +1,5 @@
 {
+    "locale": "Русский",
     "books":
     {
         "library": "Библиотека книг",
@@ -17,7 +18,8 @@
     },
     "settings":
     {
-        "settings": "Настройки"
+        "settings": "Настройки",
+        "language": "Язык"
     },
     "viewer":
     {
