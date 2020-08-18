@@ -1,4 +1,5 @@
 {
+    "locale": "English",
     "books":
     {
         "library": "Books Library",
@@ -7,7 +8,8 @@
     },
     "modal":
     {
-        "title": "Title",
+        "load": "Select book to upload",
+        "title": "Book title",
         "select": "Select file to load",
         "add": "Add book"
     },
@@ -17,7 +19,8 @@
     },
     "settings":
     {
-        "settings": "Settings"
+        "settings": "Settings",
+        "language": "Language"
     },
     "viewer":
     {

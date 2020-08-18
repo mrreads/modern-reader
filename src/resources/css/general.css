@@ -2,6 +2,7 @@
 @import "./../icons/tabler-icons.min.css";
 @import "./content.css";
 @import "./viewer.css";
+@import "./settings.css";
 
 *, *::before, *::after
 {

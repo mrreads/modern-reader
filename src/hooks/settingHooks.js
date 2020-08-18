@@ -57,3 +57,10 @@ export default function()
         setTheme: setTheme,
     });
 }
+
+
+export function getLanguage()
+{
+    const language = JSON.parse(fs.readFileSync(userPath.settings, 'utf8')).language;
+    return language;
+}

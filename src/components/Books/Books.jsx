@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Book from './Book/Book';
 import Modal from './Modal/Modal';
 
+import { IconButton, Icon, ButtonToolbar, Divider } from 'rsuite';
+
 import { useTranslation } from 'react-i18next';
 
 export default function(props)
@@ -18,20 +20,15 @@ export default function(props)
     return (
     <div id="content" className="books">
         <div className="title">
-            <p> { t('library') } </p>
+            <h4> { t('library') } </h4>
 
-            <div className="add" id="addPopup" onClick={ showModal }>
+            <ButtonToolbar>
+                 <IconButton onClick={ showModal } icon={ <Icon icon="save"/> }  />
+            </ButtonToolbar>
 
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-plus" width="44" height="44" viewBox="0 0 24 24" fill="none">
-                    <path stroke="none" d="M0 0h24v24H0z"/>
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-
-            </div>
         </div>
 
-        <hr/>
+        <Divider />
 
         <div className="books">
             { props.books.getBooks.map((book, i) => <Book data={ book } key={i} /> ) }

@@ -16,6 +16,10 @@ import Settings from './components/Settings/Settings';
 import useBookHooks from './hooks/bookHooks';
 import useSettingHooks from './hooks/settingHooks';
 
+
+import 'rsuite/dist/styles/rsuite-default.css';
+
+
 function App () 
 {
 	const booksHook = useBookHooks();
@@ -35,7 +39,7 @@ function App ()
 		<Switch>
 			<Route exact path="/shelf/books"> <Books books={ booksHook } /> </Route>
 			<Route exact path="/shelf/notes" component={ Notes } />
-			<Route exact path="/shelf/settings" component={ Settings } />
+			<Route exact path="/shelf/settings"> <Settings settings={ settingHook } /> </Route>
 		</Switch>
 		
 	</BrowserRouter>);

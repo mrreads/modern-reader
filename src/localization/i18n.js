@@ -4,10 +4,12 @@ import { initReactI18next } from "react-i18next";
 import languageEN from './locale/en-translation.json';
 import languageRU from './locale/ru-translation.json';
 
+import { getLanguage } from './../hooks/settingHooks';
+
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    lng: "en",
+    lng: getLanguage(),
 
     resources: {
         en: languageEN,
