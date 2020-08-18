@@ -1,6 +1,8 @@
 import React from 'react';
 import LanguageSelect from './LanguageSelect/LanguageSelect';
 
+import { Divider } from 'rsuite';
+
 import { useTranslation } from 'react-i18next';
 
 export default function(props)
@@ -10,9 +12,9 @@ export default function(props)
     return (
     <div id="content" className="settings">
         <div className="title">
-            <p> { t('settings') } </p>
+            <h4> { t('settings') } </h4>
         </div>
-        <hr/>
+        <Divider />
 
         <div className="setting">
             <p> { t('language') }:  </p>

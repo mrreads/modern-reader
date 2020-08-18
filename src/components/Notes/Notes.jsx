@@ -1,5 +1,8 @@
 import React from 'react';
 
+
+import { Divider } from 'rsuite';
+
 import { useTranslation } from 'react-i18next';
 
 export default function()
@@ -9,8 +12,8 @@ export default function()
     return (
     <div id="content" className="notes">
         <div className="title">
-            <p> { t('notes') } </p>
+            <h4> { t('notes') } </h4>
         </div>
-        <hr/>
+        <Divider />
     </div>);
 }
