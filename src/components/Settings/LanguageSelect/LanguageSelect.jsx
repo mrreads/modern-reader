@@ -3,6 +3,9 @@ import { Dropdown } from 'rsuite';
 
 import i18next from "./../../../localization/i18n";
 
+const fs = window.require('fs');
+const userPath = require('./../../../storage').userPath;
+
 export default function(props)
 {  
     const [getLanguage, setLanguage] = useState(
@@ -27,6 +30,12 @@ export default function(props)
         }
         setLanguage(languageInfo);
         i18next.changeLanguage(lang);
+
+        let settings = {...props.getSetting };
+
+        settings.language = lang;
+
+        fs.writeFileSync(userPath.settings, JSON.stringify(settings));
     }
 
     return (

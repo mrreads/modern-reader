@@ -3,7 +3,7 @@ import LanguageSelect from './LanguageSelect/LanguageSelect';
 
 import { useTranslation } from 'react-i18next';
 
-export default function()
+export default function(props)
 {
     const { t } = useTranslation('settings');
 
@@ -16,7 +16,7 @@ export default function()
 
         <div className="setting">
             <p> { t('language') }:  </p>
-            <LanguageSelect />
+            <LanguageSelect getSetting={ props.settings.getSetting } />
         </div>
     </div>);
 }
