@@ -15,7 +15,6 @@ export default function()
 
     const [getDarkMode, setDarkMode] = useState(getSetting.darkMode);
 
-
     return({
         getSettingWindowStatus: getSettingWindowStatus,
         setSettingWindowStatus: setSettingWindowStatus,

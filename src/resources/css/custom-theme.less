@@ -1,0 +1,88 @@
+@main-black: #3c3f43;
+@second-black: #FFFFFF;
+@third-black: #303133;
+
+
+
+body.dark *
+{
+    @import '~rsuite/lib/styles/themes/dark/index.less';
+    
+    & #content .books .book:not(.error) .name
+    {
+        color: @second-black;
+    }
+    & #content, & #titleBar
+    {
+        background-color: @main-black;
+    }
+    & #titleBar
+    {
+        border-bottom: 1px solid rgba(255,255, 255, 0.2);
+    }
+    & #titleBar svg
+    {
+        stroke: @second-black;
+    }
+    & #titleBar div:hover svg, #titleBar > a:hover svg 
+    {
+        stroke: @main-black;
+    }
+    #content .title > h4
+    {
+        color: @second-black;
+    }
+    #content .books .book
+    {
+        background-color: @main-black;
+        border: 1px solid rgba(255,255, 255, 0.2);
+        &:not(.error):hover
+        {
+            border: 1px solid rgba(255,255, 255, 0.4);
+        }
+    }
+    & .rs-divider
+    {
+        background-color: rgba(255,255, 255, 0.2);
+    }
+    & .rs-btn.rs-btn-icon
+    {
+        &:hover
+        {
+            background-color: #505153;
+        }
+    }
+    & #content > .settings > .setting > p
+    {
+        color: @second-black;
+    }
+
+    & *::-webkit-scrollbar
+    {
+        background-color: @main-black;
+    }
+
+    & *::-webkit-scrollbar-track
+    {
+        background-color: @main-black;
+    }
+    & *::-webkit-scrollbar-thumb
+    {
+        border: 5px solid @main-black;
+        background-color: rgba(255,255, 255, 0.4);
+    }
+
+    & #viewer > .content
+    {
+        color: @second-black;
+    }
+    & #viewer .settings
+    {
+        background-color: @main-black;
+        border-bottom: 1px solid rgba(255,255, 255, 0.2);
+    }
+    & #viewer .settings p
+    {
+        color: @second-black;
+    }
+}

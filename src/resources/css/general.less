@@ -30,9 +30,6 @@ html
 
 body
 {
-	font-family: "Roboto Condensed", sans-serif;
-	font-size: 15px;
-
 	height: 100%;
 }
 
@@ -283,7 +280,7 @@ body
 	padding: 25px 20px;
 
 	cursor: pointer;
-	transition: box-shadow 0.3s cubic-bezier(0.25,0.8,0.25,1);
+	transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
 	text-decoration: none;
 
 	border: 1px solid rgba(0,0,0,0.1);
@@ -300,6 +297,8 @@ body
 	flex-grow: 1;
 
 	padding-right: 35px;
+
+	color: #575757;
 }
 
 #content .books .book.error
@@ -406,6 +405,7 @@ body
 {
 	display: flex;
 	flex-flow: row nowrap;
+
 	padding-bottom: 0;
 }
 
@@ -416,5 +416,5 @@ body
 
 #viewer > .content
 {
-
+	white-space: pre-line;
 }

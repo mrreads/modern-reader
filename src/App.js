@@ -15,11 +15,14 @@ import useSettingHooks from './hooks/settingHooks';
 
 import 'rsuite/lib/styles/index.less';
 import './resources/css/general.less';
+import './resources/css/custom-theme.less';
 
 function App () 
 {
 	const booksHook = useBookHooks();
 	const settingHook = useSettingHooks();
+
+	(settingHook.getDarkMode) ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
 	return (
 	<BrowserRouter>
