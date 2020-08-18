@@ -13,9 +13,8 @@ import Settings from './components/Settings/Settings';
 import useBookHooks from './hooks/bookHooks';
 import useSettingHooks from './hooks/settingHooks';
 
-
 import 'rsuite/dist/styles/rsuite-default.css';
-import './general.css';
+import './resources/css/general.css';
 
 function App () 
 {

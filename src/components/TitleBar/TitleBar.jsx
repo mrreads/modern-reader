@@ -64,7 +64,7 @@ class TitleBar extends React.Component
         settings.padding = this.props.settings.getPadding;
         settings.fontSize = this.props.settings.getFontSize;
         settings.lineHeight = this.props.settings.getLineHeight;
-        settings.theme = this.props.settings.getTheme;
+        settings.darkMode = this.props.settings.getDarkMode;
 
         fs.writeFileSync(userPath.settings, JSON.stringify(settings));
     }

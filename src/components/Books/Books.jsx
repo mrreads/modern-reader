@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Book from './Book/Book';
 import Modal from './Modal/Modal';
 
-import { IconButton, Icon, ButtonToolbar, Divider, Tooltip, Whisper } from 'rsuite';
+import { IconButton, Icon, ButtonToolbar, Divider } from 'rsuite';
 
 import { useTranslation } from 'react-i18next';
 

@@ -27,6 +27,6 @@
         "padding": "Padding",
         "lineHeight": "Line-Height",
         "fontSize": "Font-Size",
-        "theme": "Theme"
+        "darkMode": "Dark mode"
     }
 }

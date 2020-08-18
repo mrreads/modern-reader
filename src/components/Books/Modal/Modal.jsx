@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-import { Input, InputGroup , Modal, Button, Uploader } from 'rsuite';
+import { Input, InputGroup , Modal, Button } from 'rsuite';
 
 import { useTranslation } from 'react-i18next';
 

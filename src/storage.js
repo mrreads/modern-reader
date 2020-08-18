@@ -6,7 +6,7 @@ let appData = app.getPath('userData');
 let defaultSetting =
 {
     "language":"en",
-    "theme":"light",
+    "darkMode": false,
     "padding":"12",
     "fontSize":"21",
     "lineHeight":"1"

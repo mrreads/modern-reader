@@ -2,7 +2,12 @@ import React, { useState} from 'react';
 import { withRouter  } from 'react-router-dom';
 import Parser from 'html-react-parser';
 
+
 import { useTranslation } from 'react-i18next';
+
+import { Slider, Toggle, Animation } from 'rsuite';
+
+const { Collapse } = Animation;
 
 const fs = window.require('fs');
 
@@ -35,21 +40,24 @@ function Viewer(props)
 
     const [content] = useState(textBook);
 
-    const checkValue = (e) =>
+    const changeFontSize = (value) =>
     {
-        if (e.target.dataset.type === 'fontSize')
-           props.settings.setFontSize(e.target.value);
-
-        if (e.target.dataset.type === 'padding')
-            props.settings.setPadding(e.target.value);
-
-        if (e.target.dataset.type === 'lineHeight')
-           props.settings.setLineHeight(e.target.value);
+        props.settings.setFontSize(value);
     }
     
-    const changeTheme = (e) =>
+    const changePadding = (value) =>
     {
-        props.settings.setTheme(e.target.dataset.theme);
+        props.settings.setPadding(value);
+    }
+
+    const changeLineHeight = (value) =>
+    {
+        props.settings.setLineHeight(value);
+    }
+
+    const changeTheme = (value) =>
+    {
+        props.settings.setDarkMode(value);
     }
 
 
@@ -58,41 +66,45 @@ function Viewer(props)
             
             <div id="viewer">
 
-                <div className={(props.settings.getSettingWindowStatus) ? "settings" : "settings hide" }>
+            <Collapse in={ props.settings.getSettingWindowStatus } exitedClassName='hide' > 
                 
-                    <div className="theme">
-                        <p> { t('theme') }: <span> { props.settings.getTheme } </span> </p>
-                        
-                        <div className="themes">
-                            <div className="type" data-theme="light" onClick={changeTheme} />
-                            <div className="type" data-theme="brown" onClick={changeTheme} />
-                            <div className="type" data-theme="dark" onClick={changeTheme} />
-                        </div>
+                <div className="settings">
+                
+                    <div className='setting darkMode'>
+                        <p> { t('darkMode') }: </p>
+                        <Toggle defaultChecked={ props.settings.getDarkMode } onChange={ changeTheme } />
                     </div>
 
-                    <div className="hr"/>
+                    <div className='setting'>
+                        <p> { t('fontSize') }: { props.settings.getFontSize } </p>
+                        <Slider
+                            progress min={ 11 } max={ 46 }
+                            defaultValue={ +props.settings.getFontSize }
+                            onChange={ changeFontSize }
+                        />
+                    </div>
 
+                    <div className='setting'>
+                        <p> { t('padding') }: { props.settings.getPadding } </p>
+                        <Slider
+                            progress min={ 0 } max={ 50 }
+                            defaultValue={ +props.settings.getPadding }
+                            onChange={ changePadding }
+                        />
+                    </div>
                     
-                    <div className="inputNumberWrapper font-size">
-                        <p> { t('fontSize') }: <span> { props.settings.getFontSize } </span> </p>
-                        <input type="range" min="11" max="46" value={ props.settings.getFontSize } onChange={checkValue} data-type="fontSize" />
-                    </div>
-
-                    <div className="hr"/>
-
-                    <div className="inputNumberWrapper padding">
-                        <p> { t('padding') }: <span> { props.settings.getPadding } </span> </p>
-                        <input type="range" min="0" max="50" value={ props.settings.getPadding } onChange={checkValue} data-type="padding" />
-                    </div>
-
-                    <div className="hr"/>
-
-                    <div className="inputNumberWrapper line-height">
-                        <p> { t('lineHeight') }: <span> { props.settings.getLineHeight } </span> </p>
-                        <input type="range" min="0.5" max="2" step="0.1" value={ props.settings.getLineHeight } onChange={checkValue} data-type="lineHeight" />
+                    <div className='setting'>
+                        <p> { t('lineHeight') }: { props.settings.getLineHeight } </p>
+                        <Slider
+                            progress min={ 0.5 } max={ 2 } step={ 0.1 }
+                            defaultValue={ +props.settings.getLineHeight }
+                            onChange={ changeLineHeight }
+                        />
                     </div>
 
                 </div>
+
+            </Collapse>
 
                 <h1> { props.location.data.path } </h1>
 
