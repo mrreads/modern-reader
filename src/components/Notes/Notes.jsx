@@ -10,7 +10,7 @@ export default function()
     const { t } = useTranslation('notes');
 
     return (
-    <div id="content" className="notes">
+    <div id="content">
         <div className="title">
             <h4> { t('notes') } </h4>
         </div>

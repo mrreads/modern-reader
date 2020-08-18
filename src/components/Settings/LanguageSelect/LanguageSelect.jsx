@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown } from 'rsuite';
+import { SelectPicker } from 'rsuite';
 
 import i18next from "./../../../localization/i18n";
 
@@ -39,7 +39,5 @@ export default function(props)
     }
 
     return (
-    <Dropdown title={ getLanguage.name }>
-        { options.map((lang, i) => <Dropdown.Item eventKey={ lang.value } key={i} onSelect ={ changeLanguage } > { lang.label } </Dropdown.Item> ) }
-    </Dropdown>);
+        <SelectPicker data={ options } defaultValue={ getLanguage.locale } searchable={ false } cleanable={ false } onSelect ={ changeLanguage } style={{ width: 300 }} />);
 }

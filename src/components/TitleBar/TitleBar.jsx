@@ -1,6 +1,8 @@
 import React from 'react';
 import {NavLink, Route} from 'react-router-dom';
 
+import { X, ArrowsDiagonal, ChevronDown, Dots, ArrowLeft } from 'tabler-icons-react';
+
 const fs = window.require('fs');
 const userPath = require('./../../storage').userPath;
 
@@ -75,51 +77,25 @@ class TitleBar extends React.Component
             <Route exac path="/viewer" render={() => (
             <>
             <NavLink  to="/shelf/books"  id="titleBack" onClick={()=>{ this.updateSettingsFile(); this.props.settings.setSettingWindowStatus(false) }}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
-                    <path stroke="none" d="M0 0h24v24H0z"/>
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <line x1="5" y1="12" x2="11" y2="18" />
-                    <line x1="5" y1="12" x2="11" y2="6" />
-                </svg>
+                <ArrowLeft size={48} strokeWidth={2} color={'black'} />
             </NavLink>
             
             <div id="viewSetting" onClick={ this.toggleSettingWindow }>
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-dots" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
-                    <path stroke="none" d="M0 0h24v24H0z"/>
-                    <circle cx="5" cy="12" r="1" />
-                    <circle cx="12" cy="12" r="1" />
-                    <circle cx="19" cy="12" r="1" />
-                </svg>
+                <Dots size={48} strokeWidth={2} color={'black'} />
             </div> </>)} />
 
             <p id="titleStatus"> </p>
 
             <div id="titleMinimize">
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-down-left"
-                    viewBox="0 0 24 24" fill="none">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <line x1="17" y1="7" x2="7" y2="17" />
-                    <polyline points="16 17 7 17 7 8" />
-                </svg>
+                <ChevronDown size={48} strokeWidth={2} color={'black'} />
             </div>
 
             <div id="titleRestore">
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrows-diagonal"
-                    viewBox="0 0 24 24" fill="none">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <polyline points="16 4 20 4 20 8" />
-                    <line x1="14" y1="10" x2="20" y2="4" />
-                    <polyline points="8 20 4 20 4 16" />
-                    <line x1="4" y1="20" x2="10" y2="14" />
-                </svg>
+                <ArrowsDiagonal size={48} strokeWidth={2} color={'black'} />
             </div>
 
             <div id="titleClose">
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" viewBox="0 0 24 24" fill="none">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
+                <X size={48} strokeWidth={2} color={'black'} />
             </div>
         </div>)
     }

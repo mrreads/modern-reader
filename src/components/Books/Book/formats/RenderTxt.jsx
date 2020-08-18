@@ -20,6 +20,7 @@ export default function(props)
     let extClass = props.data.ext.replace(/\./g, ''); 
 
     return (
+        
     <Link to={{ pathname: "/viewer", data: { book: props.data } }}
           className={(fileIsExist) ? `book ${extClass}` : `book ${extClass} error` }
           onClick={onClick} >

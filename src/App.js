@@ -1,9 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import './resources/css/general.css';
-import './resources/css/theme.css';
-
 import TitleBar from './components/TitleBar/TitleBar';
 import SideBar from './components/SideBar/SideBar';
 
@@ -18,7 +15,7 @@ import useSettingHooks from './hooks/settingHooks';
 
 
 import 'rsuite/dist/styles/rsuite-default.css';
-
+import './general.css';
 
 function App () 
 {
