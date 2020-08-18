@@ -8,7 +8,8 @@
     },
     "modal":
     {
-        "title": "Title",
+        "load": "Select book to upload",
+        "title": "Book title",
         "select": "Select file to load",
         "add": "Add book"
     },

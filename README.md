@@ -23,7 +23,8 @@ Data on windows stored in:
 # Technology 
 - [React](https://reactjs.org/)
 - [Electron](https://www.electronjs.org/)
-- [fb2html](https://www.npmjs.com/package/fb2html) and other npm packages
+- [rsuite](https://github.com/rsuite/rsuite)
+- [fb2html](https://www.npmjs.com/package/fb2html) and other npm packages.
 
 # Development
 

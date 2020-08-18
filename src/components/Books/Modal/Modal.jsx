@@ -1,4 +1,7 @@
+
 import React, { useState } from 'react';
+
+import { Input, InputGroup , Modal, Button, Uploader } from 'rsuite';
 
 import { useTranslation } from 'react-i18next';
 
@@ -25,9 +28,9 @@ export default function(props)
 
     const onClose = (e) => { props.setModalStatus(false) };
 
-    const changeName = (e) =>
+    const changeName = (value) =>
     {
-        setModalInfo({...getModalInfo, bookName: e.target.value});
+        setModalInfo({...getModalInfo, bookName: value});
     }
 
     const openFile = () =>
@@ -88,33 +91,35 @@ export default function(props)
             }
         }
     }
-
-    if (!props.getModalStatus)
-    {
-        return null
-    }
+    
     return (
-    <div id="popupWrapper">
-        <div id="popupUpload">
+            <Modal full sbackdrop={ true } show={ props.getModalStatus } onHide={ onClose }>
 
-            <div className="close" onClick={ onClose }>
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" viewBox="0 0 24 24" stroke="#2c3e50" fill="none">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-            </div>
+                <Modal.Header>
+                    <Modal.Title> { t('load') } </Modal.Title>
+                </Modal.Header>
 
-            <div id="uploadFileBook" onClick={ openFile }>
-                <p> { getModalInfo.bookFile } </p>
-            </div>
+                <Modal.Body>
 
-            <div className="inputName">
-                <p> { t('title') }: </p>
-                <input type="text" value={ getModalInfo.bookName } onChange={ changeName } />
-            </div>
+                <div onClick={ openFile } className="rs-modal-body" style={{ overflow: 'auto', maxHeight: '430px'}} >
+                    <div className="rs-uploader rs-uploader-text rs-uploader-draggable">
+                        <div className="rs-uploader-trigger rs-uploader-trigger-customize">
+                            <div className="rs-uploader-trigger-btn" style={{ lineHeight: '200px' }}> { getModalInfo.bookFile } </div>
+                        </div>
+                        <div className="rs-uploader-file-items"></div>
+                    </div>
+                </div>
 
-            <div id="loadBook" className={!getModalInfo.isSelected ? "disabled" : ""} onClick={ uploadFile } > { t('add') } </div>
-        </div>
-    </div>);
+
+                    <InputGroup style={{ width: '100%', marginBottom: 10 }}>
+                        <InputGroup.Addon> { t('title') } </InputGroup.Addon>
+                        <Input placeholder={ getModalInfo.bookName } onChange={ changeName } />
+                    </InputGroup>
+
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button color="orange" disabled={ !getModalInfo.isSelected } onClick={ uploadFile }> { t('add') } </Button>
+                </Modal.Footer>
+            </Modal>);
 }
