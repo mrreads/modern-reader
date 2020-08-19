@@ -17,7 +17,11 @@ body.dark
 	& #content .books .book:not(.error) .name
 	{
 		color: @second-black;
-	}
+    }
+    & #content .books .book.error .name
+    {
+        color: #C73F00;
+    }
 	& #content .books .book .info p
 	{
 		color: #AFAAAA;
@@ -135,5 +139,9 @@ body.dark
 	& .rs-slider-bar
 	{
 		background-color: #3C3F43;
-	}
+    }
+    & #content .books .book.fb2 .title, & #content .books .book.fb2 .author
+    {
+        color: #AFAAAA;
+    }
 }
