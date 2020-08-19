@@ -20,7 +20,8 @@
     "settings":
     {
         "settings": "Настройки",
-        "language": "Язык"
+        "language": "Язык",
+        "darkMode": "Тёмный режим"
     },
     "viewer":
     {

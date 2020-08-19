@@ -119,7 +119,7 @@ export default function(props)
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button color="orange" disabled={ !getModalInfo.isSelected } onClick={ uploadFile }> { t('add') } </Button>
+                    <Button color="red" disabled={ !getModalInfo.isSelected } onClick={ uploadFile }> { t('add') } </Button>
                 </Modal.Footer>
             </Modal>);
 }

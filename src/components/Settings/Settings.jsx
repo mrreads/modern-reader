@@ -1,5 +1,6 @@
 import React from 'react';
 import LanguageSelect from './LanguageSelect/LanguageSelect';
+import DarkMode from './DarkMode/DarkMode';
 
 import { Divider } from 'rsuite';
 
@@ -18,11 +19,16 @@ export default function(props)
         
         <div className="settings">
 
+            <div className="setting darkMode">
+                <p> { t('darkMode') }:  </p>
+                <DarkMode settings={ props.settings } />
+            </div>
+
             <div className="setting">
                 <p> { t('language') }:  </p>
                 <LanguageSelect getSetting={ props.settings.getSetting } />
             </div>
-        
+
         </div>
     </div>);
 }

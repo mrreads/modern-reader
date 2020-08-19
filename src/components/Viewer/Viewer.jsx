@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import { withRouter  } from 'react-router-dom';
+
 import Parser from 'html-react-parser';
 
 
@@ -10,6 +11,7 @@ import { Slider, Toggle, Animation } from 'rsuite';
 const { Collapse } = Animation;
 
 const fs = window.require('fs');
+const userPath = require('./../../storage.js').userPath;
 
 function Viewer(props)
 {
@@ -58,6 +60,10 @@ function Viewer(props)
     const changeTheme = (value) =>
     {
         props.settings.setDarkMode(value);
+
+        let settings = {...props.settings.getSetting};
+        settings.darkMode = value;
+        fs.writeFileSync(userPath.settings, JSON.stringify(settings));
     }
 
 
