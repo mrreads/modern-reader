@@ -8,27 +8,24 @@
   "main": "./public/electron.js",
   "dependencies": {
     "cross-env": "^6.0.3",
-    "customize-cra": "^1.0.0",
     "electron-is-dev": "^1.2.0",
     "fb2html": "^1.0.9",
     "html-react-parser": "^0.13.0",
-    "i18next": "^19.6.3",
-    "less": "^3.12.2",
-    "less-loader": "^6.2.0",
+    "i18next": "^19.7.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
-    "react-app-rewired": "^2.1.6",
     "react-dom": "^16.13.1",
-    "react-i18next": "^11.7.0",
+    "react-i18next": "^11.7.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
-    "rsuite": "^4.8.0",
-    "tabler-icons-react": "^1.5.0"
+    "rsuite": "^4.8.1",
+    "tabler-icons-react": "^1.8.0"
   },
   "scripts": {
-    "start-react": "react-app-rewired start",
-    "build-react": "react-app-rewired build",
-    "test-react": "react-app-rewired test --env=jsdom",
-    "eject-react": "react-app-rewired eject",
+    "start-react": "react-scripts start",
+    "build-react": "react-scripts build",
+    "test-react": "react-scripts test --env=jsdom",
+    "eject-react": "react-scripts eject",
     "build-electron": "electron-builder",
     "build": "npm run build-react && npm run build-electron",
     "start": "concurrently \"cross-env BROWSER=none npm run start-react\" \"wait-on http://localhost:3000 && electron .\""
@@ -50,7 +47,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "electron": "^9.2.0",
+    "electron": "^9.2.1",
     "electron-builder": "^22.8.0",
     "wait-on": "^3.3.0"
   },

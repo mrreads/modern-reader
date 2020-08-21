@@ -13,9 +13,9 @@ import Settings from './components/Settings/Settings';
 import useBookHooks from './hooks/bookHooks';
 import useSettingHooks from './hooks/settingHooks';
 
-import 'rsuite/lib/styles/index.less';
+import 'rsuite/dist/styles/rsuite-default.css';
 import './resources/css/general.css';
-import './resources/css/custom-theme.less';
+import './resources/css/custom-theme.scss';
 
 function App () 
 {
