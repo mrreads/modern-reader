@@ -1,8 +1,11 @@
 import React, { useState} from 'react';
 import { withRouter  } from 'react-router-dom';
 
-import Parser from 'html-react-parser';
+import ViewTxt from './formats/ViewTxt';
+import ViewFb2 from './formats/ViewFb2';
+import ViewEpub from './formats/ViewEpub';
 
+import Parser from 'html-react-parser';
 
 import { useTranslation } from 'react-i18next';
 
@@ -15,32 +18,16 @@ const userPath = require('./../../storage.js').userPath;
 
 function Viewer(props)
 {
+    let book;
+    try { book = props.location.data.book; } catch { window.location = '/shelf/books' }
+
+    let view =  (book.ext === '.txt') ? <ViewTxt book={book} /> :
+                (book.ext === '.fb2') ? <ViewFb2 book={book} /> :
+                (book.ext === '.epub') ? <ViewEpub book={book} /> : null
+
+
+
     const { t } = useTranslation('viewer');
-
-    let book, textBook;
-    try
-    {
-        book = props.location.data.book;
-    }
-    catch
-    {
-        window.location = '/shelf/books'
-    }
-    
-    
-    if (book.ext === '.txt')
-    {
-        textBook = fs.readFileSync(book.path, 'utf8');
-    } 
-    else if (book.ext === '.fb2')
-    {
-        let fb2data = fs.readFileSync(book.path, 'utf8');
-        const FB2HTML = require('fb2html');
-        const fb2book = new FB2HTML(fb2data);
-        textBook = fb2book.getBody();
-    }
-
-    const [content] = useState(textBook);
 
     const changeFontSize = (value) =>
     {
@@ -65,7 +52,6 @@ function Viewer(props)
         settings.darkMode = value;
         fs.writeFileSync(userPath.settings, JSON.stringify(settings));
     }
-
 
      return (
         <div id="content" className="view">
@@ -118,7 +104,7 @@ function Viewer(props)
                     style={{
                         padding: props.settings.getPadding + 'px',
                         fontSize: props.settings.getFontSize + 'px',
-                        lineHeight: props.settings.getLineHeight }}> { Parser(content) } </div>
+                        lineHeight: props.settings.getLineHeight }}> { view } </div>
 
             </div>
 
