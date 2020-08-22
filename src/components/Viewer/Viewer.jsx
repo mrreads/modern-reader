@@ -1,11 +1,9 @@
-import React, { useState} from 'react';
+import React from 'react';
 import { withRouter  } from 'react-router-dom';
 
 import ViewTxt from './formats/ViewTxt';
 import ViewFb2 from './formats/ViewFb2';
 import ViewEpub from './formats/ViewEpub';
-
-import Parser from 'html-react-parser';
 
 import { useTranslation } from 'react-i18next';
 
