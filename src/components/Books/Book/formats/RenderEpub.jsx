@@ -17,11 +17,7 @@ export default function(props)
             e.preventDefault();
     }
 
-    let fb2data;
-
     let extClass = props.data.ext.replace(/\./g, '');
-     
-    fb2data = fs.readFileSync(props.data.path, 'utf8');
 
     const bookData = 
     {

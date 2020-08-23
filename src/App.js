@@ -35,7 +35,7 @@ function App ()
 		
 		<Route path="/viewer" > <Viewer settings={ settingHook } titlebar={ titleHook } /> </Route>
 		
-		<Route path="/shelf"> <SideBar /> </Route>
+		<Route path="/shelf"> <SideBar titlebar={ titleHook } /> </Route>
 
 		<Switch>
 			<Route exact path="/shelf/books"> <Books books={ booksHook } /> </Route>

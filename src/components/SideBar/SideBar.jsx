@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink  } from "react-router-dom";
 
 import { Book, Notes, Settings } from 'tabler-icons-react';
 
 export default function(props)
 {
+    useEffect(_=> { props.titlebar.setTitleStatus('') });
+   
+    
     return(<div id="sideBar">
                 <NavLink  to="/shelf/books" className="books">
                     <Book size={48} strokeWidth={1} color={'black'} />

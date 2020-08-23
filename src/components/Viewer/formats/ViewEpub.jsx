@@ -18,11 +18,12 @@ function Viewer(props)
 
     let textBook;
     textBook = 'epub';
+    textBook = Parser(textBook);
     
     const [content] = useState(textBook);
 
     return(<div className="content" style={ props.style } ref={ ref } onScroll={ e => handleScroll(e.target) }>
-                { textBook }
+                { content }
             </div>);
 }
 

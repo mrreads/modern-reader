@@ -20,7 +20,8 @@ function Viewer(props)
     
     let textBook;
     textBook = fs.readFileSync(props.book.path, 'utf8');
-
+    textBook = Parser(textBook);
+    
     const [content] = useState(textBook);
 
     return (<div className="content" style={ props.style } ref={ ref } onScroll={ e => handleScroll(e.target) }>
