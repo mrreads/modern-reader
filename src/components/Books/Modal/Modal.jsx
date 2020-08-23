@@ -82,7 +82,8 @@ export default function(props)
                     "name": getModalInfo.bookName,
                     "ext": ext,
                     "path": getModalInfo.bookPath,
-                    "strings": fs.readFileSync(getModalInfo.bookPath).toString().split('\n').length
+                    "strings": fs.readFileSync(getModalInfo.bookPath).toString().split('\n').length,
+                    "progress": '0'
                 }
                 
                 currentJson.push(data);

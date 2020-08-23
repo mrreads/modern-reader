@@ -4,7 +4,8 @@
     {
         "library": "Books Library",
         "format": "Format",
-        "strings": "Strings"
+        "strings": "Strings",
+        "progress": "Progress"
     },
     "modal":
     {

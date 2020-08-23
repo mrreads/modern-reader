@@ -30,8 +30,6 @@ function Viewer(props)
                 (book.ext === '.fb2') ? <ViewFb2 book={ book } style={ style } titlebar={ props.titlebar } /> :
                 (book.ext === '.epub') ? <ViewEpub book={ book } style={ style } titlebar={ props.titlebar } /> : null
 
-    
-
     const { t } = useTranslation('viewer');
 
     const changeFontSize = value => props.settings.setFontSize(value);

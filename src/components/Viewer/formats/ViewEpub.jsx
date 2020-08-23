@@ -6,7 +6,9 @@ import Parser from 'html-react-parser';
 function Viewer(props)
 {
     const ref = useRef()
-    useEffect(() => { handleScroll(ref.current) });
+    useEffect(() => { 
+        ref.current.scrollTop = ((+ref.current.scrollHeight + parseInt(props.style.padding)) * (props.book.progress * 0.01) - ref.current.clientHeight).toFixed(1);
+    }, []);
 
     let fullHeight, currentScroll;
     const handleScroll = (element) => 

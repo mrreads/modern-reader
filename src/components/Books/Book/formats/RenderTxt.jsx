@@ -30,6 +30,7 @@ export default function(props)
         <div className="info">
             <p className="format"> { t('format') }: <i> { props.data.ext} </i> </p>
             <p> { t('strings') }: <i> { props.data.strings} </i> </p>
+            <p> { t('progress') }: <i> { props.data.progress}% </i> </p>
         </div>
     </Link>);
 }

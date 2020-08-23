@@ -4,7 +4,8 @@
     {
         "library": "Библиотека книг",
         "format": "Формат",
-        "strings": "Строк"
+        "strings": "Строк",
+        "progress": "Прогресс"
     },
     "modal":
     {
