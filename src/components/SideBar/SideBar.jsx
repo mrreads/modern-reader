@@ -3,14 +3,9 @@ import { NavLink  } from "react-router-dom";
 
 import { Book, Notes, Settings } from 'tabler-icons-react';
 
-class SideBar extends React.Component
+export default function(props)
 {
-
-    render()
-    {
-        return (
-            
-            <div id="sideBar">
+    return(<div id="sideBar">
                 <NavLink  to="/shelf/books" className="books">
                     <Book size={48} strokeWidth={1} color={'black'} />
                 </NavLink>
@@ -23,7 +18,4 @@ class SideBar extends React.Component
                     <Settings size={48} strokeWidth={1} color={'black'} />
                 </NavLink>
             </div>)
-    }
 }
-
-export default SideBar;

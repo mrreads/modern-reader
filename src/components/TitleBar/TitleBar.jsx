@@ -69,6 +69,13 @@ class TitleBar extends React.Component
         fs.writeFileSync(userPath.settings, JSON.stringify(settings));
     }
 
+    whenClickBack = () =>
+    {
+        this.updateSettingsFile(); 
+        this.props.settings.setSettingWindowStatus(false);
+        this.props.titlebar.setTitleStatus('');
+    }
+    
     render()
     {
         return(
@@ -76,7 +83,7 @@ class TitleBar extends React.Component
             
             <Route exac path="/viewer" render={() => (
             <>
-            <NavLink  to="/shelf/books"  id="titleBack" onClick={()=>{ this.updateSettingsFile(); this.props.settings.setSettingWindowStatus(false) }}>
+            <NavLink  to="/shelf/books"  id="titleBack" onClick={ this.whenClickBack }>
                 <ArrowLeft size={48} strokeWidth={2} color={'black'} />
             </NavLink>
             
@@ -84,7 +91,7 @@ class TitleBar extends React.Component
                 <Dots size={48} strokeWidth={2} color={'black'} />
             </div> </>)} />
 
-            <p id="titleStatus"> </p>
+            <p id="titleStatus"> { this.props.titlebar.getTitleStatus } </p>
 
             <div id="titleMinimize">
                 <ChevronDown size={48} strokeWidth={2} color={'black'} />

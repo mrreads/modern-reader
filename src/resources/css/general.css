@@ -205,6 +205,11 @@ body
 	grid-area: c;
 }
 
+#content.view
+{
+	overflow: hidden;
+	padding: 0;
+}
 #content .title
 {
 	display: flex;
@@ -381,6 +386,11 @@ body
 
 /* VIEWER */
 
+#viewer
+{
+	height: 100%;
+}
+
 #viewer .settings
 {
 	position: fixed;
@@ -423,5 +433,7 @@ body
 
 #viewer > .content
 {
+	overflow-x: auto;
+	height: 100%;
 	white-space: pre-line;
 }

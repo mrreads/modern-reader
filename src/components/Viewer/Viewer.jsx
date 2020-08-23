@@ -16,31 +16,27 @@ const userPath = require('./../../storage.js').userPath;
 
 function Viewer(props)
 {
+    const style =
+    {
+        padding: props.settings.getPadding + 'px',
+        fontSize: props.settings.getFontSize + 'px',
+        lineHeight: props.settings.getLineHeight 
+    }
+
     let book;
-    try { book = props.location.data.book; } catch { window.location = '/shelf/books' }
+    try { book = props.location.data.book; } catch { window.location = '/shelf/books'; }
 
-    let view =  (book.ext === '.txt') ? <ViewTxt book={book} /> :
-                (book.ext === '.fb2') ? <ViewFb2 book={book} /> :
-                (book.ext === '.epub') ? <ViewEpub book={book} /> : null
+    let view =  (book.ext === '.txt') ? <ViewTxt book={ book } style={ style } titlebar={ props.titlebar } /> :
+                (book.ext === '.fb2') ? <ViewFb2 book={ book } style={ style } titlebar={ props.titlebar } /> :
+                (book.ext === '.epub') ? <ViewEpub book={ book } style={ style } titlebar={ props.titlebar } /> : null
 
-
+    
 
     const { t } = useTranslation('viewer');
 
-    const changeFontSize = (value) =>
-    {
-        props.settings.setFontSize(value);
-    }
-    
-    const changePadding = (value) =>
-    {
-        props.settings.setPadding(value);
-    }
-
-    const changeLineHeight = (value) =>
-    {
-        props.settings.setLineHeight(value);
-    }
+    const changeFontSize = value => props.settings.setFontSize(value);
+    const changePadding = value => props.settings.setPadding(value);
+    const changeLineHeight = value => props.settings.setLineHeight(value);
 
     const changeTheme = (value) =>
     {
@@ -98,11 +94,7 @@ function Viewer(props)
 
                 <h1> { props.location.data.path } </h1>
 
-                <div className="content" 
-                    style={{
-                        padding: props.settings.getPadding + 'px',
-                        fontSize: props.settings.getFontSize + 'px',
-                        lineHeight: props.settings.getLineHeight }}> { view } </div>
+                { view }
 
             </div>
 
