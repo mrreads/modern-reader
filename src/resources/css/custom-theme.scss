@@ -4,8 +4,6 @@ $third-black: #494A4D;
 
 body.dark
 {
-	
-
 	& #sideBar
 	{
 		background-color: #232425;
@@ -147,7 +145,6 @@ body.dark
 	& #content .rs-picker-toggle:hover
 	{
 		border: 1px solid #DB4302;
-		
 	}
 	& #content .rs-picker-toggle.active
 	{
@@ -157,20 +154,20 @@ body.dark
 	{
 		color: #DB4302;
 	}
-	& #content .rs-icon 
+	& #content .rs-icon
 	{
 		color: #FFFFFF;
 	}
 
 	& #content .rs-picker-toggle
 	{
-		border: 1px solid #3c3f43;
-		background-color: #1a1d24 !important;
+		border: 1px solid #3C3F43;
+		background-color: #1A1D24 !important;
 	}
-	
+
 	& .rs-picker-menu
 	{
-		background-color: #292d33;
+		background-color: #292D33;
 	}
 	& a.rs-picker-select-menu-item
 	{
@@ -178,11 +175,11 @@ body.dark
 	}
 	& .rs-modal-content
 	{
-		background-color: #292d33;
+		background-color: #292D33;
 	}
 	& .rs-input-group:not(.rs-input-group-inside)
 	{
-		border: 1px solid #3c3f43;
+		border: 1px solid #3C3F43;
 		&:hover, &:focus
 		{
 			border-color: #DB4302;
@@ -202,22 +199,22 @@ body.dark
 	}
 	& .rs-uploader-draggable
 	{
-		background: #292d33;
+		background: #292D33;
 	}
 	& input.rs-input
 	{
-		color: #fff;
-    	background-color: #1a1d24;
+		color: #FFFFFF;
+		background-color: #1A1D24;
 	}
 	& span.rs-input-group-addon
 	{
-		color: #fff;
-    	background-color: #292d33;
+		color: #FFFFFF;
+		background-color: #292D33;
 	}
 	& .rs-modal-backdrop
 	{
-		background-color: #0f131a; 
 		opacity: 0.8;
+		background-color: #0F131A;
 	}
 	& .rs-modal-header-close
 	{
@@ -226,6 +223,10 @@ body.dark
 	& .rs-uploader-trigger-btn
 	{
 		color: #FFFFFF !important;
-		background-color: #292d33 !important;
+		background-color: #292D33 !important;
+	}
+	& #titleBar #titleStatus
+	{
+		color: #FFFFFF;
 	}
 }
