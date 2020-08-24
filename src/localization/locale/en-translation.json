@@ -12,7 +12,8 @@
         "load": "Select book to upload",
         "title": "Book title",
         "select": "Select file to load",
-        "add": "Add book"
+        "add": "Add book",
+        "exist": "Book already added"
     },
     "notes":
     {

@@ -35,6 +35,6 @@ export default function(props)
             { props.books.getBooks.map((book, i) => <Book data={ book } key={i} /> ) }
         </div>
 
-        <Modal getModalStatus={ getModalStatus } setModalStatus={ setModalStatus } setBooks={ props.books.setBooks } />
+        <Modal getModalStatus={ getModalStatus } setModalStatus={ setModalStatus } setBooks={ props.books.setBooks } getBooks={ props.books.getBooks } />
     </div>);
 }

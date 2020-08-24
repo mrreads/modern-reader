@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-import { Input, InputGroup , Modal, Button } from 'rsuite';
+import { Input, InputGroup , Modal, Button, Message } from 'rsuite';
 
 import { useTranslation } from 'react-i18next';
 
@@ -17,12 +17,14 @@ const dialog = electron.remote.dialog;
 
 export default function(props)
 {
+    let messages = '';
+
     const { t } = useTranslation('modal');
     
     const [getModalInfo, setModalInfo] = useState({
         isSelected: false,
         bookFile: t('select'),
-        bookName: 'Book title',
+        bookName: t('title'),
         bookPath: ''
     });
 
@@ -53,14 +55,30 @@ export default function(props)
                 if (!file.canceled) 
                 { 
                     global.filepath = file.filePaths[0].toString();
-                    let infoForUpload =
+                    const isExist = props.getBooks.map(b => b.path).indexOf(global.filepath);
+
+                    if (isExist === -1)
                     {
-                        isSelected: true,
-                        bookFile: path.basename(global.filepath),
-                        bookName: path.basename(global.filepath, path.extname(global.filepath)),
-                        bookPath: global.filepath
+                        let infoForUpload =
+                        {
+                            isSelected: true,
+                            bookFile: path.basename(global.filepath),
+                            bookName: path.basename(global.filepath, path.extname(global.filepath)),
+                            bookPath: global.filepath
+                        }
+                        setModalInfo(infoForUpload);
                     }
-                    setModalInfo(infoForUpload);
+                    else
+                    {
+                        let infoForUpload =
+                        {
+                            isSelected: false,
+                            bookFile: t('exist'),
+                            bookName: t('title'),
+                            bookPath: t('exist'),
+                        }
+                        setModalInfo(infoForUpload);
+                    }
                 }   
             }).catch(err => { console.log(err) });
         }
@@ -72,7 +90,7 @@ export default function(props)
         {
             let ext = path.extname(getModalInfo.bookPath);
 
-            let currentJson = JSON.parse(fs.readFileSync(userPath.books, 'utf8'));
+            let currentJson = props.getBooks;
     
             if (ext === '.txt' || 
                 ext === '.fb2' ||
