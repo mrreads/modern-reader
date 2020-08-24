@@ -8,6 +8,7 @@ function Viewer(props)
     const ref = useRef()
     useEffect(() => { 
         ref.current.scrollTop = ((+ref.current.scrollHeight + parseInt(props.style.padding)) * (props.book.progress * 0.01) - ref.current.clientHeight).toFixed(1);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     let fullHeight, currentScroll, currProgress;

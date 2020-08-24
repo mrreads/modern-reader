@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-import { Input, InputGroup , Modal, Button, Message } from 'rsuite';
+import { Input, InputGroup , Modal, Button } from 'rsuite';
 
 import { useTranslation } from 'react-i18next';
 
@@ -17,8 +17,6 @@ const dialog = electron.remote.dialog;
 
 export default function(props)
 {
-    let messages = '';
-
     const { t } = useTranslation('modal');
     
     const [getModalInfo, setModalInfo] = useState({

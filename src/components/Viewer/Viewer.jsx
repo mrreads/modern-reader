@@ -25,11 +25,14 @@ function Viewer(props)
 
     let book;
     try { book = props.location.data.book; } catch { window.location = '/shelf/books'; }
+    
     useEffect(() => 
     { 
         props.progress.setCurrentBook(props.location.data.book);
         props.progress.setProgress(props.location.data.book.progress);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    
 
     let view =  (book.ext === '.txt') ? <ViewTxt book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } /> :
                 (book.ext === '.fb2') ? <ViewFb2 book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } /> :
