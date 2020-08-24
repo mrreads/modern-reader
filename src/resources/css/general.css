@@ -137,7 +137,7 @@ body
 	opacity: 0.4;
 }
 
-#titleBar div:hover, #titleBar a:hover
+#titleBar div:not(.disabled):hover, #titleBar a:hover
 {
 	opacity: 1;
 	background-color: #EEEEEE;
@@ -208,6 +208,7 @@ body
 #content.view
 {
 	overflow: hidden;
+
 	padding: 0;
 }
 #content .title
@@ -434,6 +435,15 @@ body
 #viewer > .content
 {
 	overflow-x: auto;
+
 	height: 100%;
+
+	user-select: text;
 	white-space: pre-line;
+}
+
+#notesSave.disabled
+{
+	cursor: default;
+	opacity: 0.1;
 }

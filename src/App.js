@@ -13,6 +13,7 @@ import Settings from './components/Settings/Settings';
 import useBookHooks from './hooks/bookHooks';
 import useSettingHooks from './hooks/settingHooks';
 import useTitleBarHooks from './hooks/titleBarHook';
+import useNotesHooks from './hooks/notesHooks';
 
 import 'rsuite/dist/styles/rsuite-default.css';
 import './resources/css/general.css';
@@ -23,6 +24,7 @@ function App ()
 	const booksHook = useBookHooks();
 	const settingHook = useSettingHooks();
 	const titleHook = useTitleBarHooks();
+	const notesHook = useNotesHooks();
 
 	(settingHook.getDarkMode) ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
@@ -31,9 +33,9 @@ function App ()
 
 		<Redirect from='/' to='/shelf/books' />
 		
-		<TitleBar  settings={ settingHook } titlebar={ titleHook } progress={ booksHook } />
+		<TitleBar  settings={ settingHook } titlebar={ titleHook } progress={ booksHook } notes={ notesHook } />
 		
-		<Route path="/viewer" > <Viewer settings={ settingHook } titlebar={ titleHook } progress={ booksHook } /> </Route>
+		<Route path="/viewer" > <Viewer settings={ settingHook } titlebar={ titleHook } progress={ booksHook } notes={ notesHook } /> </Route>
 		
 		<Route path="/shelf"> <SideBar titlebar={ titleHook } /> </Route>
 

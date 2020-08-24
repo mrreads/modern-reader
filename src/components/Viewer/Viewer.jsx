@@ -34,9 +34,10 @@ function Viewer(props)
     }, []);
     
 
-    let view =  (book.ext === '.txt') ? <ViewTxt book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } /> :
-                (book.ext === '.fb2') ? <ViewFb2 book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } /> :
-                (book.ext === '.epub') ? <ViewEpub book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } /> : null
+    let view =  
+    (book.ext === '.txt') ? <ViewTxt    book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } notes={ props.notes } /> :
+    (book.ext === '.fb2') ? <ViewFb2    book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } notes={ props.notes } /> :
+    (book.ext === '.epub') ? <ViewEpub  book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } notes={ props.notes } /> : null
 
     const { t } = useTranslation('viewer');
 

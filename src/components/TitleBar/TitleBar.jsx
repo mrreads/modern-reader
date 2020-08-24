@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink, Route} from 'react-router-dom';
 
-import { X, ArrowsDiagonal, ChevronDown, Dots, ArrowLeft } from 'tabler-icons-react';
+import { X, ArrowsDiagonal, ChevronDown, Dots, ArrowLeft, Note } from 'tabler-icons-react';
 
 const fs = window.require('fs');
 const userPath = require('./../../storage').userPath;
@@ -95,20 +95,38 @@ class TitleBar extends React.Component
         this.props.progress.setBooks(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
     }
 
+    saveSelectedNote = () =>
+    {
+        if (this.props.notes.getSelectedStatus)
+        {
+            let allNotes = [...this.props.notes.getNotes];
+            const newNote = window.getSelection().toString();
+            allNotes.push(newNote);
+            fs.writeFileSync(userPath.notes, JSON.stringify(allNotes));
+            this.props.notes.setSelectedStatus(false);
+            document.getSelection().removeAllRanges();
+        }
+    }
+
     render()
     {
         return(
         <div id="titleBar">
             
-            <Route exac path="/viewer" render={() => (
-            <>
-            <NavLink  to="/shelf/books"  id="titleBack" onClick={ this.whenClickBack }>
-                <ArrowLeft size={48} strokeWidth={2} color={'black'} />
-            </NavLink>
-            
-            <div id="viewSetting" onClick={ this.toggleSettingWindow }>
-                <Dots size={48} strokeWidth={2} color={'black'} />
-            </div> </>)} />
+            <Route exac path="/viewer" render={() => 
+            (<>
+                <NavLink  to="/shelf/books"  id="titleBack" onClick={ this.whenClickBack }>
+                    <ArrowLeft size={48} strokeWidth={2} color={'black'} />
+                </NavLink>
+                
+                <div id="viewSetting" onClick={ this.toggleSettingWindow }>
+                    <Dots size={48} strokeWidth={2} color={'black'} />
+                </div> 
+
+                <div id="notesSave" onClick={ this.saveSelectedNote } className={ (!this.props.notes.getSelectedStatus) ? "disabled" : "" }>
+                    <Note size={48} strokeWidth={2} color={'black'} />
+                </div> 
+            </> )} />
 
             <p id="titleStatus"> { this.props.titlebar.getTitleStatus } </p>
 
