@@ -31,5 +31,9 @@
         "lineHeight": "Line-Height",
         "fontSize": "Font-Size",
         "darkMode": "Dark mode"
+    },
+    "titlebar":
+    {
+        "notes": "Notes success added!"
     }
 }

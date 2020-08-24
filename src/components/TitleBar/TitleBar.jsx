@@ -1,89 +1,93 @@
 import React from 'react';
 import {NavLink, Route} from 'react-router-dom';
 
+import { Alert } from 'rsuite';
+
 import { X, ArrowsDiagonal, ChevronDown, Dots, ArrowLeft, Note } from 'tabler-icons-react';
+
+import { useTranslation } from 'react-i18next';
 
 const fs = window.require('fs');
 const userPath = require('./../../storage').userPath;
 
-class TitleBar extends React.Component
+export default function(props)
 {
-    componentDidMount()
+
+    const { t } = useTranslation('titlebar');
+
+    const win = window.require('electron').remote.getCurrentWindow();
+    document.onreadystatechange = (event) => 
     {
-        const win = window.require('electron').remote.getCurrentWindow();
-        document.onreadystatechange = (event) => 
+        if (document.readyState === "complete") 
         {
-            if (document.readyState === "complete") 
+            handleWindowControls();
+        }
+    };
+    window.onbeforeunload = (event) => 
+    {
+        win.removeAllListeners();
+    }
+    function handleWindowControls() 
+    {
+        document.getElementById('titleMinimize').addEventListener("click", event => {
+            win.minimize();
+        });
+
+        document.getElementById('titleRestore').addEventListener("click", event => {
+            if (win.isMaximized())
             {
-                handleWindowControls();
+                win.unmaximize();
             }
-        };
-        window.onbeforeunload = (event) => 
-        {
-            win.removeAllListeners();
-        }
-        function handleWindowControls() 
-        {
-            document.getElementById('titleMinimize').addEventListener("click", event => {
-                win.minimize();
-            });
+            else
+            {
+                win.maximize();
+            }
+        });
 
-            document.getElementById('titleRestore').addEventListener("click", event => {
-                if (win.isMaximized())
-                {
-                    win.unmaximize();
-                }
-                else
-                {
-                    win.maximize();
-                }
-            });
+        document.getElementById('titleClose').addEventListener("click", event => {
+            win.close();
+        });
+    }
 
-            document.getElementById('titleClose').addEventListener("click", event => {
-                win.close();
-            });
+    const toggleSettingWindow = () =>
+    {
+        props.settings.setSettingWindowStatus(!props.settings.getSettingWindowStatus);
+
+        if (props.settings.getSettingWindowStatus === true)
+        {
+            updateSettingsFile();
         }
     }
 
-    toggleSettingWindow = () =>
+    const updateSettingsFile = () =>
     {
-        this.props.settings.setSettingWindowStatus(!this.props.settings.getSettingWindowStatus);
-
-        if (this.props.settings.getSettingWindowStatus === true)
-        {
-            this.updateSettingsFile();
-        }
-    }
-
-    updateSettingsFile = () =>
-    {
-        let settings = {...this.props.settings.getSetting};
+        let settings = {...props.settings.getSetting};
 
 
 
-        settings.padding = this.props.settings.getPadding;
-        settings.fontSize = this.props.settings.getFontSize;
-        settings.lineHeight = this.props.settings.getLineHeight;
-        settings.darkMode = this.props.settings.getDarkMode;
+        settings.padding = props.settings.getPadding;
+        settings.fontSize = props.settings.getFontSize;
+        settings.lineHeight = props.settings.getLineHeight;
+        settings.darkMode = props.settings.getDarkMode;
 
         fs.writeFileSync(userPath.settings, JSON.stringify(settings));
     }
 
-    whenClickBack = () =>
+    const whenClickBack = () =>
     {
-        this.updateSettingsFile(); 
-        this.props.settings.setSettingWindowStatus(false);
-        this.props.titlebar.setTitleStatus('');
+        updateSettingsFile(); 
+        props.settings.setSettingWindowStatus(false);
+        props.titlebar.setTitleStatus('');
 
-        this.saveBookProgress();
+        saveBookProgress();
 
     }
     
-    saveBookProgress = () =>
+    const saveBookProgress = () =>
     {
-        let oldBooks = [...this.props.progress.getBooks];
-        let currentBook = {...this.props.progress.getCurrentBook};
-        let progress = this.props.progress.getProgress;
+        let oldBooks = [...props.progress.getBooks];
+        let currentBook = {...props.progress.getCurrentBook};
+        let progress = props.progress.getProgress;
         let newBooks = oldBooks.map((book) => 
         {
             if (book.path === currentBook.path)
@@ -92,58 +96,54 @@ class TitleBar extends React.Component
             return book;
         });
         fs.writeFileSync(userPath.books, JSON.stringify(newBooks));
-        this.props.progress.setBooks(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
+        props.progress.setBooks(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
     }
 
-    saveSelectedNote = () =>
+    const saveSelectedNote = () =>
     {
-        if (this.props.notes.getSelectedStatus)
+        if (props.notes.getSelectedStatus)
         {
-            let allNotes = [...this.props.notes.getNotes];
+            let allNotes = [...props.notes.getNotes];
             const newNote = window.getSelection().toString();
             allNotes.push(newNote);
             fs.writeFileSync(userPath.notes, JSON.stringify(allNotes));
-            this.props.notes.setSelectedStatus(false);
+            props.notes.setSelectedStatus(false);
             document.getSelection().removeAllRanges();
-            this.props.notes.setNotes(allNotes);
+            props.notes.setNotes(allNotes);
+
+            Alert.success(t('notes'));
         }
     }
-
-    render()
-    {
-        return(
-        <div id="titleBar">
+    return(
+    <div id="titleBar">
+        
+        <Route exac path="/viewer" render={() => 
+        (<>
+            <NavLink  to="/shelf/books"  id="titleBack" onClick={ whenClickBack }>
+                <ArrowLeft size={48} strokeWidth={2} color={'black'} />
+            </NavLink>
             
-            <Route exac path="/viewer" render={() => 
-            (<>
-                <NavLink  to="/shelf/books"  id="titleBack" onClick={ this.whenClickBack }>
-                    <ArrowLeft size={48} strokeWidth={2} color={'black'} />
-                </NavLink>
-                
-                <div id="viewSetting" onClick={ this.toggleSettingWindow }>
-                    <Dots size={48} strokeWidth={2} color={'black'} />
-                </div> 
+            <div id="viewSetting" onClick={ toggleSettingWindow }>
+                <Dots size={48} strokeWidth={2} color={'black'} />
+            </div> 
 
-                <div id="notesSave" onClick={ this.saveSelectedNote } className={ (!this.props.notes.getSelectedStatus) ? "disabled" : "" }>
-                    <Note size={48} strokeWidth={2} color={'black'} />
-                </div> 
-            </> )} />
+            <div id="notesSave" onClick={ saveSelectedNote } className={ (!props.notes.getSelectedStatus) ? "disabled" : "" }>
+                <Note size={48} strokeWidth={2} color={'black'} />
+            </div> 
+        </> )} />
 
-            <p id="titleStatus"> { this.props.titlebar.getTitleStatus } </p>
+        <p id="titleStatus"> { props.titlebar.getTitleStatus } </p>
 
-            <div id="titleMinimize">
-                <ChevronDown size={48} strokeWidth={2} color={'black'} />
-            </div>
+        <div id="titleMinimize">
+            <ChevronDown size={48} strokeWidth={2} color={'black'} />
+        </div>
 
-            <div id="titleRestore">
-                <ArrowsDiagonal size={48} strokeWidth={2} color={'black'} />
-            </div>
+        <div id="titleRestore">
+            <ArrowsDiagonal size={48} strokeWidth={2} color={'black'} />
+        </div>
 
-            <div id="titleClose">
-                <X size={48} strokeWidth={2} color={'black'} />
-            </div>
-        </div>)
-    }
+        <div id="titleClose">
+            <X size={48} strokeWidth={2} color={'black'} />
+        </div>
+    </div>)
 }
-
-export default TitleBar;
