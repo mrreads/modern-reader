@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-import { Input, InputGroup , Modal, Button } from 'rsuite';
+import { Input, InputGroup , Modal, Button, Alert } from 'rsuite';
 
 import { useTranslation } from 'react-i18next';
 
@@ -76,6 +76,7 @@ export default function(props)
                             bookPath: t('exist'),
                         }
                         setModalInfo(infoForUpload);
+                        Alert.error(t('exist'));
                     }
                 }   
             }).catch(err => { console.log(err) });
