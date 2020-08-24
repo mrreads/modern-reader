@@ -105,6 +105,7 @@ class TitleBar extends React.Component
             fs.writeFileSync(userPath.notes, JSON.stringify(allNotes));
             this.props.notes.setSelectedStatus(false);
             document.getSelection().removeAllRanges();
+            this.props.notes.setNotes(allNotes);
         }
     }
 

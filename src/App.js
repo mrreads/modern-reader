@@ -41,7 +41,7 @@ function App ()
 
 		<Switch>
 			<Route exact path="/shelf/books"> <Books books={ booksHook } /> </Route>
-			<Route exact path="/shelf/notes" component={ Notes } />
+			<Route exact path="/shelf/notes"> <Notes notes={ notesHook } /> </Route>
 			<Route exact path="/shelf/settings"> <Settings settings={ settingHook } /> </Route>
 		</Switch>
 		

@@ -88,7 +88,7 @@ export default function(props)
         {
             let ext = path.extname(getModalInfo.bookPath);
 
-            let currentJson = props.getBooks;
+            let currentJson = [...JSON.parse(fs.readFileSync(userPath.books, 'utf8'))];;
     
             if (ext === '.txt' || 
                 ext === '.fb2' ||
