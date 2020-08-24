@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter  } from 'react-router-dom';
 
 import ViewTxt from './formats/ViewTxt';
@@ -25,10 +25,15 @@ function Viewer(props)
 
     let book;
     try { book = props.location.data.book; } catch { window.location = '/shelf/books'; }
+    useEffect(() => 
+    { 
+        props.progress.setCurrentBook(props.location.data.book);
+        props.progress.setProgress(props.location.data.book.progress);
+    }, []);
 
-    let view =  (book.ext === '.txt') ? <ViewTxt book={ book } style={ style } titlebar={ props.titlebar } /> :
-                (book.ext === '.fb2') ? <ViewFb2 book={ book } style={ style } titlebar={ props.titlebar } /> :
-                (book.ext === '.epub') ? <ViewEpub book={ book } style={ style } titlebar={ props.titlebar } /> : null
+    let view =  (book.ext === '.txt') ? <ViewTxt book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } /> :
+                (book.ext === '.fb2') ? <ViewFb2 book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } /> :
+                (book.ext === '.epub') ? <ViewEpub book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } /> : null
 
     const { t } = useTranslation('viewer');
 

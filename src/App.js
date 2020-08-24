@@ -31,9 +31,9 @@ function App ()
 
 		<Redirect from='/' to='/shelf/books' />
 		
-		<TitleBar  settings={ settingHook } titlebar={ titleHook } />
+		<TitleBar  settings={ settingHook } titlebar={ titleHook } progress={ booksHook } />
 		
-		<Route path="/viewer" > <Viewer settings={ settingHook } titlebar={ titleHook } /> </Route>
+		<Route path="/viewer" > <Viewer settings={ settingHook } titlebar={ titleHook } progress={ booksHook } /> </Route>
 		
 		<Route path="/shelf"> <SideBar titlebar={ titleHook } /> </Route>
 

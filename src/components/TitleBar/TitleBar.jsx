@@ -74,8 +74,27 @@ class TitleBar extends React.Component
         this.updateSettingsFile(); 
         this.props.settings.setSettingWindowStatus(false);
         this.props.titlebar.setTitleStatus('');
+
+        this.saveBookProgress();
+
     }
     
+    saveBookProgress = () =>
+    {
+        let oldBooks = [...this.props.progress.getBooks];
+        let currentBook = {...this.props.progress.getCurrentBook};
+        let progress = this.props.progress.getProgress;
+        let newBooks = oldBooks.map((book) => 
+        {
+            if (book.path === currentBook.path)
+                book.progress = progress;
+
+            return book;
+        });
+        fs.writeFileSync(userPath.books, JSON.stringify(newBooks));
+        this.props.progress.setBooks(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
+    }
+
     render()
     {
         return(
