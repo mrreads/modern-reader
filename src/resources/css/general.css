@@ -450,8 +450,27 @@ body
 
 #content .note
 {
+	display: flex;
+	flex-flow: row nowrap;
     margin-bottom: 15px;
     padding: 25px 20px;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 5px;
+}
+
+#content .note p
+{
+	padding-right: 25px;
+	flex-grow: 1;
+}
+
+#content .note .delete
+{
+	opacity: 0.3;
+	transition: 0.3s all;
+}
+
+#content .note .delete:hover
+{
+	opacity: 1;
 }
