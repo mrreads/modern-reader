@@ -1,7 +1,7 @@
 import React from 'react';
 import Note from './Note/Note';
 
-import { Divider } from 'rsuite';
+import { Divider, Alert } from 'rsuite';
 
 import { useTranslation } from 'react-i18next';
 
@@ -19,6 +19,7 @@ export default function(props)
         let newNotes = allNotes.filter(note => note !== forDelete);
         fs.writeFileSync(userPath.notes, JSON.stringify(newNotes));
         props.notes.setNotes(newNotes);
+        Alert.info(t('delete'));
     }
 
     return (
