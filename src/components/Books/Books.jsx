@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import Book from './Book/Book';
 import Modal from './Modal/Modal';
 
-import { IconButton, Icon, ButtonToolbar, Divider } from 'rsuite';
+import { IconButton, Icon, ButtonToolbar, Divider, Alert } from 'rsuite';
 
 import { useTranslation } from 'react-i18next';
+
+const fs = window.require('fs');
+const userPath = require('./../../storage').userPath;
 
 export default function(props)
 {
@@ -15,6 +18,18 @@ export default function(props)
     const showModal = () =>
     {
         setModalStatus(true);
+    }
+
+    const deleteBook = (e, book) =>
+    {
+        e.preventDefault();
+
+        let allBooks = [...props.books.getBooks];
+        let forDelete = book;
+        let newBooks = allBooks.filter(book => book.path !== forDelete.path);
+        fs.writeFileSync(userPath.books, JSON.stringify(newBooks));
+        props.books.setBooks(JSON.parse(fs.readFileSync(userPath.books, 'utf8')));
+        Alert.info(t('delete'));
     }
 
     return (
@@ -32,7 +47,7 @@ export default function(props)
         <Divider />
 
         <div className="books">
-            { props.books.getBooks.map((book, i) => <Book data={ book } key={i} /> ) }
+            { props.books.getBooks.map((book, i) => <Book data={ book } key={i} delete={ deleteBook }/> ) }
         </div>
 
         <Modal getModalStatus={ getModalStatus } setModalStatus={ setModalStatus } setBooks={ props.books.setBooks } getBooks={ props.books.getBooks } />

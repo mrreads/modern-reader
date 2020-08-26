@@ -327,12 +327,14 @@ body
 	font-size: 12px;
 
 	display: flex;
+	align-items: flex-end;
 	flex-flow: column nowrap;
 	justify-content: flex-end;
 
 	width: 100%;
 	max-width: 150px;
-	margin-top: 25px;
+
+/* margin-top: 25px; */
 
 	text-align: right;
 }
@@ -343,6 +345,26 @@ body
 	word-wrap: none;
 
 	color: #575757;
+}
+
+#content .books .book .info .delete
+{
+	width: min-content;
+	margin-bottom: auto;
+
+	transition: 0.3s all;
+
+	opacity: 0.1;
+}
+
+#content .books .book .info .format
+{
+	margin-top: 15px;
+}
+
+#content .books .book .info .delete:hover
+{
+	opacity: 1;
 }
 
 #content .books .book.fb2
@@ -445,6 +467,7 @@ body
 #notesSave.disabled
 {
 	cursor: default;
+
 	opacity: 0.1;
 }
 
@@ -452,22 +475,26 @@ body
 {
 	display: flex;
 	flex-flow: row nowrap;
-    margin-bottom: 15px;
-    padding: 25px 20px;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 5px;
+
+	margin-bottom: 15px;
+	padding: 25px 20px;
+
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 5px;
 }
 
 #content .note p
 {
-	padding-right: 25px;
 	flex-grow: 1;
+
+	padding-right: 25px;
 }
 
 #content .note .delete
 {
-	opacity: 0.3;
 	transition: 0.3s all;
+
+	opacity: 0.3;
 }
 
 #content .note .delete:hover

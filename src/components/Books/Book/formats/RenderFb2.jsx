@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 import { useTranslation } from 'react-i18next';
+import { IconButton, Icon, ButtonToolbar } from 'rsuite';
 
 const fs = window.require('fs');
 
@@ -45,6 +46,10 @@ export default function(props)
            </div>
 
             <div className="info">
+                <ButtonToolbar className="delete" onClick={ e => props.delete(e, props.data) }>
+                    <IconButton icon={ <Icon icon="trash"/> } /> 
+                </ButtonToolbar>
+
                 <p className="format"> { t('format') }: <i> { props.data.ext} </i> </p>
                 <p> { t('strings') }: <i> { props.data.strings} </i> </p>
                 <p> { t('progress') }: <i> { props.data.progress}% </i> </p>

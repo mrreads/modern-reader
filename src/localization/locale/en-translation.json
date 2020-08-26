@@ -5,7 +5,8 @@
         "library": "Books Library",
         "format": "Format",
         "strings": "Strings",
-        "progress": "Progress"
+        "progress": "Progress",
+        "delete": "Book deleted"
     },
     "modal":
     {
