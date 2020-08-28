@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Loading </title>
+    <style>
+        html { height: 100%; overflow: hidden }
+        body 
+        {
+            min-height: 100%;
+            background-color: #232425;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        p { color: #FFF; font-size: 56px; font-family: monospace; margin: 20px; }
+        .progressBar_wrapper { background-color: #232425; width: 500px; }
+        .progressBar 
+        {
+            line-height: 32px;
+
+            width: 1%;
+            height: 3px;
+
+            text-align: center;
+
+            background-color: white;
+        }
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <p> Modern Reader </p>
+    <div class="progressBar_wrapper">
+        <div class="progressBar"></div>
+    </div>
+    <script>
+        (function update() 
+        {
+            let progressBar = document.querySelector(".progressBar");
+            let barWidth = 1;
+            const progressLoad = setInterval(() => {
+                if (barWidth <= 100)
+                    progressBar.style.width = ++barWidth + '%'
+                else
+                    clearInterval(progressLoad);
+            }, 10);
+        })();
+    </script>
+</body>
+</html>

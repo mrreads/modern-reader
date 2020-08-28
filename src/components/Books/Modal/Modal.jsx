@@ -9,9 +9,7 @@ const userPath = require('../../../storage').userPath;
 
 const fs = window.require('fs'); 
 const path = window.require('path'); 
-const electron = window.require('electron'); 
-const dialog = electron.remote.dialog; 
-
+const { dialog } = window.require('electron');
 
 
 

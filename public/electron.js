@@ -1,11 +1,13 @@
-const { app, BrowserWindow, globalShortcut } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');   
 const path = require('path');
 
-let win;
-
-function createWindow() 
+let win, splash;
+app.on('ready', () => 
 {
+    splash = new BrowserWindow({width: 810, height: 610, transparent: true, frame: false, alwaysOnTop: true});
+    splash.loadURL(__dirname + '/splashscreen.html');
+    
     win = new BrowserWindow({
         width: 900,
         height: 700,
@@ -13,19 +15,24 @@ function createWindow()
         minHeight: 600,
         frame: false,
         webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
+            enableRemoteModule: true
         },
+        show: false
     });
 
-    const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
- 
-    win.loadURL(startURL);
- 
-    win.once('ready-to-show', () => win.show());
-    win.on('closed', () => { win = null; });
-}
 
-app.on('ready', createWindow);
+    const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
+    win.loadURL(startURL);
+    win.on('ready-to-show', () => 
+    {
+        splash.destroy();
+        win.show();
+    });
+
+    win.on('closed', () => { win = null; });
+});
 
 app.on("window-all-closed", () => 
 {
@@ -35,10 +42,3 @@ app.on("window-all-closed", () =>
     }
 });
 
-app.on("activate", () => 
-{
-    if (win === null) 
-    {
-        createWindow();
-    }
-});
