@@ -15,11 +15,11 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-i18next": "^11.7.1",
+    "react-i18next": "^11.7.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "rsuite": "^4.8.1",
-    "tabler-icons-react": "^1.8.0"
+    "tabler-icons-react": "^1.9.0"
   },
   "scripts": {
     "start-react": "react-scripts start",
@@ -47,13 +47,13 @@
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
-    "electron": "^9.2.1",
+    "electron": "^10.1.0",
     "electron-builder": "^22.8.0",
     "wait-on": "^5.2.0"
   },
   "build": {
     "productName": "Modern Reader",
-    "appId": "com.modern-reader",
+    "appId": "com.modern-reader.com",
     "directories": {
       "buildResources": "build"
     },
