@@ -19,7 +19,7 @@ if (!fs.existsSync(appData + '/Data/books.json'))
     fs.writeFile(appData + '/Data/books.json', '[ ]',(err) => {});
 
 if (!fs.existsSync(appData + '/Data/notes.json'))
-    fs.writeFile(appData + '/Data/notes.json', '{ }',(err) => {});
+    fs.writeFile(appData + '/Data/notes.json', '[ ]',(err) => {});
 
 
 if (!fs.existsSync(appData + '/Data/settings.json'))
