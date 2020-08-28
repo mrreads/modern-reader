@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const isDev = require('electron-is-dev');   
 const path = require('path');
 
@@ -33,6 +33,9 @@ app.on('ready', () =>
     });
 
     win.on('closed', () => { win = null; });
+    
+    if (!isDev)
+        globalShortcut.register("CommandOrControl+R", () => { return false });
 });
 
 app.on("window-all-closed", () => 
