@@ -5,7 +5,8 @@ const path = require('path');
 let win, splash;
 app.on('ready', () => 
 {
-    splash = new BrowserWindow({width: 810, height: 610, transparent: true, frame: false, alwaysOnTop: true});
+    splash = new BrowserWindow({minWidth: 810, minHeight: 610, transparent: true, frame: false, alwaysOnTop: true, 
+        webPreferences: { nodeIntegration: true, enableRemoteModule: true },});
     splash.loadURL(__dirname + '/splashscreen.html');
     
     win = new BrowserWindow({

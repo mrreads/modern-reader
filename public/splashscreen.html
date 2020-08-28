@@ -5,28 +5,28 @@
     <title> Loading </title>
     <style>
         html { height: 100%; overflow: hidden }
-        body 
+        body
         {
             min-height: 100%;
-            background-color: #232425;
+            background-color: #FFF;
             display: flex;
             flex-flow: column nowrap;
             justify-content: center;
             align-items: center;
+            color: #232425;
         }
-        p { color: #FFF; font-size: 56px; font-family: monospace; margin: 20px; }
+        body.dark { background-color: #232425; color: #FFF }
+        p { font-size: 56px; font-family: monospace; margin-bottom: 20px; margin-top: -75px }
         .progressBar_wrapper { background-color: #232425; width: 500px; }
         .progressBar 
         {
             line-height: 32px;
-
             width: 1%;
             height: 3px;
-
             text-align: center;
-
-            background-color: white;
+            background-color: #232425;
         }
+        body.dark .progressBar { background-color: #FFF }
     </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -36,17 +36,21 @@
         <div class="progressBar"></div>
     </div>
     <script>
-        (function update() 
-        {
-            let progressBar = document.querySelector(".progressBar");
-            let barWidth = 1;
-            const progressLoad = setInterval(() => {
-                if (barWidth <= 100)
-                    progressBar.style.width = ++barWidth + '%'
-                else
-                    clearInterval(progressLoad);
-            }, 10);
-        })();
+        const fs = window.require('fs');
+        const app = window.require('electron').remote.app;  
+        let appData = app.getPath('userData');
+        if (fs.existsSync(appData + '/Data/settings.json'))
+            if(JSON.parse(fs.readFileSync(appData + '/Data/settings.json', 'utf8')).darkMode)
+                document.body.classList.add('dark');
+
+        let progressBar = document.querySelector(".progressBar");
+        let barWidth = 1;
+        const progressLoad = setInterval(() => {
+            if (barWidth <= 100)
+                progressBar.style.width = ++barWidth + '%'
+            else
+                clearInterval(progressLoad);
+        }, 10);
     </script>
 </body>
 </html>
