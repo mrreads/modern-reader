@@ -9,6 +9,7 @@
 - Dark theme support
 - Progress safe support
 - Notes support
+- Multilanguages
 
 # Books format
 

@@ -36,7 +36,8 @@ export default function(props)
           className={(fileIsExist) ? `book ${extClass}` : `book ${extClass} error` }
           onClick={ onClick } >
 
-        <img src={bookData.image} alt="Book cover" />
+        { (bookData.image) ? <img src={bookData.image} alt="Book cover" /> : null  }
+        
         
         <div className="wrapper">
             <div className="mainInfo">

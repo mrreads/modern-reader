@@ -213,9 +213,14 @@ body
 }
 #content .title
 {
-	min-height: 37px;
+	
 	display: flex;
 	flex-flow: row nowrap;
+}
+
+#content > .title
+{
+	min-height: 37px;
 }
 
 #content .title > h4
