@@ -40,7 +40,7 @@ body.dark
 	{
 		stroke: $second-black;
 	}
-	& #titleBar div:hover svg, #titleBar > a:hover svg
+	& #titleBar div:not(.disabled):hover svg, #titleBar > a:hover svg
 	{
 		stroke: $main-black;
 	}

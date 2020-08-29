@@ -466,8 +466,13 @@ body
 
 	height: 100%;
 
-	user-select: text;
+	
 	white-space: pre-line;
+}
+
+#viewer .content, #viewer .content *
+{
+	user-select: text;
 }
 
 #notesSave.disabled

@@ -32,7 +32,15 @@ function Viewer(props)
 
     const [content] = useState(textBook);
 
-    return (<div className="content" style={ props.style } ref={ ref } onScroll={ e => handleScroll(e.target) }>
+    const statusNote = () =>
+    {
+        if (window.getSelection().toString() !== '')
+            props.notes.setSelectedStatus(true);
+        else
+            props.notes.setSelectedStatus(false);
+    }
+
+    return (<div className="content" style={ props.style } ref={ ref } onScroll={ e => handleScroll(e.target) } onClick={ statusNote }>
                 { content }
             </div>);
 }
