@@ -1,12 +1,30 @@
-# Modern Reader
+![preview](https://i.ibb.co/WzqY3XJ/preview.png)
 
-Modern reader with clean interface.
 
-# Supports format
+# [Download stable/beta release](https://github.com/mrreads/modern-reader/releases) (windows only)
+
+# Features
+
+- Clean interface
+- Dark theme support
+- Progress safe support
+- Notes support
+
+# Books format
 
 - txt
 - fb2
-# Storage folder
+
+
+# Technology
+
+- [React](https://reactjs.org/)
+- [Electron](https://www.electronjs.org/)
+- [rsuite](https://github.com/rsuite/rsuite)
+
+# For developer information
+
+## Storage data
 
 Data format - **json**.
 
@@ -18,27 +36,4 @@ Data on windows stored in:
 - **notes.json** - data about notes.
 - **setting.json** - app settings.
 
-### Not recommended to edit!
-
-# Technology 
-- [React](https://reactjs.org/)
-- [Electron](https://www.electronjs.org/)
-- [rsuite](https://github.com/rsuite/rsuite)
-- [fb2html](https://www.npmjs.com/package/fb2html) and other npm packages.
-
-# Development
-
-## Clone
-```git clone https://github.com/mrreads/modern-reader```
-
-## Move to directory
-```cd modern-reader```
-
-### Install dependencies
-```npm install```
-
-## For dev run
-```npm run start```
-
-## For build run
-```npm run build```
+##### Not recommended to edit!
