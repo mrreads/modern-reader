@@ -28,6 +28,8 @@ export default function(props)
             <h4> { t('notes') } </h4>
         </div>
         <Divider />
-        { props.notes.getNotes.map((note, i) => <Note delete={ deleteNote } data={ note } key={i} /> ) }
+        <div className="notes">
+            { props.notes.getNotes.map((note, i) => <Note delete={ deleteNote } data={ note } key={i} /> ) }
+        </div>
     </div>);
 }

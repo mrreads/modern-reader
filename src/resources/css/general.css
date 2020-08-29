@@ -285,7 +285,7 @@ body
 #content .books
 {
 	display: flex;
-	flex-flow: column nowrap;
+	flex-flow: column-reverse nowrap;
 }
 
 #content .books .book
@@ -480,6 +480,12 @@ body
 	cursor: default;
 
 	opacity: 0.1;
+}
+
+#content .notes
+{
+    display: flex;
+    flex-flow: column-reverse nowrap;
 }
 
 #content .note
