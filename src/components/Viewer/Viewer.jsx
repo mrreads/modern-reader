@@ -29,7 +29,6 @@ function Viewer(props)
     { 
         props.progress.setCurrentBook(props.location.data.book);
         props.progress.setProgress(props.location.data.book.progress);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
 

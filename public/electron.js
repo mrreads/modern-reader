@@ -14,12 +14,13 @@ app.on('ready', () =>
         height: 700,
         minWidth: 900,
         minHeight: 600,
-        frame: false,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
+            contextIsolation: false,
+            preload: path.join(__dirname, 'preload.js'),
             enableRemoteModule: true
         },
+        frame: false,
         show: false
     });
 
