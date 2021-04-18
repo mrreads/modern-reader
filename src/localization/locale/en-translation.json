@@ -6,7 +6,9 @@
         "format": "Format",
         "strings": "Strings",
         "progress": "Progress",
-        "delete": "Book deleted"
+        "delete": "Book deleted",
+        "language": "Language",
+        "author": "Author"
     },
     "modal":
     {
@@ -32,7 +34,8 @@
         "padding": "Padding",
         "lineHeight": "Line-Height",
         "fontSize": "Font-Size",
-        "darkMode": "Dark mode"
+        "darkMode": "Dark mode",
+        "content": "Сontent"
     },
     "titlebar":
     {

@@ -235,4 +235,37 @@ body.dark
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		background-color: #303133;
 	}
+
+	.charapters
+	{
+		border-right: 1px solid rgba(255, 255, 255, 0.2);
+		background-color: #303133;
+	}
+
+	.charapter
+	{
+		color: #FFFFFF;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.charapter:hover
+	{
+		color: #575757;
+		background-color: #EEEEEE;
+	}
+
+	.charapters h3
+	{
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.contentHide
+	{
+		background-color: #444548;
+		stroke: white;
+	}
+	.contentHide:hover
+	{
+		background-color: #67696B;
+	}
 }

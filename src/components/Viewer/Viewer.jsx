@@ -3,6 +3,7 @@ import { withRouter  } from 'react-router-dom';
 
 import ViewTxt from './formats/ViewTxt';
 import ViewFb2 from './formats/ViewFb2';
+import ViewEpub from './formats/ViewEpub';
 
 import { useTranslation } from 'react-i18next';
 
@@ -34,6 +35,7 @@ function Viewer(props)
 
     let view =  
     (book.ext === '.txt') ? <ViewTxt    book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } notes={ props.notes } /> :
+    (book.ext === '.epub') ? <ViewEpub    book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } notes={ props.notes } /> :
     (book.ext === '.fb2') ? <ViewFb2    book={ book } style={ style } titlebar={ props.titlebar } progress={ props.progress } notes={ props.notes } /> : null
 
     const { t } = useTranslation('viewer');

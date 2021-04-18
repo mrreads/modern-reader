@@ -44,7 +44,7 @@ export default function(props)
 
                 filters: [ { 
                     name: 'Books format', 
-                    extensions: ['txt', 'fb2']
+                    extensions: ['txt', 'fb2', 'epub']
                 }, ], 
                 
                 properties: ['openFile'] 
@@ -92,7 +92,8 @@ export default function(props)
             let currentJson = [...JSON.parse(fs.readFileSync(userPath.books, 'utf8'))];;
     
             if (ext === '.txt' || 
-                ext === '.fb2')
+                ext === '.fb2' ||
+                ext === '.epub')
             {
                 let data = {
                     "name": getModalInfo.bookName,

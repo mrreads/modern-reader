@@ -6,7 +6,9 @@
         "format": "Формат",
         "strings": "Строк",
         "progress": "Прогресс",
-        "delete": "Книга удалена"
+        "delete": "Книга удалена",
+        "language": "Язык",
+        "author": "Автор"
     },
     "modal":
     {
@@ -32,7 +34,8 @@
         "padding": "Отступы",
         "lineHeight": "Высота строки",
         "fontSize": "Размер шрифта",
-        "darkMode": "Тёмный режим"
+        "darkMode": "Тёмный режим",
+        "content": "Содержание"
     },
     "titlebar":
     {

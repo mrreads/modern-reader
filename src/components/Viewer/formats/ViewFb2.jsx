@@ -7,6 +7,7 @@ const fs = window.require('fs');
 
 function Viewer(props)
 {
+    console.log('б');
     const ref = useRef()
     useEffect(() => { 
         ref.current.scrollTop = ((+ref.current.scrollHeight + parseInt(props.style.padding)) * (props.book.progress * 0.01) - ref.current.clientHeight).toFixed(1);
