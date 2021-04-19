@@ -530,18 +530,17 @@ body
 
 .charapters
 {
-	min-width: 150px;
-	background-color: #fff;
-
 	position: fixed;
 	z-index: 1;
 
+	overflow-y: scroll;
+
 	width: max-content;
+	min-width: 150px;
 	height: 100%;
 
 	border-right: 1px solid rgba(0,0,0,0.1);
-
-	overflow-y: scroll;
+	background-color: #FFFFFF;
 }
 
 .charapter
@@ -557,6 +556,7 @@ body
 .charapter:not(.active):hover
 {
 	transition: 0.8s background-color, 0.3s color;
+
 	opacity: 0.6;
 	color: #3A3A3A;
 	background-color: #EEEEEE;
@@ -579,19 +579,22 @@ body
 .contentHide
 {
 	position: fixed;
-	right: 30px;
 	top: 60px;
-    color: #575757;
-    background: #f7f7fa;
-    height: 40px;
+	right: 30px;
+
 	width: 40px;
+	height: 40px;
 	padding: 6px;
-	border-radius: 6px;
+
 	cursor: pointer;
 	transition: 0.3s all;
+
+	color: #575757;
+	border-radius: 6px;
+	background: #F7F7FA;
 }
 
 .contentHide:hover
 {
-	background-color: #e5e5ea;
+	background-color: #E5E5EA;
 }

@@ -26,6 +26,8 @@ function Viewer(props)
 
     const [getAllCharapter, setAllCharapter] = useState(0);
 
+    const [getToc, setToc] = useState(0);
+
     const [getActiveCharapter, setActiveCharapter] = useState(0);
 
     let textBook = [];
@@ -38,15 +40,16 @@ function Viewer(props)
         .then(function (epub)
         {
             console.log(epub);
-
-            setCharaptersList(epub.toc);
+            
+            setToc(epub.toc)
+            setCharaptersList(epub.flow);
     
-            epub.spine.contents.map((charapter, i) => {     
+            epub.flow.map((charapter, i) => {     
                 epub.getChapter(charapter.id, (error, text) => {
                     
-                    textBook.push(text);
-    
-                    if ((i + 1) == (epub.spine.contents.length))
+                    textBook[charapter.id] = text;
+                    
+                    if (i == (epub.flow.length - 1))
                         setAllCharapter(textBook);
 
                 });
@@ -72,10 +75,20 @@ function Viewer(props)
         setCharapterHide(!getCharapterHide);
     }
 
-    const loadCharapter = (i) =>
+    const loadCharapter = (id) =>
     {
-        setContent(Parser(getAllCharapter[i]))
-        setActiveCharapter(i);
+        setContent(Parser(getAllCharapter[id]))
+        setActiveCharapter(id);
+    }
+
+    const readAll = () =>
+    {
+        let epubTemp;
+        getCharaptersList.map(c => {
+            epubTemp += getAllCharapter[c.id];
+        });
+        setContent(Parser(epubTemp));
+        setActiveCharapter('all');
     }
 
     const statusNote = () =>
@@ -85,30 +98,23 @@ function Viewer(props)
         else
             props.notes.setSelectedStatus(false);
     }
-
-    const readAll = () =>
-    {
-        let temp;
-        getAllCharapter.map((text) => {     
-            temp += text;
-            });
-
-        setContent(Parser(getAllCharapter));
-        setActiveCharapter('all');
-    }
+    
 
     return (<>
     
             <Slide in={ getCharapterHide } exitedClassName='hide' placement='left' > 
                 
                 <div className="charapters">
-                    <p className={getActiveCharapter == 'all' ? 'charapter active' : 'charapter'} onClick={readAll} > Читать всё </p>
+                    <p className={getActiveCharapter == 'all' ? 'charapter active' : 'charapter'} onClick={ readAll} > Читать всё </p>
                     <h3> { t('content') } </h3>
                     {    !getCharaptersList.length ? null : getCharaptersList.map((charapter, i) => {     
                             return (
-                                (getActiveCharapter ==  i) ?
-                                <p className="charapter active" key={i} onClick={()=>loadCharapter(i)} > { charapter.title } </p> :
-                                <p className="charapter" key={i} onClick={()=>loadCharapter(i)} > { charapter.title } </p>
+                                (getActiveCharapter ==  charapter.id) ?
+                                <p style={{textIndent: charapter.level * 30 + 'px'}}
+                                className="charapter active" key={i} onClick={()=>loadCharapter(charapter.id)} > { charapter.title } ( { charapter.id } ) </p> :
+                                
+                                <p style={{textIndent: charapter.level * 30 + 'px'}}
+                                className="charapter" key={i} onClick={()=>loadCharapter(charapter.id)} > { charapter.title } ( { charapter.id } ) </p>
                                 ) 
                         })
                     }
