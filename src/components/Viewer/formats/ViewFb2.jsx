@@ -7,9 +7,9 @@ const fs = window.require('fs');
 
 function Viewer(props)
 {
-    console.log('б');
     const ref = useRef()
     useEffect(() => { 
+        props.titlebar.setTitleStatus(props.book.name);
         ref.current.scrollTop = ((+ref.current.scrollHeight + parseInt(props.style.padding)) * (props.book.progress * 0.01) - ref.current.clientHeight).toFixed(1);
     }, []);
 
@@ -20,7 +20,7 @@ function Viewer(props)
         fullHeight = ref.current.scrollHeight + parseInt(props.style.padding);
         currProgress = (currentScroll * 100 / fullHeight).toFixed(0);
         props.progress.setProgress(currProgress);
-        props.titlebar.setTitleStatus(currProgress + '% / 100%');
+        props.titlebar.setTitleStatus(props.book.name + ', ' + currProgress + '% / 100%');
     }
 
     let textBook;

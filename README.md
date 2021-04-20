@@ -16,6 +16,7 @@
 
 - txt
 - fb2
+- epub (in develop)
 
 ![settingsWindow](https://i.ibb.co/x28XWQP/5.png)
 

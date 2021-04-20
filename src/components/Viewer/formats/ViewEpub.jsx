@@ -34,7 +34,7 @@ function Viewer(props)
 
     const ref = useRef()
     useEffect(() => {
-
+        props.titlebar.setTitleStatus(props.book.name + ' (epub in BETA)');
 
         EPub.createAsync(props.book.path, "/imagewebroot/", "/articlewebroot/")
         .then(function (epub)
@@ -67,7 +67,7 @@ function Viewer(props)
         fullHeight = ref.current.scrollHeight + parseInt(props.style.padding);
         currProgress = (currentScroll * 100 / fullHeight).toFixed(0);
         props.progress.setProgress(currProgress);
-        props.titlebar.setTitleStatus(currProgress + '% / 100%');
+        props.titlebar.setTitleStatus(props.book.name + ', ' + currProgress + '% / 100% (epub in BETA)');
     }
 
     const toggleCharapter = () =>
