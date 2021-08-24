@@ -1,4 +1,4 @@
-![preview](https://i.ibb.co/WzqY3XJ/preview.png)
+![preview](https://i.ibb.co/xgK20gh/preview.png)
 
 
 # [Download stable/beta release](https://github.com/mrreads/modern-reader/releases) (windows only)
@@ -16,7 +16,7 @@
 
 - txt
 - fb2
-- epub (in develop)
+- epub (in developing)
 
 ![settingsWindow](https://i.ibb.co/x28XWQP/5.png)
 
