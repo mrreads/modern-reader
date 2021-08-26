@@ -1,7 +1,7 @@
 ![preview](https://i.ibb.co/xgK20gh/preview.png)
 
 
-# [Download stable/beta release](https://github.com/mrreads/modern-reader/releases) (windows only)
+# [Download beta release](https://github.com/mrreads/modern-reader/releases) (windows only)
 ![mainWindow](https://i.ibb.co/LdzhLp0/1.png)
 
 # Features
@@ -16,7 +16,7 @@
 
 - txt
 - fb2
-- epub (in developing)
+- epub (not work, in developing)
 
 ![settingsWindow](https://i.ibb.co/x28XWQP/5.png)
 
