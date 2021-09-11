@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut } = require('electron');
+const { app, BrowserWindow, globalShortcut, ipcMain, dialog, ipcRenderer } = require("electron");
 const isDev = require('electron-is-dev');   
 const path = require('path');
 
@@ -16,9 +16,9 @@ app.on('ready', () =>
         minHeight: 600,
         webPreferences: {
             nodeIntegration: true,
+            enableRemoteModule: true,
             contextIsolation: false,
             preload: path.join(__dirname, 'preload.js'),
-            enableRemoteModule: true
         },
         frame: false,
         show: false
@@ -47,3 +47,51 @@ app.on("window-all-closed", () =>
     }
 });
 
+ipcMain.handle('read-user-data', (e, f) => {
+    return app.getPath('userData');
+});
+
+//titlebar
+
+ipcMain.on('titleMinimize', () => {
+    win.minimize();
+});
+
+ipcMain.on('titleRestore', () => {
+    if (win.isMaximized())
+        win.unmaximize();
+    else
+        win.maximize();
+});
+
+ipcMain.on('close', () => {
+    win.close();
+});
+
+ipcMain.on('removeAllListeners', () => {
+    win.removeAllListeners();
+});
+
+//dialog
+
+ipcMain.handle('openFile', async () => {
+    if (process.platform !== 'darwin') 
+    {  
+        dialog.showOpenDialog({ 
+            title: 'Select the File to be open:', 
+            defaultPath: path.join(__dirname, '../assets/'), 
+            buttonLabel: 'Open', 
+
+            filters: [ { 
+                name: 'Books format', 
+                extensions: ['txt', 'fb2', 'epub']
+            }, ], 
+            
+            properties: ['openFile'] 
+        })
+        .then(file => { 
+            win.webContents.send('sendFile', file);
+        })
+        .catch(err => { console.log(err) });
+    }
+});

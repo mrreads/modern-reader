@@ -37,7 +37,7 @@
     </div>
     <script>
         const fs = window.require('fs');
-        const app = window.require('electron').remote.app;  
+        const { app } = window.require("electron");
         let appData = app.getPath('userData');
         if (fs.existsSync(appData + '/Data/settings.json'))
             if(JSON.parse(fs.readFileSync(appData + '/Data/settings.json', 'utf8')).darkMode)

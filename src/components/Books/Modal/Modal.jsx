@@ -9,14 +9,11 @@ const userPath = require('../../../storage').userPath;
 
 const fs = window.require('fs'); 
 const path = window.require('path'); 
-const electron = window.require('electron'); 
-const dialog = electron.remote.dialog; 
-
-
-
 
 export default function(props)
 {
+    const { ipcRenderer } = window.require('electron');
+
     const { t } = useTranslation('modal');
     
     const [getModalInfo, setModalInfo] = useState({
@@ -33,54 +30,41 @@ export default function(props)
         setModalInfo({...getModalInfo, bookName: value});
     }
 
+    
     const openFile = () =>
     {
-        if (process.platform !== 'darwin') 
-        {  
-            dialog.showOpenDialog({ 
-                title: 'Select the File to be open:', 
-                defaultPath: path.join(__dirname, '../assets/'), 
-                buttonLabel: 'Open', 
+        ipcRenderer.invoke('openFile');
+        ipcRenderer.on('sendFile', function (event, file) {
+            if (file.canceled) return;
 
-                filters: [ { 
-                    name: 'Books format', 
-                    extensions: ['txt', 'fb2', 'epub']
-                }, ], 
-                
-                properties: ['openFile'] 
-            }).then(file => 
-            { 
-                if (!file.canceled) 
-                { 
-                    global.filepath = file.filePaths[0].toString();
-                    const isExist = props.getBooks.map(b => b.path).indexOf(global.filepath);
+            global.filepath = file.filePaths[0].toString();
+            const isExist = props.getBooks.map(b => b.path).indexOf(global.filepath);
 
-                    if (isExist === -1)
-                    {
-                        let infoForUpload =
-                        {
-                            isSelected: true,
-                            bookFile: path.basename(global.filepath),
-                            bookName: path.basename(global.filepath, path.extname(global.filepath)),
-                            bookPath: global.filepath
-                        }
-                        setModalInfo(infoForUpload);
-                    }
-                    else
-                    {
-                        let infoForUpload =
-                        {
-                            isSelected: false,
-                            bookFile: t('exist'),
-                            bookName: t('title'),
-                            bookPath: t('exist'),
-                        }
-                        setModalInfo(infoForUpload);
-                        Alert.error(t('exist'));
-                    }
-                }   
-            }).catch(err => { console.log(err) });
-        }
+            if (isExist === -1)
+            {
+                let infoForUpload =
+                {
+                    isSelected: true,
+                    bookFile: path.basename(global.filepath),
+                    bookName: path.basename(global.filepath, path.extname(global.filepath)),
+                    bookPath: global.filepath
+                }
+                setModalInfo(infoForUpload);
+                return infoForUpload;
+            }
+            else
+            {
+                let infoForUpload =
+                {
+                    isSelected: false,
+                    bookFile: t('exist'),
+                    bookName: t('title'),
+                    bookPath: t('exist'),
+                }
+                setModalInfo(infoForUpload);
+                Alert.error(t('exist'));
+            }
+        });
     }
     
     const uploadFile = () =>

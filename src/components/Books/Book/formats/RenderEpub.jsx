@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { IconButton, Icon, ButtonToolbar } from 'rsuite';
 
 const fs = window.require('fs');
-const EPub = window.require("epub2/node");
+const EPub = require("epub2").EPub;
 
 export default function(props)
 {

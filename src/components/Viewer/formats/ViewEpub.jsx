@@ -11,9 +11,9 @@ import { Animation  } from 'rsuite';
 
 const { Slide } = Animation;
 
-const fs = window.require('fs');
+const fs = window.fs;
 
-const EPub = window.require("epub2/node");
+const EPub = require("epub2").EPub;
 
 function Viewer(props)
 {

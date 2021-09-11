@@ -12,10 +12,9 @@ const userPath = require('./../../storage').userPath;
 
 export default function(props)
 {
-
+    const { ipcRenderer } = window.require ("electron");
     const { t } = useTranslation('titlebar');
 
-    const win = window.require('electron').remote.getCurrentWindow();
     document.onreadystatechange = (event) => 
     {
         if (document.readyState === "complete") 
@@ -25,27 +24,20 @@ export default function(props)
     };
     window.onbeforeunload = (event) => 
     {
-        win.removeAllListeners();
+        ipcRenderer.send('removeAllListeners');
     }
     function handleWindowControls() 
     {
         document.getElementById('titleMinimize').addEventListener("click", event => {
-            win.minimize();
+            ipcRenderer.send('titleMinimize');
         });
 
         document.getElementById('titleRestore').addEventListener("click", event => {
-            if (win.isMaximized())
-            {
-                win.unmaximize();
-            }
-            else
-            {
-                win.maximize();
-            }
+            ipcRenderer.send('titleRestore');
         });
 
         document.getElementById('titleClose').addEventListener("click", event => {
-            win.close();
+            ipcRenderer.send('close');
         });
     }
 
