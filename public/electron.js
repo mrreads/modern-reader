@@ -4,11 +4,16 @@ const url = require("url");
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 900,
+    height: 700,
+    minWidth: 900,
+    minHeight: 600,
     webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true,
       preload: path.join(__dirname, "preload.js"),
     },
+    frame: false
   });
 
   const appURL = app.isPackaged

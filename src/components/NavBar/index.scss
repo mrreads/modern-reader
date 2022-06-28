@@ -1,0 +1,40 @@
+@import './../../styles/utils/vars.scss';
+
+.navbar-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+
+    gap: 15px 0;
+    padding: 15px 0;
+
+    width: 44px;
+
+    grid-column: 1;
+    grid-row: 2;
+    
+    & .navbar-element {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        padding: 10px 5px;
+        & img {
+            fill: #FFF;
+            width: 100%;
+        }
+
+        opacity: .4;
+        transition: .3s all;
+        &:hover {
+            opacity: .6;
+            background-color: $hover-main;
+        }
+        &.active {
+            opacity: 1;
+            pointer-events: none;
+        }
+    }
+}

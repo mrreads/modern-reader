@@ -1,0 +1,56 @@
+@import-normalize;
+@import-sanitize;
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./../fonts/Montserrat.ttf');
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('./../fonts/Karla.ttf');
+}
+
+@import './utils/vars.scss';
+
+html {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100%;
+
+    background-color: $color-main;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-main;
+    color: $text-color-main;
+}
+
+p, input, a, button, textarea {
+    font-family: $font-second;
+    color: $text-color-second;
+}
+
+#root {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    grid-template-rows: 30px 1fr;
+
+    flex-grow: 1;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: $color-second;
+    border-top-left-radius: 15px;
+
+    grid-column: -1/2;
+}
