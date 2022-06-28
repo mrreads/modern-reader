@@ -41,7 +41,7 @@ p, input, a, button, textarea {
 
 #root {
     display: grid;
-    grid-template-columns: 44px 1fr;
+    grid-template-columns: min-content 1fr;
     grid-template-rows: min-content 1fr;
 
     flex-grow: 1;
@@ -53,6 +53,8 @@ p, input, a, button, textarea {
     border-top-left-radius: 15px;
 
     grid-column: -1/2;
+
+    padding: 0 30px;
 }
 
 .titlebar-drag {

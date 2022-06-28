@@ -1,20 +1,22 @@
-import './index.scss';
+import { NavLink } from 'react-router-dom';
 
 import { ReactComponent as Book } from '@/images/icons/book.svg';
 import { ReactComponent as Setting } from '@/images/icons/setting.svg';
+
+import './index.scss';
 
 export default () => {
     return (
         <div className='navbar-wrapper'>
 
-            <div className='navbar-element'>
+            <NavLink to="/" className='navbar-element' activeClassName="active">
                 <Book fill='#FFFFFF' height={28} width={28} />
-            </div>
+            </NavLink>
 
-            <div className='navbar-element'>
+
+            <NavLink to="/setting" className='navbar-element' ctiveClassName="active">
                 <Setting fill='#FFFFFF' height={32} width={32} />
-            </div>
-
+            </NavLink>
         </div>
     );
 };

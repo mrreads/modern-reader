@@ -1,12 +1,10 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { ReactComponent as Minimize } from '@/images/icons/minimize.svg';
 import { ReactComponent as Resize } from '@/images/icons/resize.svg';
 import { ReactComponent as Close } from '@/images/icons/close.svg';
 
 import './index.scss';
-
-
 
 export default () => {
 

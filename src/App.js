@@ -4,8 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import TitleBar from '@/components/TitleBar';
 import NavBar from '@/components/NavBar';
 
-import First from '@/components/first';
-import Second from '@/components/second';
+import Library from '@/components/Library';
+import Setting from '@/components/Setting';
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
 
       <div className='content'>
         <Routes>
-          <Route path="/first" element={<First />} />
-          <Route path="/second" element={<Second />} />
+          <Route path="/" element={<Library />} />
+          <Route path="/setting" element={<Setting />} />
         </Routes>
       </div>
 
