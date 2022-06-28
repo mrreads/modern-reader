@@ -6,7 +6,7 @@ import { ReactComponent as Close } from '@/images/icons/close.svg';
 
 import './index.scss';
 
-export default () => {
+const TitleBar = () => {
 
     const { ipcRenderer } = require("electron");
     
@@ -39,3 +39,5 @@ export default () => {
         </div>
     );
 };
+
+export default TitleBar;

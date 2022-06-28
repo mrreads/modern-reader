@@ -3,12 +3,12 @@
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('./../fonts/Montserrat.ttf');
+    src: local('./../fonts/Montserrat.ttf') format('opentype');
 }
 
 @font-face {
     font-family: 'Karla';
-    src: url('./../fonts/Karla.ttf');
+    src: local('./../fonts/Karla.ttf') format('opentype');
 }
 
 @import './utils/vars.scss';
@@ -16,6 +16,7 @@
 html {
     height: 100%;
 }
+
 body {
     display: flex;
     flex-flow: column nowrap;
@@ -62,4 +63,10 @@ p, input, a, button, textarea {
     -webkit-app-region: drag;
 
     flex-grow: 1;
+}
+
+.simplebar-track.simplebar-vertical {
+    width: 8px;
+    top: 10px;
+    margin-bottom: 10px;
 }

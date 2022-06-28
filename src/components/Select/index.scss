@@ -1,0 +1,53 @@
+@import './../../styles/utils/vars.scss';
+
+.select-wrapper {
+    display: inline-block;
+
+    & .select-value {
+        min-width: 180px;
+        padding: 5px 25px;
+        line-height: 0;
+        border-radius: 15px;
+        background-color: $color-main;
+    
+        cursor: pointer;    
+    }
+    
+    position: relative;
+    & .select-dropdown {
+        position: absolute;
+        
+        top: calc(100% + 5px);
+        left: 0;
+        padding: 0;
+        border-radius: 12px;
+        width: 100%;
+        background-color: $color-main;
+        overflow: hidden;
+
+        transition: .3s all;
+        overflow-y: auto;
+        max-height: 0;
+
+        &__element {
+            transition: .3s all;
+            cursor: pointer;
+            padding: 5px 25px;
+            margin: 0;
+            &:hover {
+                background-color: $hover-main;
+            }
+            &:first-child {
+                margin-top: 5px;
+            }
+            &:last-child {
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    &.active .select-dropdown {
+        max-height: 200px;
+    }
+}
+
