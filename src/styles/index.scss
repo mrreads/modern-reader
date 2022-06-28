@@ -42,7 +42,7 @@ p, input, a, button, textarea {
 #root {
     display: grid;
     grid-template-columns: 44px 1fr;
-    grid-template-rows: 30px 1fr;
+    grid-template-rows: min-content 1fr;
 
     flex-grow: 1;
 }
@@ -53,4 +53,11 @@ p, input, a, button, textarea {
     border-top-left-radius: 15px;
 
     grid-column: -1/2;
+}
+
+.titlebar-drag {
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+
+    flex-grow: 1;
 }

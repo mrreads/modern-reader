@@ -6,28 +6,35 @@ import { ReactComponent as Close } from '@/images/icons/close.svg';
 
 import './index.scss';
 
+
+
 export default () => {
 
-    const minimizeRef = useRef();
-    const resizeRef = useRef();
-    const closeRef = useRef();
-
+    const { ipcRenderer } = require("electron");
+    
     useEffect(() => {
+        window.onbeforeunload = () => ipcRenderer.send('clear');
+        
+        document.querySelector('#minimize').addEventListener("click", () => ipcRenderer.send('minimize'));
+        document.querySelector('#resize').addEventListener("click", () => ipcRenderer.send('restore'));
+        document.querySelector('#close').addEventListener("click", () => ipcRenderer.send('close'));
+    })
 
-    }, []);
 
     return (
         <div className='titlebar-wrapper'>
 
-            <div className='titlebar-element' ref={minimizeRef}>
+            <div className='titlebar-drag'></div>
+
+            <div id="minimize" className='titlebar-element'>
                 <Minimize fill='#FFFFFF' height={10} width={10} />
             </div>
 
-            <div className='titlebar-element' ref={resizeRef}>
+            <div id="resize" className='titlebar-element'>
                 <Resize fill='#FFFFFF' height={10} width={10} />
             </div>
 
-            <div className='titlebar-element' ref={closeRef}>
+            <div id="close" className='titlebar-element'>
                 <Close fill='#FFFFFF' height={10} width={10} />
             </div>
 

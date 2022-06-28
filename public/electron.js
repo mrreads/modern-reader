@@ -1,18 +1,23 @@
-const { app, BrowserWindow, protocol } = require("electron");
+const { app, BrowserWindow, ipcMain, protocol } = require("electron");
 const path = require("path");
 const url = require("url");
 
+let win;
 function createWindow() {
-  const mainWindow = new BrowserWindow({
+  win = new BrowserWindow({
     width: 900,
     height: 700,
     minWidth: 900,
     minHeight: 600,
+    backgroundColor: '#292a2d',
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
       enableRemoteModule: true,
       preload: path.join(__dirname, "preload.js"),
     },
+    useContentSize: true,
+    autoHideMenuBar: true,
     frame: false
   });
 
@@ -23,11 +28,13 @@ function createWindow() {
         slashes: true,
       })
     : "http://localhost:3000";
-  mainWindow.loadURL(appURL);
+    win.loadURL(appURL);
 
   if (!app.isPackaged) {
-    mainWindow.webContents.openDevTools();
+    win.webContents.openDevTools();
   }
+
+  win.setMenu(null);
 }
 
 function setupLocalFilesNormalizerProxy() {
@@ -58,4 +65,24 @@ app.on("window-all-closed", function () {
   if (process.platform !== "darwin") {
     app.quit();
   }
+});
+
+
+ipcMain.on('minimize', () => {
+  win.minimize();
+});
+
+ipcMain.on('restore', () => {
+  if (win.isMaximized())
+    win.unmaximize();
+  else
+    win.maximize();
+});
+
+ipcMain.on('close', () => {
+  win.close();
+});
+
+ipcMain.on('clear', () => {
+  win.removeAllListeners();
 });

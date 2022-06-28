@@ -8,7 +8,7 @@ export default () => {
         <div className='navbar-wrapper'>
 
             <div className='navbar-element'>
-                <Book fill='#FFFFFF' height={31} width={31} />
+                <Book fill='#FFFFFF' height={28} width={28} />
             </div>
 
             <div className='navbar-element'>
