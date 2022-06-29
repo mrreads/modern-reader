@@ -29,6 +29,7 @@ app.on('ready', () =>
 
     const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
     win.loadURL(startURL);
+
     win.on('ready-to-show', () => 
     {
         splash.destroy();
@@ -47,10 +48,6 @@ app.on("window-all-closed", () =>
     {
         app.quit();
     }
-});
-
-ipcMain.handle('read-user-data', (e, f) => {
-    return app.getPath('userData');
 });
 
 //TITLEBAR

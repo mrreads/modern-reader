@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #292a2d;
+}
+
+h1 {
+    font-size: 56px;
+    font-family: 'Montserrat';
+    color: '#FFFFFF';
+}
+
+p {
+    font-family: 'Noto Sans';
+    color: '#ECECEC';
+}

@@ -2,55 +2,43 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'; font-src 'self';"/>
     <title> Loading </title>
     <style>
-        html { height: 100%; overflow: hidden }
-        body
-        {
+        html { height: 100% }
+        body {
+            margin: 0;
             min-height: 100%;
-            background-color: #FFF;
             display: flex;
             flex-flow: column nowrap;
-            justify-content: center;
             align-items: center;
-            color: #232425;
-        }
-        body.dark { background-color: #232425; color: #FFF }
-        p { font-size: 56px; font-family: monospace; margin-bottom: 20px; margin-top: -75px }
-        .progressBar_wrapper { background-color: #232425; width: 500px; }
-        .progressBar 
-        {
-            line-height: 32px;
-            width: 1%;
-            height: 3px;
-            text-align: center;
-            background-color: #232425;
-        }
-        body.dark .progressBar { background-color: #FFF }
-    </style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <p> Modern Reader </p>
-    <div class="progressBar_wrapper">
-        <div class="progressBar"></div>
-    </div>
-    <script>
-        const fs = window.require('fs');
-        const { app } = window.require("electron");
-        let appData = app.getPath('userData');
-        if (fs.existsSync(appData + '/Data/settings.json'))
-            if(JSON.parse(fs.readFileSync(appData + '/Data/settings.json', 'utf8')).darkMode)
-                document.body.classList.add('dark');
+            justify-content: center;
 
-        let progressBar = document.querySelector(".progressBar");
-        let barWidth = 1;
-        const progressLoad = setInterval(() => {
-            if (barWidth <= 100)
-                progressBar.style.width = ++barWidth + '%'
-            else
-                clearInterval(progressLoad);
-        }, 10);
-    </script>
+            background-color: #292a2d;
+        }
+
+        h1 {
+            user-select: none;
+            font-size: 56px;
+            font-family: 'Montserrat';
+            color: #FFFFFF;
+            animation: 6s scale infinite;
+        }
+
+        @keyframes scale {
+            0% { transform: scale(1) }
+            50% { transform: scale(1.2) }
+            100% { transform: scale(1) }
+        }
+
+        p {
+            font-family: 'Noto Sans';
+            color: #ECECEC;
+        }
+    </style>
+</head>
+<body class="dark">
+    <h1>Modern Reader</h1>
 </body>
 </html>

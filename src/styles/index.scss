@@ -2,7 +2,6 @@
 @import-sanitize;
 
 
-@import './utils/fonts.scss';
 @import './utils/vars.scss';
 
 html {
@@ -15,6 +14,7 @@ body {
     min-height: 100%;
 
     background-color: $color-main;
+    font-family: $font-second;
     color: $text-color-second;
 }
 
