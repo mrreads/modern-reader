@@ -4,6 +4,7 @@
         "title": "Library"
     },
     "setting": {
-        "title": "Settings"
+        "title": "Settings",
+        "language": "Language"
     }
 }

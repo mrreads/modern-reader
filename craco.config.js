@@ -15,6 +15,9 @@ module.exports = {
                 "fs": false,
                 "path": false
             },
-        }
+        },
+        devServer: {
+            historyApiFallback: true
+        },
     },
 }

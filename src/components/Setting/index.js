@@ -1,6 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
+import Hr from '@/components/Hr';
+
 import LanguageSelect from './LanguageSelect'
+
+import './index.scss';
 
 const Setting = () => {
 
@@ -10,12 +14,13 @@ const Setting = () => {
         <>
 
             <h1> { t('title') } </h1>
-            <hr />
-
-            <LanguageSelect />
-
-            <p> Привет hello </p>
             
+            <Hr />
+
+            <div className='setting-element'> 
+                <p className='setting-element__text'>{t('language')}:</p> <LanguageSelect /> 
+            </div>    
+
         </>
     )
 }

@@ -2,7 +2,8 @@
 
 .select-wrapper {
     display: inline-block;
-
+    height: min-content;
+    
     & .select-value {
         min-width: 180px;
         padding: 5px 25px;

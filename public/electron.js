@@ -1,12 +1,12 @@
 const { app, BrowserWindow, globalShortcut, ipcMain } = require("electron");
-const isDev = !app.isPackaged;
 const path = require('path');
+
+const isDev = !app.isPackaged;
 
 let win, splash;
 app.on('ready', () => 
 {
-    splash = new BrowserWindow({minWidth: 810, minHeight: 610, transparent: true, frame: false, alwaysOnTop: true, 
-        webPreferences: { nodeIntegration: true, enableRemoteModule: true },});
+    splash = new BrowserWindow({ minWidth: 810, minHeight: 610, transparent: true, frame: false, alwaysOnTop: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true },});
     splash.loadURL(__dirname + '/splashscreen.html');
     
     win = new BrowserWindow({
@@ -20,6 +20,8 @@ app.on('ready', () =>
             contextIsolation: false,
             preload: path.join(__dirname, 'preload.js'),
         },
+        useContentSize: true,
+        autoHideMenuBar: true,
         frame: false,
         show: false
     });
