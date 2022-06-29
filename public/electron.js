@@ -1,5 +1,5 @@
-const { app, BrowserWindow, globalShortcut, ipcMain, dialog, ipcRenderer } = require("electron");
-const isDev = require('electron-is-dev');   
+const { app, BrowserWindow, globalShortcut, ipcMain } = require("electron");
+const isDev = !app.isPackaged;
 const path = require('path');
 
 let win, splash;
