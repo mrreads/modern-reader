@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import LanguageSelect from '@/components/Setting/LanguageSelect'
+import LanguageSelect from './LanguageSelect'
 
 const Setting = () => {
 

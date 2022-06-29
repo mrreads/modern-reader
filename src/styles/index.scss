@@ -1,16 +1,8 @@
 @import-normalize;
 @import-sanitize;
 
-@font-face {
-    font-family: 'Montserrat';
-    src: local('./../fonts/Montserrat.ttf') format('opentype');
-}
 
-@font-face {
-    font-family: 'Karla';
-    src: local('./../fonts/Karla.ttf') format('opentype');
-}
-
+@import './utils/fonts.scss';
 @import './utils/vars.scss';
 
 html {

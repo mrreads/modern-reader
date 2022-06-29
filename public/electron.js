@@ -1,88 +1,72 @@
-const { app, BrowserWindow, ipcMain, protocol } = require("electron");
-const path = require("path");
-const url = require("url");
+const { app, BrowserWindow, globalShortcut, ipcMain, dialog, ipcRenderer } = require("electron");
+const isDev = require('electron-is-dev');   
+const path = require('path');
 
-let win;
-function createWindow() {
-  win = new BrowserWindow({
-    width: 900,
-    height: 700,
-    minWidth: 900,
-    minHeight: 600,
-    backgroundColor: '#292a2d',
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-      enableRemoteModule: true,
-      preload: path.join(__dirname, "preload.js"),
-    },
-    useContentSize: true,
-    autoHideMenuBar: true,
-    frame: false
-  });
+let win, splash;
+app.on('ready', () => 
+{
+    splash = new BrowserWindow({minWidth: 810, minHeight: 610, transparent: true, frame: false, alwaysOnTop: true, 
+        webPreferences: { nodeIntegration: true, enableRemoteModule: true },});
+    splash.loadURL(__dirname + '/splashscreen.html');
+    
+    win = new BrowserWindow({
+        width: 900,
+        height: 700,
+        minWidth: 900,
+        minHeight: 600,
+        webPreferences: {
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            contextIsolation: false,
+            preload: path.join(__dirname, 'preload.js'),
+        },
+        frame: false,
+        show: false
+    });
 
-  const appURL = app.isPackaged
-    ? url.format({
-        pathname: path.join(__dirname, "index.html"),
-        protocol: "file:",
-        slashes: true,
-      })
-    : "http://localhost:3000";
-    win.loadURL(appURL);
 
-  if (!app.isPackaged) {
-    win.webContents.openDevTools();
-  }
+    const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
+    win.loadURL(startURL);
+    win.on('ready-to-show', () => 
+    {
+        splash.destroy();
+        win.show();
+    });
 
-  win.setMenu(null);
-}
-
-function setupLocalFilesNormalizerProxy() {
-  protocol.registerHttpProtocol(
-    "file",
-    (request, callback) => {
-      const url = request.url.substr(8);
-      callback({ path: path.normalize(`${__dirname}/${url}`) });
-    },
-    (error) => {
-      if (error) console.error("Failed to register protocol");
-    }
-  );
-}
-
-app.whenReady().then(() => {
-  createWindow();
-  setupLocalFilesNormalizerProxy();
-
-  app.on("activate", function () {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
-  });
+    win.on('closed', () => { win = null; });
+    
+    if (!isDev)
+        globalShortcut.register("CommandOrControl+R", () => { return false });
 });
 
-app.on("window-all-closed", function () {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+app.on("window-all-closed", () => 
+{
+    if (process.platform !== "darwin") 
+    {
+        app.quit();
+    }
 });
 
+ipcMain.handle('read-user-data', (e, f) => {
+    return app.getPath('userData');
+});
 
+//TITLEBAR
 ipcMain.on('minimize', () => {
-  win.minimize();
+    win.minimize();
 });
-
+  
 ipcMain.on('restore', () => {
-  if (win.isMaximized())
+if (win.isMaximized())
     win.unmaximize();
-  else
+else
     win.maximize();
 });
-
+  
 ipcMain.on('close', () => {
-  win.close();
+    win.close();
 });
 
 ipcMain.on('clear', () => {
-  win.removeAllListeners();
+    win.removeAllListeners();
 });

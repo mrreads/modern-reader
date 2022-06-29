@@ -1,5 +1,5 @@
 import { useState, useRef  } from 'react';
-import useOnClickOutside from '@/hooks/useOnClickOutside'
+import useOnClickOutside from './../../hooks/useOnClickOutside'
 
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';

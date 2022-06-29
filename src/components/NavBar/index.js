@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
-import { ReactComponent as Book } from '@/images/icons/book.svg';
-import { ReactComponent as Setting } from '@/images/icons/setting.svg';
+import { ReactComponent as Book } from './../../images/icons/book.svg';
+import { ReactComponent as Setting } from './../../images/icons/setting.svg';
 
 import './index.scss';
 

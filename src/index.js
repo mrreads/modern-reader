@@ -8,7 +8,7 @@ import i18n  from "./i18n";
 
 import App from './App';
 
-import '@/styles/index.scss';
+import './styles/index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
