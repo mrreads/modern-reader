@@ -6,6 +6,8 @@
   "main": "./public/electron.js",
   "dependencies": {
     "i18next": "^21.8.11",
+    "mobx-react-lite": "^3.4.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^11.17.3",

@@ -1,6 +1,6 @@
 import i18next from "@/i18n";
 
-import Select from '@/components/Select/Select';
+import Select from '@/components/Select';
 
 const LanguageSelect = () => {
 

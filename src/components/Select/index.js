@@ -1,4 +1,6 @@
 import { useState, useRef  } from 'react';
+import PropTypes from 'prop-types';
+
 import useOnClickOutside from '@/hooks/useOnClickOutside'
 
 import SimpleBar from 'simplebar-react';
@@ -47,3 +49,9 @@ const Select = ({data, callback, defaltValue}) => {
 }
 
 export default Select;
+
+Select.propTypes = {
+    data: PropTypes.array.isRequired,
+    callback: PropTypes.func,
+    defaltValue: PropTypes.object
+}
