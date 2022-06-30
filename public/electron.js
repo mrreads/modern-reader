@@ -6,7 +6,12 @@ const isDev = !app.isPackaged;
 let win, splash;
 app.on('ready', () => 
 {
-    splash = new BrowserWindow({ minWidth: 810, minHeight: 610, transparent: true, frame: false, alwaysOnTop: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true },});
+    splash = new BrowserWindow({ 
+        minWidth: 810, minHeight: 610,
+        maxWidth: 810, maxHeight: 610, 
+        transparent: true, frame: false, alwaysOnTop: false, resizable: false,
+        webPreferences: { nodeIntegration: true, enableRemoteModule: true }
+    });
     splash.loadURL(__dirname + '/splashscreen.html');
     
     win = new BrowserWindow({
@@ -68,4 +73,8 @@ ipcMain.on('close', () => {
 
 ipcMain.on('clear', () => {
     win.removeAllListeners();
+});
+
+ipcMain.on('electron-store-get-data', () => {
+    
 });
