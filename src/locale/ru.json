@@ -5,6 +5,7 @@
     },
     "setting": {
         "title": "Настройки",
-        "language": "Язык"
+        "language": "Язык",
+        "titlebar": "Системное меню"
     }
 }

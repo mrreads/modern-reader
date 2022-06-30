@@ -4,6 +4,8 @@ import Hr from '@/components/Hr';
 
 import LanguageSelect from './LanguageSelect'
 
+import Switch from '@/components/Switch';
+
 import './index.scss';
 
 const Setting = () => {
@@ -21,6 +23,9 @@ const Setting = () => {
                 <p className='setting-element__text'>{t('language')}:</p> <LanguageSelect /> 
             </div>    
 
+            <div className='setting-element'> 
+                <p className='setting-element__text'>{t('titlebar')}:</p> <Switch /> 
+            </div>   
         </>
     )
 }

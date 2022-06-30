@@ -1,0 +1,30 @@
+@import './../../styles/utils/vars.scss';
+
+.switch {
+    border-radius: 50px;
+    background-color: $color-main;
+    height: 22px;
+    width: 44px;
+
+    margin-top: 2px;
+
+    cursor: pointer;
+    
+    & .switch__slider {
+        transition: .6s all;
+
+        border-radius: 100%;
+        height: 18px;
+        width: 18px;
+        margin-top: 2px;
+        margin-left: 2px;
+        background-color: $text-color-second;
+    }
+    &.active {
+        background-color: $text-color-second;
+        & .switch__slider {
+            background-color: $color-main;
+            margin-left: 23px;
+        }
+    }
+}
