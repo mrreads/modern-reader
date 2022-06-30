@@ -6,6 +6,12 @@ import { ReactComponent as Close } from '@/images/icons/close.svg';
 
 import './index.scss';
 
+const Store = require('electron-store');
+const store = new Store();
+const settings = store.get('settings')
+
+const isSystemTitlebar = (settings) ? settings.systemTitlebar : false;
+
 const TitleBar = () => {
 
     const { ipcRenderer } = require("electron");
@@ -20,7 +26,7 @@ const TitleBar = () => {
 
 
     return (
-        <div className='titlebar-wrapper'>
+        <div className={`titlebar-wrapper ${(isSystemTitlebar) ? 'system' : ''}`}>
 
             <div className='titlebar-drag'></div>
 

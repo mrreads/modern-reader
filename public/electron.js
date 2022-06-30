@@ -1,7 +1,13 @@
 const { app, BrowserWindow, globalShortcut, ipcMain } = require("electron");
+
 const path = require('path');
 
+const Store = require('electron-store');
+const store = new Store();
+const settings = store.get('settings')
+
 const isDev = !app.isPackaged;
+const isSystemTitlebar = (settings) ? settings.systemTitlebar : false;
 
 let win, splash;
 app.on('ready', () => 
@@ -27,7 +33,7 @@ app.on('ready', () =>
         },
         useContentSize: true,
         autoHideMenuBar: true,
-        frame: false,
+        frame: isSystemTitlebar,
         show: false
     });
 
