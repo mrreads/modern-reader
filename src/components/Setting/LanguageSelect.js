@@ -1,19 +1,19 @@
+import { useEffect } from "react";
 import i18next from "@/i18n";
 
 import Select from '@/components/Select';
 
-const LanguageSelect = () => {
-
+const LanguageSelect = ({ startupLanguage, changeLanguage }) => {
     const languages = [
         { name: "English", value: "en" },
         { name: "Русский", value: "ru" }
     ]
 
-    const changeLanguage = (lang) => {
-        i18next.changeLanguage(lang);
+    const handleLanguage = (lang) => {
+        changeLanguage(lang);
     }
 
-    return (<Select defaltValue={languages[0]} data={languages} callback={changeLanguage} />)
+    return (<Select defaltValue={startupLanguage} data={languages} callback={handleLanguage} />)
 }
 
 export default LanguageSelect;

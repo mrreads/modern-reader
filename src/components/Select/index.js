@@ -8,9 +8,9 @@ import 'simplebar-react/dist/simplebar.min.css';
 
 import './index.scss';
 
-const Select = ({data, callback, defaltValue}) => {
+const Select = ({ data, callback, defaltValue }) => {
     const ref = useRef(null)
-    const [value, setValue] = useState((defaltValue.name) ? defaltValue.name : '');
+    const [value, setValue] = useState((defaltValue) ? data.filter(lang => lang.value == defaltValue)[0].name : '');
 
     const [opened, setOpened] = useState(false);
     const toggleOpen = () => {
@@ -53,5 +53,5 @@ export default Select;
 Select.propTypes = {
     data: PropTypes.array.isRequired,
     callback: PropTypes.func,
-    defaltValue: PropTypes.object
+    defaltValue: PropTypes.string
 }

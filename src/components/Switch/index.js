@@ -7,13 +7,13 @@ const Switch = ({ callback, defaultValue }) => {
     const [checked, setChecked] = useState(defaultValue ? defaultValue : false);
     const toggleChecked = () => {
         let value = !checked;
-        setChecked(value)
+        setChecked(value);
     }
 
     
     useEffect(() => {
         if (callback)
-            callback(); 
+            callback(checked); 
     }, [checked]); // eslint-disable-next-line
     
     return (
