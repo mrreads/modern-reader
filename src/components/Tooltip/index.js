@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './index.scss';
 
 const Tooltip = ({ text, children, align, noWordWrap }) => {
@@ -10,3 +12,9 @@ const Tooltip = ({ text, children, align, noWordWrap }) => {
 };
 
 export default Tooltip;
+
+Tooltip.propTypes = {
+    text: PropTypes.string.isRequired,
+    align: PropTypes.string,
+    noWordWrap: PropTypes.bool
+}
