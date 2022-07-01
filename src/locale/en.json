@@ -1,7 +1,8 @@
 {
     "locale": "English",
     "library": {
-        "title": "Library"
+        "title": "Library",
+        "add_book": "Add book"
     },
     "setting": {
         "title": "Settings",

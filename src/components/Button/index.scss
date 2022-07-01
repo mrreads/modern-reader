@@ -1,0 +1,23 @@
+@import './../../styles/utils/vars.scss';
+
+.button {
+    text-align: center;
+    padding: 10px 25px;
+    border-radius: 15px;
+    background-color: $color-main;
+
+    align-self: center;
+
+    outline: 0;
+    border: 0;
+    
+    font-family: $font-main;
+    font-weight: bold;
+
+    cursor: pointer;
+    
+    transition: .3s all;
+    &:hover {
+        background-color: $hover-main;
+    }
+}

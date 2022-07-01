@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut, ipcMain } = require("electron");
+const { app, BrowserWindow, globalShortcut, ipcMain, dialog } = require("electron");
 
 const path = require('path');
 
@@ -83,4 +83,26 @@ ipcMain.on('clear', () => {
 
 ipcMain.on('electron-store-get-data', () => {
     
+});
+
+ipcMain.handle('open-file', async () => {
+    if (process.platform !== 'darwin') 
+    {  
+        dialog.showOpenDialog({ 
+            title: 'Select the File to be open:', 
+            defaultPath: path.join(__dirname, '../assets/'), 
+            buttonLabel: 'Open', 
+
+            filters: [ { 
+                name: 'Books format', 
+                extensions: ['txt', 'fb2', 'epub']
+            }, ], 
+            
+            properties: ['open-file'] 
+        })
+        .then(file => { 
+            win.webContents.send('send-file', file);
+        })
+        .catch(err => { null });
+    }
 });

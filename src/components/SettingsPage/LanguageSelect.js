@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import i18next from "@/i18n";
-
 import Select from '@/components/Select';
 
 const LanguageSelect = ({ startupLanguage, changeLanguage }) => {
