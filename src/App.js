@@ -4,8 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import TitleBar from '@/components/TitleBar';
 import NavBar from '@/components/NavBar';
 
-import Library from '@/components/LibraryPage';
-import Setting from '@/components/SettingsPage';
+import Library from '@/views/Library';
+import Setting from '@/views/Settings';
 
 function App() {
   return (

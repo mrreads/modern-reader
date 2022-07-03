@@ -8,6 +8,8 @@ import useStore from '@/hooks/useStore'
 import Button from '@/components/Button';
 import Hr from '@/components/Hr';
 
+import Books from '@/components/Books';
+
 import './index.scss';
 
 const path = window.require('path'); 
@@ -44,12 +46,14 @@ const Library = observer(() => {
         
             <div className='library-page__wrapper'>
                 <h1> { t('title') } </h1>
-                <Button text={ t('add_book') } callback={ handleOpenModal } />
+                <Button text={ t('add_book') } callback={ handleAddBook } />
             </div>
 
             
             <Hr />
         
+            <Books data={getBooks()} />
+
         </React.Fragment>
     )
 })

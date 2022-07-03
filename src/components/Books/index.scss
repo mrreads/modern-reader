@@ -1,0 +1,8 @@
+@import './../../styles/utils/vars.scss';
+
+.books {
+    display: flex;
+    flex-flow: column nowrap;
+
+    gap: 10px 0;
+}

@@ -1,0 +1,31 @@
+@import './../../styles/utils/vars.scss';
+
+.book {
+    border-radius: 15px;
+    padding: 30px;
+    background-color: $color-main;
+
+    & p {
+        font-size: 14px;
+        color: $text-color-second;
+
+        & span {
+            font-weight: bold;
+            padding-right: 5px;
+        }
+
+        margin: 5px 0;
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    cursor: pointer;
+    transition: .3s all;
+    &:hover {
+        background-color: $hover-main;
+    }
+}

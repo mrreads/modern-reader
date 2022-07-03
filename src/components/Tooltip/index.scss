@@ -17,8 +17,8 @@
         color: $text-color-second;
         
         transition: .3s all;
-        bottom: 100%;
-        left: -10px;
+        bottom: calc(100% + 10px);
+        left: -15px;
 
         &::before{
             content:'';
