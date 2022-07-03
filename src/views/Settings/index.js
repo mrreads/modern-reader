@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import useStore from '@/hooks/useStore'
 
 import Hr from '@/components/Hr';
-import LanguageSelect from './LanguageSelect'
+import LanguageSelect from '@/components/LanguageSelect'
 import Switch from '@/components/Switch';
 import Tooltip from '@/components/Tooltip';
 

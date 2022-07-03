@@ -3,7 +3,7 @@
 .navbar-wrapper {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     gap: 15px 0;
     padding: 15px 0;
@@ -29,13 +29,22 @@
 
         opacity: .4;
         transition: .3s all;
-        &:hover {
+        &:not(.disable):hover {
             opacity: .6;
             background-color: $hover-main;
         }
         &.active {
             opacity: 1;
             pointer-events: none;
+        }
+
+        &:last-child {
+            margin-top: auto;
+        }
+
+        &.disable {
+            cursor: default;
+            opacity: .1;
         }
     }
 }

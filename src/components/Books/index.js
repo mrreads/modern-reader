@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import Book from '@/components/Book'
 import './index.scss';
 
-const Books = ({ data }) => {
-
-    console.log(data);
+const Books = ({ data, setCurrentBook }) => {
 
     return (
         <div className='books'>

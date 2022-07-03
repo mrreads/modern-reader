@@ -52,7 +52,7 @@ const Library = observer(() => {
             
             <Hr />
         
-            <Books data={getBooks()} />
+            <Books data={getBooks()}/>
 
         </React.Fragment>
     )
