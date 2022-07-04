@@ -30,10 +30,12 @@ export default class Library {
 	}
 
 	deleteBook = (o) => {
-		this.books = this.books.filter(b => b.path !== o.path);
-
 		if (o.id === this.current)
+		{
 			this.current = null;
+		}
+
+		this.books = this.books.filter(b => b.path !== o.path);
 		
 		this.saveLibrary();
 	} 
@@ -46,13 +48,18 @@ export default class Library {
 
 	clearLibrary = () => {
 		this.books = [];
+		this.current = null;
+
+		this.saveLibrary();
 	}
 
 	getCurrentBook = () => {
+		console.log(this.current)
 		if (this.current != null)
 		{
 			return toJS(this.books.filter(b => b.id === this.current)[0]);
 		}
+		return null;
 	}
 
 	saveLibrary = () => {

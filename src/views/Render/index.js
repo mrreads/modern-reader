@@ -11,11 +11,11 @@ import './index.scss';
 const Library = observer(() => {
     const [ libraryStore ] = useStore('library');
     const { getCurrentBook } = libraryStore;
-    const { title, path } = getCurrentBook();
+    console.log(getCurrentBook())
     
     return (
         <React.Fragment>
-            <h1> { title } </h1>
+            <h1> </h1>
 
             <Hr />
 

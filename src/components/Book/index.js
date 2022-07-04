@@ -8,10 +8,13 @@ import './index.scss';
 
 const Books = ({ book }) => {
     const [ libraryStore ] = useStore('library');
-    const { setCurrentBook } = libraryStore;
+    const { setCurrentBook, deleteBook } = libraryStore;
 
     const handleClick = (id) => {
         setCurrentBook(id);
+    }
+    const handleDelete = (obj) => {
+        deleteBook(obj);
     }
 
     return(
