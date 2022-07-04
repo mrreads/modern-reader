@@ -23,15 +23,9 @@ const NavBar = observer(() => {
                     return (<NavLink to="/render" className='navbar-element'> <Book fill='#FFFFFF' height={28} width={28} /> </NavLink>)
             })()}
 
+            <NavLink to="/" className='navbar-element'> <Library fill='#FFFFFF' height={30} width={30} /> </NavLink>
 
-            <NavLink to="/" className='navbar-element'>
-                <Library fill='#FFFFFF' height={30} width={30} />
-            </NavLink>
-
-
-            <NavLink to="/setting" className='navbar-element'>
-                <Setting fill='#FFFFFF' height={32} width={32} />
-            </NavLink>
+            <NavLink to="/setting" className='navbar-element'> <Setting fill='#FFFFFF' height={32} width={32} /> </NavLink>
         </div>
     );
 });

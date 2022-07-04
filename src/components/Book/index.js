@@ -10,12 +10,12 @@ const Books = ({ book }) => {
     const [ libraryStore ] = useStore('library');
     const { setCurrentBook } = libraryStore;
 
-    const handleClick = (path) => {
-        setCurrentBook(path);
+    const handleClick = (id) => {
+        setCurrentBook(id);
     }
 
     return(
-    <div className='book' onClick={() => handleClick(book.path)}>
+    <div className='book' onClick={() => handleClick(book.id)}>
         <Tooltip text={book.path} noWordWrap> 
             <p> {book.title} </p>
         </Tooltip>

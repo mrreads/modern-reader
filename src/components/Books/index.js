@@ -9,7 +9,7 @@ const Books = ({ data, setCurrentBook }) => {
         <div className='books'>
             {
                 data.map(book => {
-                    return (<Book book={book} key={book.path} />)
+                    return (<Book book={book} key={book.id} />)
                 })
             }
         </div>

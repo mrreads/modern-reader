@@ -29,9 +29,12 @@ export default class Library {
 		this.saveLibrary();
 	}
 
-	deleteBook = (path) => {
-		this.books = this.books.filter(b => b.path !== path);
+	deleteBook = (o) => {
+		this.books = this.books.filter(b => b.path !== o.path);
 
+		if (o.id === this.current)
+			this.current = null;
+		
 		this.saveLibrary();
 	} 
 
@@ -39,6 +42,17 @@ export default class Library {
 		this.current = path;
 
 		this.saveLibrary();
+	}
+
+	clearLibrary = () => {
+		this.books = [];
+	}
+
+	getCurrentBook = () => {
+		if (this.current != null)
+		{
+			return toJS(this.books.filter(b => b.id === this.current)[0]);
+		}
 	}
 
 	saveLibrary = () => {

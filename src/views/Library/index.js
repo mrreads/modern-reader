@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { v4 as uuidv4, v4 } from 'uuid';
 import { observer } from 'mobx-react-lite';
 
 import useStore from '@/hooks/useStore'
@@ -16,7 +17,7 @@ const path = window.require('path');
 
 const Library = observer(() => {
     const [ libraryStore ] = useStore('library');
-    const { getBooks, addBook } = libraryStore;
+    const { getBooks, addBook, clearLibrary } = libraryStore;
 
     const { t } = useTranslation('library');
     const { ipcRenderer } = window.require('electron');
@@ -33,11 +34,13 @@ const Library = observer(() => {
             global.filepath = file.filePaths[0].toString();
 
             let bookObject = {
+                id: v4(),
                 title:  path.basename(global.filepath, path.extname(global.filepath)),
                 path: global.filepath,
                 progress: 0
             }
             addBook(bookObject);
+            console.log(getBooks());
         });
     }
 
