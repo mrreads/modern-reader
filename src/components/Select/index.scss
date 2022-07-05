@@ -51,5 +51,10 @@
     &.active .select-dropdown {
         max-height: 200px;
     }
+    & .simplebar-track.simplebar-vertical {
+        width: 8px;
+        top: 10px;
+        margin-bottom: 10px;
+    }
 }
 

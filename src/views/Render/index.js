@@ -1,26 +1,32 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { observer } from 'mobx-react-lite';
 import useStore from '@/hooks/useStore'
 
-import Hr from '@/components/Hr';
+import RenderTxt from '@/components/RenderBooks/txt'
 
 import './index.scss';
 
-const Library = observer(() => {
+const Render = observer(() => {
     const [ libraryStore ] = useStore('library');
     const { getCurrentBook } = libraryStore;
-    console.log(getCurrentBook())
+    const path = getCurrentBook().path
     
+    const renderBook = () => {
+        const extension = path.split('.').pop();
+        console.log(extension)
+        switch(extension) {
+            case 'txt':
+                return (<RenderTxt path={path} />)
+                
+        }
+    }
+
     return (
         <React.Fragment>
-            <h1> </h1>
-
-            <Hr />
-
+            { renderBook() }
         </React.Fragment>
     )
 })
 
-export default Library;
+export default Render;

@@ -1,6 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
+
 import { v4 as uuidv4, v4 } from 'uuid';
 import { observer } from 'mobx-react-lite';
 
@@ -44,7 +47,7 @@ const Library = observer(() => {
     }
 
     return (
-        <React.Fragment>
+        <SimpleBar className='content-wrapper'>
         
             <div className='library-page__wrapper'>
                 <h1> { t('title') } </h1>
@@ -56,7 +59,7 @@ const Library = observer(() => {
         
             <Books data={getBooks()}/>
 
-        </React.Fragment>
+        </SimpleBar>
     )
 })
 

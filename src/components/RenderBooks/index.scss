@@ -1,0 +1,16 @@
+@import './../../styles/utils/vars.scss';
+
+.viewer {
+    height: 100%;
+    padding: 30px;
+    padding-right: 35px;
+    overflow-x: hidden;
+
+    & .simplebar-track.simplebar-vertical .simplebar-scrollbar {
+        cursor: pointer;
+    }
+
+    & .simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+        background-color: $hover-main;
+    }
+}

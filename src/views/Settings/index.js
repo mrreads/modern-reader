@@ -1,5 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
+
 import { observer } from 'mobx-react-lite';
 import useStore from '@/hooks/useStore'
 
@@ -18,7 +21,7 @@ const Setting = observer(() => {
     const { t } = useTranslation('setting');
 
     return (
-        <React.Fragment>
+        <SimpleBar className='content-wrapper'>
             <h1> { t('title') } </h1>
             
             <Hr />
@@ -32,7 +35,7 @@ const Setting = observer(() => {
             <div className='setting-element'> 
                 <p className='setting-element__text'>{t('language')}:</p> <LanguageSelect startupLanguage={language} changeLanguage={changeLanguage} />
             </div>    
-        </React.Fragment>
+        </SimpleBar>
     )
 })
 
