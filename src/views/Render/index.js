@@ -14,7 +14,7 @@ const Render = observer(() => {
     
     const renderBook = () => {
         const extension = path.split('.').pop();
-        console.log(extension)
+
         switch(extension) {
             case 'txt':
                 return (<RenderTxt path={path} />)

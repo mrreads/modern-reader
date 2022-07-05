@@ -35,7 +35,7 @@ export default class Library {
 			this.current = null;
 		}
 
-		this.books = this.books.filter(b => b.path !== o.path);
+		this.books = this.books.filter(b => b.id !== o.id);
 		
 		this.saveLibrary();
 	} 
@@ -54,7 +54,6 @@ export default class Library {
 	}
 
 	getCurrentBook = () => {
-		console.log(this.current)
 		if (this.current != null)
 		{
 			return toJS(this.books.filter(b => b.id === this.current)[0]);
