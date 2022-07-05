@@ -40,7 +40,6 @@ const Library = observer(() => {
                 progress: 0
             }
             addBook(bookObject);
-            console.log(getBooks());
         });
     }
 

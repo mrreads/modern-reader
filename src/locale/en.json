@@ -2,7 +2,8 @@
     "locale": "English",
     "library": {
         "title": "Library",
-        "add_book": "Add book"
+        "add_book": "Add book",
+        "delete_book": "Delete book"
     },
     "setting": {
         "title": "Settings",

@@ -1,6 +1,10 @@
 @import './../../styles/utils/vars.scss';
 
 .book {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
     border-radius: 15px;
     padding: 30px;
     background-color: $color-main;
@@ -14,18 +18,27 @@
             padding-right: 5px;
         }
 
-        margin: 5px 0;
-        &:first-child {
-            margin-top: 0;
-        }
-        &:last-child {
-            margin-bottom: 0;
-        }
+        padding-right: 15px;
+        margin: 0;
     }
 
     cursor: pointer;
     transition: .3s all;
     &:hover {
         background-color: $hover-main;
+    }
+
+    &-icon {
+        opacity: .1;
+        margin-left: auto;
+
+        transition: 1s all;
+        &:hover {
+            opacity: .6;
+        }
+    }
+
+    & .txt {
+        padding: 15px 30px;
     }
 }
