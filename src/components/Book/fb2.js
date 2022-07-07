@@ -10,6 +10,9 @@ import useStore from '@/hooks/useStore'
 
 import './index.scss';
 
+const fs = window.require('fs');
+const FB2HTML = require('fb2html');
+
 const Books = ({ book, extension }) => {
     const navigate = useNavigate();
 
@@ -26,10 +29,20 @@ const Books = ({ book, extension }) => {
         deleteBook(obj);
     }
 
+    const fb2data = fs.readFileSync(book.path, 'utf8');
+    const fb2book = new FB2HTML(fb2data, { hyphenate: true });
+    const title = (fb2book.getTitle()) ? fb2book.getTitle() : book.title;
+    const authors = (fb2book.getAuthors()) ? fb2book.getAuthors() : null;
+    const cover = (fb2book.getCover()) ? fb2book.getCover() : null;
+
     return(
     <div className={`book ${extension}`} onClick={() => handleClick(book.id)}>
+
+        { cover != null ? <img className='book-cover' src={cover} /> : null }
+
         <div className='book-info'>
-            <p className='book-info__title'> { book.title } </p>
+            <p className='book-info__title'> { title } </p>
+            { authors != null ? <p className='book-info__subtitle'> { authors } </p> : null }
         </div>
 
         <Tooltip text={t('delete_book')} customStyles={{ marginLeft: 'auto' }} align="left" noWordWrap>

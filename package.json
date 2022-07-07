@@ -6,6 +6,7 @@
   "main": "./public/electron.js",
   "dependencies": {
     "electron-store": "^8.0.2",
+    "fb2html": "^1.0.10",
     "html-react-parser": "^2.0.0",
     "i18next": "^21.8.11",
     "mobx-react-lite": "^3.4.0",

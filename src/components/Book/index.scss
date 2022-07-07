@@ -9,6 +9,29 @@
     padding: 30px;
     background-color: $color-main;
 
+    height: 110px;
+    
+    & .book-cover {
+        border-radius: 5px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+
+        margin-top: -25px;
+        margin-left: -25px;
+        margin-bottom: -25px;
+
+
+        height: 100px;
+
+        margin-right: 30px;
+
+        & + .book-info {
+            & .book-info__title {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
     & p {
         font-size: 14px;
         color: $text-color-second;
@@ -40,5 +63,17 @@
 
     & .txt {
         padding: 15px 30px;
+    }
+
+    & .book-info {
+        display: flex;
+        flex-flow: column nowrap;
+
+        &__title {
+            font-weight: bold;
+        }
+        &__subtitle {
+            opacity: .6;
+        }
     }
 }

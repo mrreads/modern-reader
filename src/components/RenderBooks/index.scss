@@ -13,4 +13,8 @@
     & .simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
         background-color: $hover-main;
     }
+
+    & img[src=undefined] {
+        display: none;
+    }
 }

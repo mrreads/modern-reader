@@ -6,6 +6,7 @@
     z-index: 1;
     
     & .tooltip__text {
+        pointer-events: none;
         width: min-content;
         opacity: 0;        
         position: absolute;
