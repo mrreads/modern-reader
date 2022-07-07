@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { ReactComponent as Trash } from '@/images/icons/trash.svg';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
@@ -10,8 +12,8 @@ import useStore from '@/hooks/useStore'
 
 import './index.scss';
 
+import { parseEpub } from 'epub-parser-simple'
 const fs = window.require('fs');
-const FB2HTML = require('fb2html');
 
 const Books = ({ book, extension }) => {
     const navigate = useNavigate();
@@ -29,11 +31,16 @@ const Books = ({ book, extension }) => {
         deleteBook(obj);
     }
 
-    const fb2data = fs.readFileSync(book.path, 'utf8');
-    const fb2book = new FB2HTML(fb2data, { hyphenate: true });
-    const title = (fb2book.getTitle()) ? fb2book.getTitle() : book.title;
-    const author = (fb2book.getAuthors()) ? fb2book.getAuthors() : null;
-    const cover = (fb2book.getCover()) ? fb2book.getCover() : null;
+    const [title, setTitle] = useState(book.title);
+    const [author, setAuthor] = useState(null);
+    const [cover, setCover] = useState(null);
+    (async () => {
+        const parsed = await parseEpub(book.path);
+        console.log(parsed)
+        setTitle(parsed.title ? parsed.title : book.title);
+        setAuthor(parsed.author ? parsed.author : null);
+        setCover(parsed.cover ? parsed.cover.parsed_data[0].base64 : null);
+    })();
 
     return(
     <div className={`book ${extension}`} onClick={() => handleClick(book.id)}>

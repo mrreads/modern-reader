@@ -17,4 +17,10 @@
     & img[src=undefined] {
         display: none;
     }
+
+    &.epub {
+        background-color: #FFFFFF;
+        position: relative;
+        padding: 0;
+    }
 }

@@ -10,7 +10,7 @@ const fs = window.require('fs');
 
 const FB2HTML = require('fb2html');
 
-const RenderTxt = ({ path }) => {
+const RenderFb2 = ({ path }) => {
 
     const fb2data = fs.readFileSync(path, 'utf8');
     const fb2book = new FB2HTML(fb2data, { hyphenate: true });
@@ -23,4 +23,4 @@ const RenderTxt = ({ path }) => {
     </SimpleBar>)
 };
 
-export default RenderTxt;
+export default RenderFb2;

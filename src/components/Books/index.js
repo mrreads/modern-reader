@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 
 import BookTxt from '@/components/Book/txt'
 import BookFb2 from '@/components/Book/fb2'
+import BookEpub from '@/components/Book/epub'
+
 import './index.scss';
 
 const Books = ({ data }) => {
@@ -18,6 +20,8 @@ const Books = ({ data }) => {
                             return (<BookTxt book={book} extension={extension} key={book.id} />)
                         case 'fb2':
                             return (<BookFb2 book={book} extension={extension} key={book.id} />)
+                        case 'epub':
+                            return (<BookEpub book={book} extension={extension} key={book.id} />)
                             
                     }
                     

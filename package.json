@@ -6,6 +6,7 @@
   "main": "./public/electron.js",
   "dependencies": {
     "electron-store": "^8.0.2",
+    "epub-parser-simple": "^0.1.3",
     "fb2html": "^1.0.10",
     "html-react-parser": "^2.0.0",
     "i18next": "^21.8.11",
@@ -14,6 +15,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^11.17.3",
+    "react-reader": "^0.21.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "simplebar-react": "^2.4.1",
