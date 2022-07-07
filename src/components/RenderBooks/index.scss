@@ -133,5 +133,26 @@
                 font-size: 23px;
             }
         }
+
+        &.size-1 .react-pdf__Page__canvas {
+            height: auto !important;
+            width: 400px !important;
+        }
+        &.size-2 .react-pdf__Page__canvas {
+            width: unset !important;
+            height: unset !important;
+        }
+        &.size-3 .react-pdf__Page__canvas {
+            height: auto !important;
+            width: 600px !important;
+        }
+        &.size-4 .react-pdf__Page__canvas {
+            height: auto !important;
+            width: 800px !important;
+        }
+        &.size-5 .react-pdf__Page__canvas {
+            height: auto !important;
+            width: 100% !important;
+        }
     }
 }

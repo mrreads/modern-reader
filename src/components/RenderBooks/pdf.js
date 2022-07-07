@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import PropTypes from 'prop-types';
@@ -20,6 +20,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 const RenderTxt = ({ path }) => {
     const { t } = useTranslation('render');
 
+    const [zoom, setZoom] = useState(3);
+
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
   
@@ -35,20 +37,54 @@ const RenderTxt = ({ path }) => {
 
     const prevPage = () => {
         let value = pageNumber;
-        if (value - 1 >= 0)
+        if (value - 1 >= 1)
             setPageNumber(value - 1)
     }
 
     const zoomOut = () => {
-
+        let value = zoom;
+        if (value - 1 >= 1)
+            setZoom(value - 1)
     }
-
     const zoomIn = () => {
-
+        let value = zoom;
+        if (value + 1 <= 5)
+            setZoom(value + 1)
     }
 
+    const handleMouseWheel = (e) => {
+        if(e.ctrlKey === true)
+        {
+            let dir = Math.sign(e.deltaY);
+            if (dir != 0)
+            {
+                if (dir < 0)
+                    zoomIn();
+                if (dir > 0)
+                    zoomOut();
+            }
+        }  
+    }
+
+    const debounce = (f, ms) => {
+        let isCooldown = false;
+
+        return function() {
+          if (isCooldown) return;
+
+          f.apply(this, arguments);
+          isCooldown = true;
+          setTimeout(() => isCooldown = false, ms);
+        };
+    }
+
+    useEffect(() => {
+        window.addEventListener("wheel", handleMouseWheel);
+        return () => window.removeEventListener("wheel", handleMouseWheel);
+    }, [zoom]);
+    
     return(
-    <SimpleBar className='viewer pdf'>
+    <SimpleBar className={`viewer pdf size-${zoom}`}>
         <div className='pdf-controls'>
             <div className='pdf-pages'>
                 <p> {t('pages')} <span>{pageNumber}</span> {t('of')} <span>{numPages}</span> </p>
