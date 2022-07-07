@@ -5,6 +5,12 @@
         "add_book": "Add book",
         "delete_book": "Delete book"
     },
+    "render": {
+        "pages": "Pages",
+        "of": "of",
+        "next": "Next",
+        "prev": "Prev"
+    },
     "setting": {
         "title": "Settings",
         "language": "Language",

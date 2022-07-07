@@ -13,7 +13,7 @@ import './index.scss';
 const fs = window.require('fs');
 const FB2HTML = require('fb2html');
 
-const Books = ({ book, extension }) => {
+const BookFb2 = ({ book, extension }) => {
     const navigate = useNavigate();
 
     const [ libraryStore ] = useStore('library');
@@ -53,4 +53,4 @@ const Books = ({ book, extension }) => {
     </div>)
 };
 
-export default Books;
+export default BookFb2;

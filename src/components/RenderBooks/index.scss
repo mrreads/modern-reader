@@ -23,4 +23,115 @@
         position: relative;
         padding: 0;
     }
+
+    &.pdf {
+        & .simplebar-content {
+            position: relative;
+            padding: 0;
+        }
+        position: relative;
+        padding: 0;
+
+        & .react-pdf__Page__canvas {
+            margin: 0 auto;
+        }
+
+        & .pdf-controls {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+
+            z-index: 1;
+            
+            min-height: 75px;
+            height: 75px;
+            max-height: 75px;
+
+            gap: 0 15px;
+
+            opacity: .6;
+            transition: 2s all;
+            &:hover {
+                & .pdf-pages, & .pdf-nav, & .pdf-size {
+                    opacity: 1;
+                    transition: 1s all;
+                }
+                opacity: 1;
+            }
+        }
+
+        & .react-pdf__Page {
+            margin-top: -75px;
+        }
+        & .pdf-pages, & .pdf-nav, & .pdf-size {
+            transition: .4s all;
+
+            color: $text-color-second;
+            background-color: $color-main;
+            padding: 15px 25px;
+
+            border-radius: 10px;
+            padding: 10px 20px;
+            width: fit-content;
+
+            height: 100%;
+            
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+
+            & p {
+                font-size: 14px;
+                margin: 0;
+                padding: 0;
+            }
+            & span {
+                font-size: 16px;
+                color: $text-color-main;
+            }
+        }
+
+        & .pdf-nav, & .pdf-size {
+            padding: 0;
+            overflow: hidden;
+            opacity: 0.1;
+
+            & .pdf-nav__button, & .pdf-size__button {
+                padding: 1px 25px;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                cursor: pointer;
+
+                transition: .6s all;
+                &:hover {
+                    background-color: $hover-main;
+                }
+            }
+        }
+
+        & .pdf-nav {
+            & p {
+                font-size: 14px;
+            }
+        }
+        & .pdf-size {
+            padding: 0;
+            margin-left: auto;
+
+            & .pdf-size__button {
+                font-size: 23px;
+            }
+        }
+    }
 }

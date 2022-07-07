@@ -6,6 +6,7 @@ import useStore from '@/hooks/useStore'
 import RenderTxt from '@/components/RenderBooks/txt'
 import RenderFb2 from '@/components/RenderBooks/fb2'
 import RenderEpub from '@/components/RenderBooks/epub'
+import RenderPdf from '@/components/RenderBooks/pdf'
 
 import './index.scss';
 
@@ -24,6 +25,8 @@ const Render = observer(() => {
                 return (<RenderFb2 path={path} />)
             case 'epub':
                 return (<RenderEpub path={path} />)
+            case 'pdf':
+                return (<RenderPdf path={path} />)
         }
     }
 

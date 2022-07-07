@@ -1,4 +1,5 @@
 const { app, BrowserWindow, globalShortcut, ipcMain, dialog } = require("electron");
+app.commandLine.appendSwitch("disable-features", "OutOfBlinkCors");
 
 const path = require('path');
 
@@ -96,7 +97,7 @@ ipcMain.handle('open-file', async () => {
 
             filters: [ { 
                 name: 'Books format', 
-                extensions: ['txt', 'fb2', 'epub']
+                extensions: ['txt', 'fb2', 'epub', 'pdf']
             }, ], 
             
             properties: ['open-file'] 

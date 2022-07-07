@@ -10,7 +10,7 @@ import useStore from '@/hooks/useStore'
 
 import './index.scss';
 
-const Books = ({ book, extension }) => {
+const BookTxt = ({ book, extension }) => {
     const navigate = useNavigate();
 
     const [ libraryStore ] = useStore('library');
@@ -40,4 +40,4 @@ const Books = ({ book, extension }) => {
     </div>)
 };
 
-export default Books;
+export default BookTxt;
