@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ReactComponent as Trash } from '@/images/icons/trash.svg';
 import { useTranslation } from 'react-i18next';
@@ -10,9 +10,7 @@ import Tooltip from '@/components/Tooltip';
 
 import useStore from '@/hooks/useStore'
 
-import './index.scss';
-
-import { parseEpub } from 'epub-parser-simple'
+const EPub = require("epub");
 const fs = window.require('fs');
 
 const BookEpub = ({ book, extension }) => {
@@ -34,13 +32,32 @@ const BookEpub = ({ book, extension }) => {
     const [title, setTitle] = useState(book.title);
     const [author, setAuthor] = useState(null);
     const [cover, setCover] = useState(null);
-    (async () => {
-        const parsed = await parseEpub(book.path);
-        
-        setTitle(parsed.title ? parsed.title : book.title);
-        setAuthor(parsed.author ? parsed.author : null);
-        setCover(parsed.cover ? parsed.cover.parsed_data[0].base64 : null);
-    })();
+
+
+
+    useEffect(() => {
+        let epub = new EPub(book.path);
+        epub.on("end", function(){
+            console.log(epub.metadata);
+    
+            setTitle(epub.metadata.title ? epub.metadata.title : book.title);
+            setAuthor(epub.metadata.creator ? epub.metadata.creator : null);
+
+            let coverImage = epub.metadata.cover;
+
+            epub.getChapter(epub.flow[0].id, (error, text) => {
+                //console.log(text)
+            });
+
+            epub.getImage(coverImage, (error, img, mimeType) => {
+                setCover(mimeType ? `data:${mimeType};base64, ${img.toString('base64')}` : null);
+            });
+        });
+        epub.parse();
+    }, []);
+
+      
+
 
     return(
     <div className={`book ${extension}`} onClick={() => handleClick(book.id)}>
