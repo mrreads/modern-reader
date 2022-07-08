@@ -1,6 +1,9 @@
 import { makeAutoObservable, toJS } from 'mobx';
 
+
 const Store = require('electron-store');
+
+const fs = window.require('fs');
 
 export default class Library {
 	store = new Store();
@@ -16,9 +19,22 @@ export default class Library {
 		{
 			this.books = (object.books) ? object.books : this.books;
 			this.current = (object.current) ? object.current : this.current;
+
+			if (this.current != null)
+				this.checkBookIsExist(this.getCurrentBook(this.current));
+
+			this.books.map(book => this.checkBookIsExist(book));
 		}
 	}
 
+	checkBookIsExist = (obj) => {
+		fs.access(obj.path, fs.F_OK, (err) => {
+			if (err) {
+				this.deleteBook(obj);
+			}
+		})
+	}
+	
 	getBooks = () => {
 		return toJS(this.books)
 	}
