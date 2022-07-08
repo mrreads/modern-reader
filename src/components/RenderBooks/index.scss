@@ -19,9 +19,22 @@
     }
 
     &.epub {
-        background-color: #FFFFFF;
         position: relative;
         padding: 0;
+
+        & .epub-container::-webkit-scrollbar {
+            width: 5px;
+            background: transparent;
+        }
+        
+        & .epub-container::-webkit-scrollbar-thumb {
+            background: rgba($hover-main, .5);
+            -webkit-border-radius: 5px;
+        }
+        
+        & .epub-container::-webkit-scrollbar-corner {
+            background: transparent;
+        }
     }
 
     &.pdf {
