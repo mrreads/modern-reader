@@ -18,6 +18,11 @@
         display: none;
     }
 
+    &.txt {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
     &.epub {
         position: relative;
         padding: 0;
@@ -37,6 +42,11 @@
         }
     }
 
+    &.fb2 {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
     &.pdf {
         & .simplebar-content {
             position: relative;

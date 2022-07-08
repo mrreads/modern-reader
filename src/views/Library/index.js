@@ -6,7 +6,6 @@ import 'simplebar-react/dist/simplebar.min.css';
 
 import { v4 as uuidv4, v4 } from 'uuid';
 import { observer } from 'mobx-react-lite';
-
 import useStore from '@/hooks/useStore'
 
 import Button from '@/components/Button';
@@ -39,8 +38,10 @@ const Library = observer(() => {
             let bookObject = {
                 id: v4(),
                 title:  path.basename(global.filepath, path.extname(global.filepath)),
+                ext: path.extname(global.filepath).replace('.', ''),
                 path: global.filepath,
-                progress: 0
+                progress: 0,
+                scrollTop: 0,
             }
             addBook(bookObject);
         });

@@ -3,7 +3,8 @@
     "library": {
         "title": "Библиотека",
         "add_book": "Добавить книгу",
-        "delete_book": "Удалить книгу"
+        "delete_book": "Удалить книгу",
+        "progress": "Прогресс"
     },
     "render": {
         "pages": "Страница",

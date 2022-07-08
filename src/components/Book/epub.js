@@ -38,17 +38,10 @@ const BookEpub = ({ book, extension }) => {
     useEffect(() => {
         let epub = new EPub(book.path);
         epub.on("end", function(){
-            console.log(epub.metadata);
-    
             setTitle(epub.metadata.title ? epub.metadata.title : book.title);
             setAuthor(epub.metadata.creator ? epub.metadata.creator : null);
 
             let coverImage = epub.metadata.cover;
-
-            epub.getChapter(epub.flow[0].id, (error, text) => {
-                //console.log(text)
-            });
-
             epub.getImage(coverImage, (error, img, mimeType) => {
                 setCover(mimeType ? `data:${mimeType};base64, ${img.toString('base64')}` : null);
             });

@@ -8,6 +8,7 @@ const fs = window.require('fs');
 export default class Library {
 	store = new Store();
 
+	title = '';
 	current = null;
 	books = [];
 
@@ -75,6 +76,13 @@ export default class Library {
 			return toJS(this.books.filter(b => b.id === this.current)[0]);
 		}
 		return null;
+	}
+
+	updateProgress = (obj, scrl, prgrs) => { 
+		this.books.find(b => b.id === obj.id).scrollTop = scrl;
+		this.books.find(b => b.id === obj.id).progress = prgrs;
+		
+		this.saveLibrary();
 	}
 
 	saveLibrary = () => {

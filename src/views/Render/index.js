@@ -13,14 +13,13 @@ import './index.scss';
 const Render = observer(() => {
     const [ libraryStore ] = useStore('library');
     const { getCurrentBook } = libraryStore;
-    const path = getCurrentBook().path
+    const { path, ext } = getCurrentBook()
     
     const renderBook = () => {
-        const extension = path.split('.').pop();
 
-        switch(extension) {
+        switch(ext) {
             case 'txt':
-                return (<RenderTxt path={path} />)
+                return (<RenderTxt book={getCurrentBook()} />)
             case 'fb2':
                 return (<RenderFb2 path={path} />)
             case 'epub':

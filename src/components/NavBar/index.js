@@ -19,29 +19,6 @@ const NavBar = observer(() => {
     const [ libraryStore ] = useStore('library');
     const { current, getCurrentBook } = libraryStore;
 
-    const [formatedTitle, setFormatedTitle] = useState((current) ? getCurrentBook().title : '');
-    useEffect(() => {
-        if (current != null)
-        {
-            const { path, title } = getCurrentBook();
-            const extension = getCurrentBook().path.split('.').pop();
-
-            if (extension === 'fb2')
-            {
-                const fb2data = fs.readFileSync(path, 'utf8');
-                const fb2book = new FB2HTML(fb2data, { hyphenate: true });
-                const fb2title = (fb2book.getTitle()) ? fb2book.getTitle() : title;
-                setFormatedTitle(fb2title);
-            }
-            else
-            {
-                return setFormatedTitle(title);
-            }
-        }
-
-    }, [current])
-
-
     return (
         <div className='navbar-wrapper'>
 
@@ -51,7 +28,7 @@ const NavBar = observer(() => {
                         <Book fill='#FFFFFF' height={28} width={28} /> 
                         </div>)
                 else
-                    return (<Tooltip text={formatedTitle} align="right" customStyles={{ width: '100%' }} noWordWrap>
+                    return (<Tooltip text={getCurrentBook(current).title} align="right" customStyles={{ width: '100%' }} noWordWrap>
                                 <NavLink to="/render" className='navbar-element'> 
                                     <Book fill='#FFFFFF' height={28} width={28} /> 
                                 </NavLink>

@@ -9,22 +9,20 @@ import './index.scss';
 
 const Books = ({ data }) => {
 
-
     return (
         <div className='books'>
             {
                 data.map(book => 
                 {
-                    let extension = book.path.split('.').pop();
-                    switch(extension) {
+                    switch(book.ext) {
                         case 'txt':
-                            return (<BookTxt book={book} extension={extension} key={book.id} />)
+                            return (<BookTxt book={book} extension={book.ext} key={book.id} />)
                         case 'fb2':
-                            return (<BookFb2 book={book} extension={extension} key={book.id} />)
+                            return (<BookFb2 book={book} extension={book.ext} key={book.id} />)
                         case 'epub':
-                            return (<BookEpub book={book} extension={extension} key={book.id} />)
+                            return (<BookEpub book={book} extension={book.ext} key={book.id} />)
                         case 'pdf':
-                            return (<BookPdf book={book} extension={extension} key={book.id} />)
+                            return (<BookPdf book={book} extension={book.ext} key={book.id} />)
                             
                     }
                     
