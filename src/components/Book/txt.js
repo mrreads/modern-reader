@@ -30,7 +30,7 @@ const BookTxt = ({ book, extension }) => {
     <div className={`book ${extension}`} onClick={() => handleClick(book.id)}>
         <div className='book-info'>
             <p className='book-info__title'> { book.title } </p>
-            <p className='book-info__subtitle'> {t('progress')}: { book.progress }% </p>
+            <p className='book-info__subtitle percent'> {t('progress')}: { book.progress }% </p>
         </div>
 
         <Tooltip text={t('delete_book')} customStyles={{ marginLeft: 'auto' }} align="left" noWordWrap>

@@ -71,9 +71,18 @@
 
         &__title {
             font-weight: bold;
+            font-size: 14px;
         }
         &__subtitle {
             opacity: .6;
+            &.bold {
+                font-style: bold;
+            }
+            &.percent {
+                margin-top: 5px;
+                font-size: 12px;
+                opacity: .4;
+            }
         }
     }
 }

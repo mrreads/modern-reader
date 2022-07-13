@@ -41,8 +41,9 @@ const BookFb2 = ({ book, extension }) => {
         { cover != null ? <img className='book-cover' src={cover} onError={(e) => e.target.style.display = 'none' } /> : null }
 
         <div className='book-info'>
-            <p className='book-info__title'> { title } </p>
             { author != null ? <p className='book-info__subtitle'> { author } </p> : null }
+            <p className='book-info__title'> { title } </p>
+            <p className='book-info__subtitle percent'> {t('progress')}: { book.progress }% </p>
         </div>
 
         <Tooltip text={t('delete_book')} customStyles={{ marginLeft: 'auto' }} align="left" noWordWrap>
