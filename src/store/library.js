@@ -8,7 +8,6 @@ const fs = window.require('fs');
 export default class Library {
 	store = new Store();
 
-	title = '';
 	current = null;
 	books = [];
 
@@ -77,7 +76,7 @@ export default class Library {
 		}
 		return null;
 	}
-
+	
 	updateProgress = (obj, scrl, prgrs) => { 
 		this.books.find(b => b.id === obj.id).scrollTop = scrl;
 		this.books.find(b => b.id === obj.id).progress = prgrs;

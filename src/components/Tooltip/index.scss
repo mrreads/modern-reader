@@ -3,7 +3,7 @@
 .tooltip {
     position: relative;
     width: min-content;
-    z-index: 1;
+    z-index: 2;
     
     & .tooltip__text {
         pointer-events: none;
