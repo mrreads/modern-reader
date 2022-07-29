@@ -21,7 +21,7 @@ const Render = observer(() => {
             case 'txt':
                 return (<RenderTxt book={getCurrentBook()} />)
             case 'fb2':
-                return (<RenderFb2 path={path} />)
+                return (<RenderFb2 book={getCurrentBook()} />)
             case 'epub':
                 return (<RenderEpub path={path} />)
             case 'pdf':
