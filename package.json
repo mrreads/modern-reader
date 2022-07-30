@@ -1,6 +1,15 @@
 {
   "name": "modern-reader",
-  "version": "0.0.1",
+  "description":"A modern app for book reading built with Electron.",
+   "repository":{
+      "type": "git",
+      "url":"https://github.com/mrreads/modern-reader"
+   },
+   "author":{
+      "name":"Alexander",
+      "email":"mrreads@yandex.com"
+   },
+  "version": "1.0.0",
   "private": true,
   "homepage": "./",
   "main": "./public/electron.js",
@@ -23,12 +32,15 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "start-react": "craco start",
-    "build-react": "craco build",
-    "test-react": "craco test",
-    "eject-react": "craco eject",
-    "build": "npm run build-react && electron-builder",
-    "start": "concurrently \"cross-env BROWSER=none npm run start-react\" \"wait-on http://localhost:3000 && electron .\""
+    "start": "concurrently \"cross-env BROWSER=none npm run start:react\" \"wait-on http://localhost:3000 && electron .\"",
+    "start:react": "craco start",
+    "build:react": "craco build",
+    "test:react": "craco test",
+    "eject:react": "craco eject",
+    "build": "npm run build:react && electron-builder",
+    "build:win": "npm run build:react && electron-builder -w",
+    "build:linux": "npm run build:react && electron-builder -l",
+    "build:mac": "npm run build:react && electron-builder -m"
   },
   "eslintConfig": {
     "extends": [
@@ -58,9 +70,11 @@
     "sass": "^1.53.0",
     "wait-on": "^6.0.1"
   },
+
   "build": {
     "productName": "Modern Reader",
-    "appId": "com.modern-reader.com",
+    "appId": "mrreads.modern-reader",
+    "asar": true,
     "directories": {
       "buildResources": "build"
     },
@@ -68,13 +82,54 @@
       "build/**/*"
     ],
     "win": {
-      "target": "portable",
-      "icon": "public/icon.png"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": "x64"
+        },
+        {
+          "target": "zip",
+          "arch": "x64"
+        },
+        {
+          "target": "portable",
+          "arch": "x64"
+        }
+      ]
     },
     "nsis": {
-      "installerIcon": "public/icon.png",
-      "installerHeaderIcon": "public/icon.png",
-      "deleteAppDataOnUninstall": true
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "category": "Office",
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ]
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "type": "distribution",
+      "darkModeSupport": true,
+      "hardenedRuntime": true,
+      "category": "public.app-category.productivity"
     }
   }
 }
