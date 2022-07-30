@@ -22,7 +22,7 @@ const RenderFb2 = observer(({ book }) => {
     const { updateProgress } = libraryStore;
 
     const fb2data = fs.readFileSync(path, 'utf8');
-    const fb2book = new FB2HTML(fb2data, { hyphenate: true });
+    const fb2book = new FB2HTML(fb2data, { hyphenate: false });
     const fb2formated = fb2book.getBody();
     const render = Parser(fb2formated);
 
