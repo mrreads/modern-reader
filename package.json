@@ -9,7 +9,7 @@
       "name":"Alexander",
       "email":"mrreads@yandex.com"
    },
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "homepage": "./",
   "main": "./public/electron.js",
@@ -95,7 +95,8 @@
           "target": "portable",
           "arch": "x64"
         }
-      ]
+      ],
+      "icon": "build/icons/icon.png"
     },
     "nsis": {
       "oneClick": false,
