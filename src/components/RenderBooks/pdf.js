@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { observer } from 'mobx-react-lite';
+import useStore from '@/hooks/useStore'
+
 import PropTypes from 'prop-types';
 import Parser from 'html-react-parser';
 
@@ -17,13 +20,18 @@ import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
-const RenderTxt = ({ path }) => {
+const RenderPdf = observer(({ book }) => {
+    const { path } = book;
+
+    const [ libraryStore ] = useStore('library');
+    const { updateProgress } = libraryStore;
+
     const { t } = useTranslation('render');
 
     const [zoom, setZoom] = useState(3);
 
     const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
+    const [pageNumber, setPageNumber] = useState(book.progress ?? 1);
   
     function onDocumentLoadSuccess({ numPages }) {
       setNumPages(numPages);
@@ -33,12 +41,16 @@ const RenderTxt = ({ path }) => {
         let value = pageNumber;
         if (value + 1 <= numPages)
             setPageNumber(value + 1)
+
+        updateProgress(book, null, pageNumber + 1);
     }
 
     const prevPage = () => {
         let value = pageNumber;
         if (value - 1 >= 1)
             setPageNumber(value - 1)
+
+        updateProgress(book, null, pageNumber + 1);
     }
 
     const zoomOut = () => {
@@ -64,18 +76,6 @@ const RenderTxt = ({ path }) => {
                     zoomOut();
             }
         }  
-    }
-
-    const debounce = (f, ms) => {
-        let isCooldown = false;
-
-        return function() {
-          if (isCooldown) return;
-
-          f.apply(this, arguments);
-          isCooldown = true;
-          setTimeout(() => isCooldown = false, ms);
-        };
     }
 
     useEffect(() => {
@@ -105,6 +105,6 @@ const RenderTxt = ({ path }) => {
             <Page pageNumber={pageNumber} />
         </Document>
     </SimpleBar>)
-};
+});
 
-export default RenderTxt;
+export default RenderPdf;

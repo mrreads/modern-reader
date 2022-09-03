@@ -10,8 +10,21 @@ import useStore from '@/hooks/useStore'
 
 import './index.scss';
 
+import { Document, Page, pdfjs } from "react-pdf";
+import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
+
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import { useState } from 'react';
+
+pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+
 const BookPdf = ({ book, extension }) => {
     const navigate = useNavigate();
+
+    const [numPages, setNumPages] = useState(null);
+    function onDocumentLoadSuccess({ numPages }) {
+      setNumPages(numPages);
+    }
 
     const [ libraryStore ] = useStore('library');
     const { setCurrentBook, deleteBook } = libraryStore;
@@ -28,9 +41,17 @@ const BookPdf = ({ book, extension }) => {
 
     return(
     <div className={`book ${extension}`} onClick={() => handleClick(book.id)}>
+
+        <div className='book-cover pdf'>
+            <Document file={book.path} onLoadSuccess={onDocumentLoadSuccess}>
+                <Page height={100} pageNumber={1} />
+            </Document>
+        </div>
+
+
         <div className='book-info'>
             <p className='book-info__title'> { book.title } </p>
-            <p className='book-info__subtitle percent'> {t('progress')}: { book.progress } </p>
+            <p className='book-info__subtitle percent'> {t('progress')}: { book.progress ?? '0' } {`/ ${numPages}`} </p>
         </div>
 
         <Tooltip text={t('delete_book')} customStyles={{ marginLeft: 'auto' }} align="left" noWordWrap>

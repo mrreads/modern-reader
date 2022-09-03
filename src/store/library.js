@@ -20,9 +20,6 @@ export default class Library {
 			this.books = (object.books) ? object.books : this.books;
 			this.current = (object.current) ? object.current : this.current;
 
-			if (this.current != null)
-				this.checkBookIsExist(this.getCurrentBook(this.current));
-
 			this.books.map(book => this.checkBookIsExist(book));
 		}
 	}
@@ -35,16 +32,6 @@ export default class Library {
 		})
 	}
 	
-	getBooks = () => {
-		return toJS(this.books)
-	}
-	
-	addBook = (book) => {
-		this.books.push(book);
-
-		this.saveLibrary();
-	}
-
 	deleteBook = (o) => {
 		if (o.id === this.current)
 		{
@@ -55,6 +42,16 @@ export default class Library {
 		
 		this.saveLibrary();
 	} 
+
+	getBooks = () => {
+		return toJS(this.books)
+	}
+	
+	addBook = (book) => {
+		this.books.push(book);
+
+		this.saveLibrary();
+	}
 
 	setCurrentBook = (path) => {
 		this.current = path;
@@ -80,7 +77,7 @@ export default class Library {
 	updateProgress = (obj, scrl, prgrs) => { 
 		this.books.find(b => b.id === obj.id).scrollTop = scrl;
 		this.books.find(b => b.id === obj.id).progress = prgrs;
-		
+	
 		this.saveLibrary();
 	}
 

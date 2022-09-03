@@ -64,10 +64,10 @@
     "@craco/craco": "^7.0.0-alpha.7",
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
-    "electron": "^20.1.0",
+    "electron": "^20.1.1",
     "electron-builder": "^23.3.3",
     "path-browserify": "^1.0.1",
-    "sass": "^1.54.5",
+    "sass": "^1.54.8",
     "wait-on": "^6.0.1"
   },
 
