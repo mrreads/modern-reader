@@ -27,6 +27,13 @@
         position: relative;
         padding: 0;
 
+        & .epub-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 25px;
+            overflow-x: hidden !important;
+        }
+
         & .epub-container::-webkit-scrollbar {
             width: 5px;
             background: transparent;
@@ -39,6 +46,93 @@
         
         & .epub-container::-webkit-scrollbar-corner {
             background: transparent;
+        }
+
+        & .epub-controls {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+
+            z-index: 25;
+            
+            min-height: 75px;
+            height: 75px;
+            max-height: 75px;
+
+            gap: 0 15px;
+
+            opacity: .6;
+            transition: 2s all;
+
+            & .epub-pages, & .epub-nav, & .epub-size {
+                transition: .4s all;
+    
+                color: $text-color-second;
+                padding: 15px 25px;
+    
+                padding: 10px 20px;
+                width: fit-content;
+    
+                height: 100%;
+                
+                width: 100%;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+    
+                & p {
+                    font-size: 14px;
+                    margin: 0;
+                    padding: 0;
+                }
+                & span {
+                    font-size: 16px;
+                    color: $text-color-main;
+                }
+            }
+
+            & .epub-nav, & .epub-size {
+                padding: 0;
+                overflow: hidden;
+    
+                & .epub-nav__button, & .epub-size__button {
+                    padding: 1px 25px;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+
+                    cursor: pointer;
+                    background-color: $hover-main;
+                    transition: .6s all;
+                    opacity: 0.4;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+    
+            & .epub-nav {
+                & p {
+                    font-size: 14px;
+                }
+            }
+            & .epub-size {
+                padding: 0;
+                margin-left: auto;
+    
+                & .epub-size__button {
+                    font-size: 23px;
+                }
+            }
         }
     }
 

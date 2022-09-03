@@ -60,7 +60,7 @@ const BookEpub = ({ book, extension }) => {
         <div className='book-info'>
             { author != null ? <p className='book-info__subtitle'> { author } </p> : null }
             <p className='book-info__title'> { title } </p>
-            <p className='book-info__subtitle percent'> {t('progress')}: { book.progress }% </p>
+            { book.progress ? <p className='book-info__subtitle percent'> { book.progress } </p> : null }
         </div>
 
         <Tooltip text={t('delete_book')} customStyles={{ marginLeft: 'auto' }} align="left" noWordWrap>
