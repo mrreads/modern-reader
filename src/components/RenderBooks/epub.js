@@ -97,8 +97,8 @@ const RenderEpub = observer(({ book }) => {
 
         <div className='epub-controls'>
             <div className='epub-nav'>
-                <p className='epub-nav__button' onClick={prevPage}> { navigation.prev?.label ?? t('prev') } </p>
-                <p className='epub-nav__button' onClick={nextPage}> { navigation.next?.label ?? t('next') } </p>
+                <p className='epub-nav__button' style={{ display: (navigation.prev) ? 'flex' : 'none' }} onClick={prevPage}> { navigation.prev?.label ?? t('prev') } </p>
+                <p className='epub-nav__button' style={{ display: (navigation.next) ? 'flex' : 'none' }} onClick={nextPage}> { navigation.next?.label ?? t('next') } </p>
             </div>
         </div>
         
@@ -117,6 +117,16 @@ const RenderEpub = observer(({ book }) => {
                     "a:link": { "color": `#adadad5A`, "text-decoration": "none", "-webkit-text-fill-color": `#adadad5A` }
                 });
                 rendition.themes.select('dark');
+
+                rendition.on("displayed", (section) => {
+                    const { href } = section;
+                    const currentIndex = tocRef.current.findIndex((item) => item.href.indexOf(href) > -1 );
+                    setNavigation({
+                        curr: { ...tocRef.current[currentIndex], index: currentIndex } ,
+                        prev: (currentIndex > 0) ? { ...tocRef.current[currentIndex - 1], index: currentIndex - 1 } : null,
+                        next: (tocRef.current.length === currentIndex + 1) ? null : { ...tocRef.current[currentIndex + 1], index: currentIndex + 1 }
+                    });
+                });
 
                 renditionRef.current = rendition;
             }}
