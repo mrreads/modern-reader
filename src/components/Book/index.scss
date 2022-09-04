@@ -1,4 +1,4 @@
-@import './../../styles/utils/vars.scss';
+
 
 .book {
     display: flex;
@@ -7,7 +7,7 @@
 
     border-radius: 15px;
     padding: 30px;
-    background-color: $color-main;
+    background-color: var(--color-main);
 
     height: 110px;
     
@@ -38,7 +38,7 @@
 
     & p {
         font-size: 14px;
-        color: $text-color-second;
+        color: var(--text-color-second);
 
         & span {
             font-weight: bold;
@@ -52,7 +52,7 @@
     cursor: pointer;
     transition: .3s all;
     &:hover {
-        background-color: $hover-main;
+        background-color: var(--hover-main);
     }
 
     &-icon {

@@ -16,6 +16,7 @@
         "title": "Settings",
         "language": "Language",
         "titlebar": "System top bar",
-        "titlebar_tooltip": "Will change after restarting the application!"
+        "titlebar_tooltip": "Will change after restarting the application!",
+        "lightmode": "Light theme"
     }
 }

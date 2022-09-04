@@ -16,7 +16,7 @@ import React from 'react';
 
 const Setting = observer(() => {
     const [ settingStore ] = useStore('settings');
-    const { language, systemTitlebar, changeLanguage, changeSystemTitlebar } = settingStore;
+    const { language, lightMode, systemTitlebar, changeLanguage, changeSystemTitlebar, changeLightMode } = settingStore;
 
     const { t } = useTranslation('setting');
 
@@ -31,6 +31,11 @@ const Setting = observer(() => {
                     <p className='setting-element__text'>{t('titlebar')}:</p> <Switch defaultValue={systemTitlebar} callback={changeSystemTitlebar} /> 
                 </div>
             </Tooltip>
+
+            <div className='setting-element'> 
+                <p className='setting-element__text'>{t('lightmode')}:</p> <Switch defaultValue={lightMode} callback={changeLightMode} /> 
+            </div>
+
 
             <div className='setting-element'> 
                 <p className='setting-element__text'>{t('language')}:</p> <LanguageSelect startupLanguage={language} changeLanguage={changeLanguage} />

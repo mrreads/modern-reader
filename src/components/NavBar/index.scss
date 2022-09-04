@@ -1,5 +1,3 @@
-@import './../../styles/utils/vars.scss';
-
 .navbar-wrapper {
     display: flex;
     flex-flow: column nowrap;
@@ -31,7 +29,7 @@
         transition: .3s all;
         &:not(.disable):hover {
             opacity: .6;
-            background-color: $hover-main;
+            background-color: var(--hover-main);
         }
         &.active {
             opacity: 1;

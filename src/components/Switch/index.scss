@@ -1,8 +1,6 @@
-@import './../../styles/utils/vars.scss';
-
 .switch {
     border-radius: 50px;
-    background-color: $color-main;
+    background-color: var(--color-main);
     height: 22px;
     width: 44px;
 
@@ -18,12 +16,12 @@
         width: 18px;
         margin-top: 2px;
         margin-left: 2px;
-        background-color: $text-color-second;
+        background-color: var(--text-color-second);
     }
     &.active {
-        background-color: $text-color-second;
+        background-color: var(--text-color-second);
         & .switch__slider {
-            background-color: $color-main;
+            background-color: var(--color-main);
             margin-left: 23px;
         }
     }

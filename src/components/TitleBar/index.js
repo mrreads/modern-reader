@@ -4,6 +4,9 @@ import { ReactComponent as Minimize } from '@/images/icons/minimize.svg';
 import { ReactComponent as Resize } from '@/images/icons/resize.svg';
 import { ReactComponent as Close } from '@/images/icons/close.svg';
 
+import { observer } from 'mobx-react-lite';
+import useStore from '@/hooks/useStore'
+
 import './index.scss';
 
 const Store = require('electron-store');
@@ -12,7 +15,9 @@ const settings = store.get('settings')
 
 const isSystemTitlebar = (settings) ? settings.systemTitlebar : false;
 
-const TitleBar = () => {
+const TitleBar = observer(() => {
+    const [ settingStore ] = useStore('settings');
+    const { lightMode } = settingStore;
 
     const { ipcRenderer } = require("electron");
     
@@ -31,19 +36,19 @@ const TitleBar = () => {
             <div className='titlebar-drag'></div>
 
             <div id="minimize" className='titlebar-element'>
-                <Minimize fill='#FFFFFF' height={10} width={10} />
+                <Minimize fill={(lightMode) ? '#292a2d' : '#FFFFFF'} height={10} width={10} />
             </div>
 
             <div id="resize" className='titlebar-element'>
-                <Resize fill='#FFFFFF' height={10} width={10} />
+                <Resize fill={(lightMode) ? '#292a2d' : '#FFFFFF'} height={10} width={10} />
             </div>
 
             <div id="close" className='titlebar-element'>
-                <Close fill='#FFFFFF' height={10} width={10} />
+                <Close fill={(lightMode) ? '#292a2d' : '#FFFFFF'} height={10} width={10} />
             </div>
 
         </div>
     );
-};
+});
 
 export default TitleBar;

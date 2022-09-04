@@ -1,5 +1,3 @@
-@import './../../styles/utils/vars.scss';
-
 .titlebar-wrapper {
     display: flex;
     flex-flow: row nowrap;
@@ -29,7 +27,7 @@
         transition: .3s all;
         &:hover {
             opacity: 1;
-            background-color: $hover-second;
+            background-color: var(--hover-second);
         }
     }
 

@@ -1,11 +1,24 @@
-$color-main: #292a2d;
-$color-second: #161616;
+html {
+    --color-main: #292a2d;
+    --color-second: #161616;
 
-$hover-main: #36373b;
-$hover-second: #302f2f;
+    --hover-main: #36373b;
+    --hover-second: #302f2f;
 
-$text-color-main: #FFFFFF;
-$text-color-second: #adadad;
+    --text-color-main: #FFFFFF;
+    --text-color-second: #adadad;
+    
+    --font-main: 'Montserrat';
+    --font-second: 'Noto Sans';
+}
 
-$font-main: 'Montserrat';
-$font-second: 'Noto Sans';
+html[data-theme=light] {
+    --color-main: #e0e0e0;
+    --color-second: #FFFFFF;
+
+    --hover-main: #8b8b8b;
+    --hover-second: #e0e0e0;
+
+    --text-color-main: #292a2d;
+    --text-color-second: #4e4e4e;
+ }

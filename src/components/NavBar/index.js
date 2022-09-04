@@ -18,6 +18,9 @@ const NavBar = observer(() => {
     const [ libraryStore ] = useStore('library');
     const { current, getCurrentBook } = libraryStore;
 
+    const [ settingStore ] = useStore('settings');
+    const { lightMode } = settingStore;
+
     let header = '';
 
     if (current)
@@ -38,22 +41,22 @@ const NavBar = observer(() => {
             {(() => {
                 if (current == null)
                     return (<div className='navbar-element disable'> 
-                        <Book fill='#FFFFFF' height={28} width={28} /> 
+                        <Book fill={(lightMode) ? '#292a2d' : '#FFFFFF'} height={28} width={28} /> 
                         </div>)
                 else
                     return (<Tooltip text={header} align="right" customStyles={{ width: '100%' }} noWordWrap>
                                 <NavLink to="/render" className='navbar-element'> 
-                                    <Book fill='#FFFFFF' height={28} width={28} /> 
+                                    <Book fill={(lightMode) ? '#292a2d' : '#FFFFFF'} height={28} width={28} /> 
                                 </NavLink>
                             </Tooltip>)
             })()}
 
             <NavLink to="/" className='navbar-element'> 
-                <Library fill='#FFFFFF' height={30} width={30} />
+                <Library fill={(lightMode) ? '#292a2d' : '#FFFFFF'} height={30} width={30} />
             </NavLink>
 
             <NavLink to="/setting" className='navbar-element'>
-                <Setting fill='#FFFFFF' height={32} width={32} />
+                <Setting fill={(lightMode) ? '#292a2d' : '#FFFFFF'} height={32} width={32} />
             </NavLink>
         </div>
     );

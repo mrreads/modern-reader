@@ -6,8 +6,9 @@ const Store = require('electron-store');
 export default class Setting {
 	store = new Store();
 
-	language = 'en'
+	language = 'en';
 	systemTitlebar = false;
+	lightMode = false;
 
 	constructor(rootStore, object){
 		makeAutoObservable(this);
@@ -17,6 +18,7 @@ export default class Setting {
 		{
 			this.language = (object.language) ? object.language : this.language;
 			this.systemTitlebar = (object.systemTitlebar) ? object.systemTitlebar : this.systemTitlebar;
+			this.lightMode = (object.lightMode) ? object.lightMode : this.lightMode;
 		}
 
 		i18next.changeLanguage(this.language);
@@ -35,10 +37,17 @@ export default class Setting {
 		this.saveSettings();
 	}
 
+	changeLightMode = (bool) => {
+		this.lightMode = bool;
+
+		this.saveSettings();
+	}
+
 	saveSettings = () => {
 		let settingsObject = {
 			"language": this.language,
-			"systemTitlebar": this.systemTitlebar
+			"systemTitlebar": this.systemTitlebar,
+			"lightMode": this.lightMode
 		}
 		this.store.set('settings', settingsObject);
 	}
