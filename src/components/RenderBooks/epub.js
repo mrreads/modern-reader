@@ -13,6 +13,9 @@ import { ReactReader, ReactReaderStyle } from "react-reader"
 const fs = window.require('fs');
 
 const RenderEpub = observer(({ book }) => {    
+    const [ settingStore ] = useStore('settings');
+    const { lightMode } = settingStore;
+
     const { path } = book;
 
     const { t } = useTranslation('render');
@@ -20,33 +23,16 @@ const RenderEpub = observer(({ book }) => {
     const [ libraryStore ] = useStore('library');
     const { updateProgress } = libraryStore;
 
-    const epubStyles = 
-    { ...ReactReaderStyle,
-        readerArea: {
-            ...ReactReaderStyle.readerArea,
-            backgroundColor: '#161616',
-        },
-        titleArea: {
-            ...ReactReaderStyle.titleArea,
-            color: '#FFFFFF'
-        },
-        arrow: {
-            ...ReactReaderStyle.arrow,
-            color: '#adadad',
-            display: 'none'
-        }, 
-        arrowHover: {
-            ...ReactReaderStyle.arrowHover,
-            color: '#FFFFFF'
-        }, 
-        tocAreaButton: {
-            ...ReactReaderStyle.tocAreaButton,
-            color: '#adadad'
-        }, 
-        loadingView: {
-            ...ReactReaderStyle.loadingView,
-            color: '#adadad'
-        }, 
+    let epubStyles = { ...ReactReaderStyle, arrow: { ...ReactReaderStyle.arrow, display: 'none' }};
+    if (!lightMode)
+    {
+        epubStyles = 
+        { ...ReactReaderStyle,
+            readerArea: { ...ReactReaderStyle.readerArea, backgroundColor: '#161616', }, titleArea: { ...ReactReaderStyle.titleArea, color: '#FFFFFF' },
+            arrow: { ...ReactReaderStyle.arrow, color: '#adadad', display: 'none' }, 
+            arrowHover: { ...ReactReaderStyle.arrowHover, color: '#FFFFFF' }, tocAreaButton: { ...ReactReaderStyle.tocAreaButton, color: '#adadad' }, 
+            loadingView: { ...ReactReaderStyle.loadingView, color: '#adadad' }, 
+        }
     }
 
     const renditionRef = useRef();
@@ -109,14 +95,26 @@ const RenderEpub = observer(({ book }) => {
                 flow: "scrolled-doc"
             }}
 
-            getRendition={(rendition) => { 
-                rendition.themes.register("dark",
+            getRendition={(rendition) => {
+                if (lightMode)
                 {
-                    "body": { "background-color": "#161616", "color": "#adadad" },
-                    "a": { "color": "inherit", "text-decoration": "none", "-webkit-text-fill-color": "inherit" },
-                    "a:link": { "color": `#adadad5A`, "text-decoration": "none", "-webkit-text-fill-color": `#adadad5A` }
-                });
-                rendition.themes.select('dark');
+                    rendition.themes.register("custom",
+                    {
+                        "body": { "background-color": "#FFFFFF", "color": "##adadad" },
+                        "a": { "color": "inherit", "text-decoration": "none", "-webkit-text-fill-color": "inherit" },
+                        "a:link": { "color": `##adadad`, "text-decoration": "none", "-webkit-text-fill-color": `##adadad5A` }
+                    });
+                }
+                else
+                {
+                    rendition.themes.register("custom",
+                    {
+                        "body": { "background-color": "#161616", "color": "#adadad" },
+                        "a": { "color": "inherit", "text-decoration": "none", "-webkit-text-fill-color": "inherit" },
+                        "a:link": { "color": `#adadad5A`, "text-decoration": "none", "-webkit-text-fill-color": `#adadad5A` }
+                    });
+                }
+                rendition.themes.select('custom');
 
                 rendition.on("displayed", (section) => {
                     const { href } = section;
