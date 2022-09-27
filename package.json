@@ -18,18 +18,18 @@
     "epub": "^1.2.1",
     "fb2html": "^1.0.10",
     "html-react-parser": "^3.0.4",
-    "i18next": "^21.9.1",
+    "i18next": "^21.9.2",
     "mobx-react-lite": "^3.4.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^11.18.5",
+    "react-i18next": "^11.18.6",
     "react-pdf": "^5.7.2",
-    "react-reader": "^0.21.2",
-    "react-router-dom": "^6.3.0",
+    "react-reader": "^0.21.3",
+    "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "simplebar-react": "^2.4.1",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "scripts": {
     "start": "concurrently \"cross-env BROWSER=none npm run start:react\" \"wait-on http://localhost:3000 && electron .\"",
@@ -62,12 +62,12 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.0.0-alpha.7",
-    "concurrently": "^7.3.0",
+    "concurrently": "^7.4.0",
     "cross-env": "^7.0.3",
-    "electron": "^20.1.1",
+    "electron": "^21.0.0",
     "electron-builder": "^23.3.3",
     "path-browserify": "^1.0.1",
-    "sass": "^1.54.8",
+    "sass": "^1.55.0",
     "wait-on": "^6.0.1"
   },
 
