@@ -35,6 +35,7 @@ const RenderPdf = observer(({ book }) => {
   
     function onDocumentLoadSuccess({ numPages }) {
       setNumPages(numPages);
+      setPageNumber(1);
     }
 
     const nextPage = () => {
